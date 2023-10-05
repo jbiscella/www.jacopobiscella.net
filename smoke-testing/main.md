@@ -53,11 +53,6 @@
 ## 1. **Definition and Overview**
 
 ### **What is Smoke Testing?**
-Certainly! Let's dive deeper into the topic of "What is smoke testing?"
-
----
-
-### **What is Smoke Testing?**
 
 Smoke testing, often referred to as a "sanity check", is a preliminary form of software testing executed to determine whether a particular software build is stable enough for more rigorous testing. The term originates from the electronics industry, where a new piece of hardware would be powered on to see if it "smokes" – indicating a basic, catastrophic failure.
 
@@ -98,7 +93,28 @@ Smoke testing, often referred to as a "sanity check", is a preliminary form of s
 In conclusion, smoke testing is an indispensable part of the software testing lifecycle, acting as a first line of defense against evident issues in a software build. While not exhaustive, their strategic use can significantly enhance the software development process's efficiency and quality.
 
 ### **Historical Context: Origins of the Term**
-The term "smoke testing" is borrowed from plumbing, where smoke is introduced into pipes to check for leaks. Similarly, in software, the idea is to see if the software runs (i.e., "smokes") under basic operation without immediately breaking down.
+
+The term "smoke test" originally didn't have anything to do with software. Its roots are anchored in hardware testing, particularly in plumbing, electronics, and mechanics.
+
+**Plumbing and Mechanics**:
+
+1. **Leak Detection**: In plumbing and mechanical systems, a "smoke test" involved forcing smoke through pipes or equipment to identify leaks. If smoke seeped out from unexpected areas, it indicated a fault or leakage in the system. This was an initial test to ensure that the system was sealed and functioning correctly.
+
+2. **Safety Check**: Smoke testing was also used to ensure that harmful gases wouldn't leak into places they shouldn't, ensuring the safety of users and technicians.
+
+**Electronics**:
+
+1. **Basic Power-On**: The term was popularly used in electronics, particularly when testing new circuits or systems. When powering up a new electronic device or system for the first time, technicians would observe whether it "smoked" or not. If the device emitted smoke, it typically indicated a fundamental flaw, like a short circuit or wrong component placement. This simple test would immediately reveal if the device was safe to undergo further testing or if it needed fundamental fixes.
+
+**Transition to Software**:
+
+1. **From Hardware to Software**: As the software industry evolved and software systems became more complex, the need for preliminary testing mechanisms became evident. The term "smoke testing" was borrowed from the hardware realm, drawing a parallel between the initial tests in hardware and software. Just as smoke tests in electronics would determine if a system was fundamentally stable for further testing, software smoke tests determine if a build is stable enough for more rigorous and detailed examinations.
+
+2. **Evolution and Significance**: Over time, the software industry adopted and refined the concept. Today, smoke testing in software development holds a distinctive meaning, and its importance has grown, especially with methodologies like Agile and practices like Continuous Integration/Continuous Deployment (CI/CD) taking center stage.
+
+---
+
+In essence, the term "smoke test" has traveled across disciplines, symbolizing the fundamental idea of an initial check to catch glaring issues before delving into more detailed assessments. The history of the term provides an interesting perspective on how practices evolve and adapt across industries and eras.
 
 ### **The Need for Smoke Testing in Software Development**
 In software development, especially in agile environments, where frequent changes are a norm, smoke testing serves as an early warning system. It helps:
