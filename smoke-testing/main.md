@@ -392,6 +392,7 @@ By consistently identifying and rectifying foundational flaws, smoke testing not
 *Consider a startup introducing a new mobile banking feature. Regulatory standards require that financial transactions are encrypted and that user data is protected. A set of smoke tests, designed with these standards in mind, would quickly check if transaction encryption is in place and if user data can be accessed without proper authentication.*
 
 Complying with regulatory standards is not merely about adhering to the rulebook. It's about ensuring that software applications uphold the trust placed in them by consumers, stakeholders, and society at large. Smoke testing serves as the preliminary gatekeeper, ensuring that applications are on the right track from the get-go.
+
 ---
 
 ## 4. **Principles of Effective Smoke Testing in Regulated Domains**
