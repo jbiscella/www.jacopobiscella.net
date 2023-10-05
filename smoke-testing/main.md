@@ -114,8 +114,6 @@ The term "smoke test" originally didn't have anything to do with software. Its r
 
 In essence, the term "smoke test" has traveled across disciplines, symbolizing the fundamental idea of an initial check to catch glaring issues before delving into more detailed assessments. The history of the term provides an interesting perspective on how practices evolve and adapt across industries and eras.
 
----
-
 ### **The Need for Smoke Testing in Software Development**
 
 **1. Rapid Development Cycles**:
@@ -151,8 +149,6 @@ In essence, the term "smoke test" has traveled across disciplines, symbolizing t
 **8. Aid in Regression Detection**:
 
 - **Change Management**: Whenever code changes are integrated, there's always a risk of regressions (previously working functionalities breaking due to new changes). While not exhaustive, smoke tests can help quickly identify such regressions, especially if they're major.
-
----
 
 Smoke testing in software development acts as a safety net, providing an initial layer of assurance that the software remains fundamentally sound amidst constant changes. Its role in the modern software development ecosystem is pivotal, and its importance can't be overstated.
 
