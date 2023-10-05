@@ -50,10 +50,6 @@
 
 ---
 
-### **Introduction to Smoke Testing in Highly Regulated Environments**
-
----
-
 ## 1. **Definition and Overview**
 
 ### **What is Smoke Testing?**
