@@ -1031,5 +1031,3 @@ For those interested in diving deeper into the world of smoke testing, especiall
 6. **Journals & Periodicals**:
    - _Software Quality Journal_
    - _Journal of Software: Testing, Verification and Reliability_
-
----
