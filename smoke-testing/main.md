@@ -1,6 +1,6 @@
 ### **Introduction to Smoke Testing in Highly Regulated Environments**
 
-1. [**Definition and Overview**](#Definition and Overview)
+1. [**Definition and Overview**](#1. Definition and Overview)
     - What is Smoke Testing?
     - Historical Context: Origins of the Term
     - The Need for Smoke Testing in Software Development
