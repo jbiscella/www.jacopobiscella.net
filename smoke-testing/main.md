@@ -1,5 +1,3 @@
-Certainly! Creating an introduction to smoke testing in highly regulated environments requires careful structuring to ensure that all the critical points are covered. Here's a suggested index for your introduction:
-
 ### **Introduction to Smoke Testing in Highly Regulated Environments**
 
 1. **Definition and Overview**
