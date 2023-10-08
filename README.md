@@ -13,4 +13,4 @@ Thank you for visiting, and I hope you find the information here valuable!
 
 # Notes 
 Content:
-- [Smoke Testing](/smoke-testing/main.md)
+- [Introduction to Smoke Testing in Highly Regulated Environments](/smoke-testing/main.md)
