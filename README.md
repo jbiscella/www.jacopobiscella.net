@@ -1,4 +1,4 @@
-# Welcome to Jacopo Biscella personal notes space
+# Welcome to Jacopo Biscella's personal notes space
 
 ## About Me
 I am Jacopo Biscella, an experienced IT professional currently working in London. 
