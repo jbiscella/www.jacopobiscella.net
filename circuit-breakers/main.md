@@ -56,7 +56,7 @@
     - [Graceful Degradation](#graceful-degradation)
     - [Continuous Review and Iteration](#continuous-review-and-iteration)
 
-9. [Future Trends in Circuit Breaker Design and Implementation]()
+9. [Future Trends in Circuit Breaker Design and Implementation](#9-future-trends-in-circuit-breaker-design-and-implementation)
 
 ---
 
