@@ -14,6 +14,13 @@
     - [Cascading Failures and System Resilience](#cascading-failures-and-system-resilience)
     - [Why Traditional Error Handling Isn't Enough](#why-traditional-error-handling-isnt-enough)
 
+2. [**Working Principles of Circuit Breakers**]()
+    - [Closed State]()
+    - [Open State]()
+    - [Half-Open State]()
+    - [Failure Detection and Thresholds]()
+    - [Integrating Circuit Breakers with Monitoring Systems]()
+   
 ---
 
 ## **1. Introduction**
@@ -81,4 +88,40 @@ Traditional error-handling mechanisms, like try-catch blocks, are indispensable 
 In such scenarios, we need more holistic solutions that consider the entire ecosystem of services, components, and their interdependencies. This is where resilience patterns, including circuit breakers, come into play.
 
 ---
+
+## **3. Working Principles of Circuit Breakers**
+
+### **Closed State**
+
+The default state of a circuit breaker is the "Closed" state. When in this state:
+- Operations are allowed to execute.
+- The system continuously monitors for failures.
+- If failures surpass a predefined threshold, the circuit breaker transitions to the "Open" state to prevent further harm.
+
+### **Open State**
+
+In the "Open" state, the circuit breaker adopts a protective mode:
+- Operations are halted, and no further requests are allowed to pass through.
+- This provides the failing component or service time to recover without being overwhelmed by new requests.
+- After a predetermined "reset" or "cool down" period, the circuit breaker transitions to the "Half-Open" state to test if the underlying issue has been resolved.
+
+### **Half-Open State**
+
+The "Half-Open" state is a probationary phase for the circuit breaker:
+- A limited number of requests are allowed to pass through to check if the system or service has recovered.
+- If these requests succeed without failure, it's an indication that the system may be healthy again. The circuit breaker then transitions back to the "Closed" state.
+- However, if failures persist, the circuit breaker reverts to the "Open" state, giving the system more time to recover.
+
+### **Failure Detection and Thresholds**
+
+Determining when to open or close a circuit breaker is based on predefined failure thresholds:
+- **Failure Rate**: A circuit breaker might open if the rate of failures crosses a certain percentage of all requests over a time window.
+- **Response Time**: Slow responses can be as problematic as no response. If the average response time crosses a certain limit, the circuit breaker might open.
+- **Volume Threshold**: A minimum number of requests might be needed before evaluating the failure rate to ensure statistical significance.
+
+### **Integrating Circuit Breakers with Monitoring Systems**
+
+To effectively manage circuit breakers:
+- Monitoring systems can be integrated to provide real-time data on failure rates, response times, and system health.
+- Alerts can be set up to notify system administrators when circuit breakers open or close, providing insights into potential system issues.
 
