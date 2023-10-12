@@ -8,11 +8,11 @@
     - [The Evolution of Circuit Breakers](#the-evolution-of-circit-breakers)
     - [Comparing Circuit Breakers to Other Resilience Patterns](#comparing-circuit-breakers-to-other-resilience-patterns)
       
-2. [**Introduction**](#2-foundational-concepts)
+2. [**Foundational Concepts**](#2-foundational-concepts)
     - [Error Handling in Software Systems](#error-handling-in-software-systems)
     - [Failures vs. Exceptions](#failures-vs-exceptions)
     - [Cascading Failures and System Resilience](#cascading-failures-and-system-resilience)
-    - [Why Traditional Error Handling Isn't Enough](#comparing-circuit-breakers-to-other-resilience-patterns)
+    - [Why Traditional Error Handling Isn't Enough](#why-traditional-error-handling-isnt-enough)
 
 ---
 
