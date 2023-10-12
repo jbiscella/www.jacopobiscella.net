@@ -21,12 +21,12 @@
     - [Failure Detection and Thresholds](#failure-detection-and-thresholds)
     - [Integrating Circuit Breakers with Monitoring Systems](#integrating-circuit-breakers-with-monitoring-systems)
 
-4. [**Implementing a Circuit Breaker**]()
-    - [Basic Implementation]()
-    - [Libraries and Frameworks]()
-    - [Customizing Circuit Breakers]()
-    - [Testing Circuit Breakers]()
-    - [Challenges and Considerations]()
+4. [**Implementing a Circuit Breaker**](#4-implementing-a-circuit-breaker)
+    - [Basic Implementation](#basic-implementation)
+    - [Libraries and Frameworks](#customizing-circuit-breakers)
+    - [Customizing Circuit Breakers](#customizing-circuit-breakers)
+    - [Testing Circuit Breakers](#testing-circuit-breakers)
+    - [Challenges and Considerations](#challenges-and-considerations)
 
    
 ---
