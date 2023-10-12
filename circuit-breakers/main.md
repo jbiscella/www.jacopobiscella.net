@@ -14,12 +14,12 @@
     - [Cascading Failures and System Resilience](#cascading-failures-and-system-resilience)
     - [Why Traditional Error Handling Isn't Enough](#why-traditional-error-handling-isnt-enough)
 
-2. [**Working Principles of Circuit Breakers**]()
-    - [Closed State]()
-    - [Open State]()
-    - [Half-Open State]()
-    - [Failure Detection and Thresholds]()
-    - [Integrating Circuit Breakers with Monitoring Systems]()
+2. [**Working Principles of Circuit Breakers**](#3-working-principles-of-circuit-breakers)
+    - [Closed State](#closed-state)
+    - [Open State](#open-state)
+    - [Half-Open State](#half-open-state)
+    - [Failure Detection and Thresholds](#failure-detection-and-thresholds)
+    - [Integrating Circuit Breakers with Monitoring Systems](#integrating-circuit-breakers-with-monitoring-systems)
    
 ---
 
