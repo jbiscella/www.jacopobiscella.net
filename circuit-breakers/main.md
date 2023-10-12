@@ -28,12 +28,12 @@
     - [Testing Circuit Breakers](#testing-circuit-breakers)
     - [Challenges and Considerations](#challenges-and-considerations)
 
-5. [**Beyond REST: Circuit Breakers in Different Contexts**]()
-    - [Message Queues (e.g., RabbitMQ, Kafka)]()
-    - [Databases and Storage Systems]()
-    - [RPC Systems (e.g., gRPC]()
-    - [Frontend Applications]()
-    - [Key Takeaways]()
+5. [**Beyond REST: Circuit Breakers in Different Contexts**](#5-beyond-rest-circuit-breakers-in-different-contexts)
+    - [Message Queues (e.g., RabbitMQ, Kafka)](#message-queues-eg-rabbitmq-kafka)
+    - [Databases and Storage Systems](#databases-and-storage-systems)
+    - [RPC Systems (e.g., gRPC)](#rpc-systems-eg-grpc)
+    - [Frontend Applications](#frontend-applications)
+    - [Key Takeaways](#key-takeaways)
    
 ---
 
