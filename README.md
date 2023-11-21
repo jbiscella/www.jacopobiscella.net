@@ -14,5 +14,6 @@ Thank you for visiting, and I hope you find the information here valuable!
 # Notes 
 Content:
 - [Introduction to Circuit Breakers](/circuit-breakers/main.md)
+- [Introduction to Contract Testing](/contract-testing/main.md)
 - [Introduction to Smoke Testing in Highly Regulated Environments](/smoke-testing/main.md)
 - [Notes of System Architecture](/system-architecture/main.md)
