@@ -7,7 +7,7 @@
     - [Importance in Modern Software Development](#importance-in-modern-software-development)
     - [Comparison with Other Testing Layers](#extended-comparison-with-other-testing-layers)
     - [Unique Coverage by Contract Testing](#unique-coverage-by-contract-testing)
-2. [Understanding Pact Tests](#chapter-2-understanding-pact-tests)](#)
+2. [Understanding Pact Tests](#chapter-2-understanding-pact-tests)]
     - [Introduction to Pact and Its Core Principles](#introduction-to-pact-and-its-core-principles)
     - [Comprehensive Understanding of Pact Testing](#comprehensive-understanding-of-pact-testing)
     - [Challenges and Practical Considerations in Pact Implementation](#challenges-and-practical-considerations-in-pact-implementation)
