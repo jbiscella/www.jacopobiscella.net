@@ -15,6 +15,8 @@ Feel free to connect with me on [LinkedIn](https://www.linkedin.com/in/jacopobis
 Thank you for visiting, and I hope you find the information here valuable!
 
 # Notes 
+Please note that these notes have been partially processed with AI and are not necessarly reviewed in depth.
+
 Content:
 - [Introduction to Circuit Breakers](/circuit-breakers/main.md)
 - [Introduction to Contract Testing](/contract-testing/main.md)
