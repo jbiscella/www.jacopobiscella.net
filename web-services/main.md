@@ -151,7 +151,6 @@ Content-Type: application/xml
 
 ![Content negotiation diagram](./content-negotiation.svg)
 
-
 ### Pagination and Filtering
 - Offset Pagination: /api/users?limit=20&offset=100
 - Cursor-based Pagination: /api/users?limit=20&after=lastUserIdFromPreviousPage
