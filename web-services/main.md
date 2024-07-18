@@ -1,5 +1,27 @@
 # REST and API Design Study Guide
 
+1. [Web Services and REST Architecture](#1-web-services-and-rest-architecture)
+   - [Definition of Web Services](#definition-of-web-services)
+   - [REST Principles](#rest-principles)
+   - [Advantages of REST over SOAP](#advantages-of-rest-over-soap)
+
+2. [HTTP Methods and Resource Naming](#2-http-methods-and-resource-naming)
+   - [HTTP Methods](#http-methods)
+   - [Status Codes](#status-codes)
+   - [URI Design Best Practices](#uri-design-best-practices)
+   - [Resource Naming Conventions](#resource-naming-conventions)
+   - [Idempotency in REST](#idempotency-in-rest)
+
+3. [RESTful API Design and Versioning](#3-restful-api-design-and-versioning)
+   - [HATEOAS](#hateoas)
+   - [API Versioning Strategies](#api-versioning-strategies)
+   - [Request/Response Formats](#requestresponse-formats)
+   - [Content Negotiation](#content-negotiation)
+   - [Pagination and Filtering](#pagination-and-filtering)
+   - [Error Handling in REST APIs](#error-handling-in-rest-apis)
+
+4. [REST API Design Quizzes and Answers](#4rest-api-design-quizzes-and-answers)
+   
 ## 1. Web Services and REST Architecture
 
 ### Definition of Web Services
