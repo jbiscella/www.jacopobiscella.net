@@ -1,0 +1,10 @@
+@startuml
+Client -> Server: GET /api/users
+Server --> Client: 200 OK (User List)
+Client -> Server: POST /api/users (New User Data)
+Server --> Client: 201 Created (New User ID)
+Client -> Server: PUT /api/users/{id} (Updated User Data)
+Server --> Client: 200 OK (Updated User)
+Client -> Server: DELETE /api/users/{id}
+Server --> Client: 204 No Content
+@enduml
