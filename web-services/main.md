@@ -25,7 +25,7 @@
 ## 1. Web Services and REST Architecture
 
 ### Definition of Web Services
-Web services are software systems designed to support interoperable machine-to-machine interaction over a network. They allow different applications from different sources to communicate with each other without the need to write custom code.
+Web services are standardized systems that enable communication and data exchange between different software applications over a network, typically the internet. They allow diverse applications, potentially running on different platforms or written in different programming languages, to interact and share information using common protocols and data formats.
 
 ### REST Principles
 REST (Representational State Transfer) is an architectural style for designing networked applications. Its key principles are:
