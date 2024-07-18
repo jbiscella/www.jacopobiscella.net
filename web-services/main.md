@@ -96,6 +96,8 @@ Idempotency is a key principle in REST API design. An HTTP method is considered 
   - Request: `DELETE /users/123`
   - Response: Deletes the user with ID 123. Subsequent identical requests will have no additional effect.
 
+![Basic REST interaction diagram](./basic-rest-interaction.svg)
+
 ## 3. RESTful API Design and Versioning
 
 ### HATEOAS
@@ -105,6 +107,8 @@ Hypermedia as the Engine of Application State (HATEOAS) is a constraint of REST 
 - **URI Versioning:** /api/v1/users
 - **Header Versioning:** `Accept: application/vnd.company.api+json; version=1.0`
 - **Parameter Versioning:** `/api/users?version=1`
+
+![API versioning via header diagram](./api-versioning-via-header.svg)
 
 ### Request/Response Formats
 - **JSON (JavaScript Object Notation):** Lightweight, easy for humans to read and write, easy for machines to parse and generate
@@ -145,10 +149,15 @@ HTTP/1.1 200 OK
 Content-Type: application/xml
 ```
 
+![Content negotiation diagram](./content-negotiation.svg)
+
+
 ### Pagination and Filtering
 - Offset Pagination: /api/users?limit=20&offset=100
 - Cursor-based Pagination: /api/users?limit=20&after=lastUserIdFromPreviousPage
 - Filtering: /api/users?status=active&role=admin
+
+![Pagination and filtering diagram](./pagination-and-filtering.svg)
 
 ### Error Handling in REST APIs
 - Use appropriate HTTP status codes
@@ -172,3 +181,5 @@ Content-Type: application/xml
   }
 }
 ```
+
+![Error handling diagram](./error-handling.svg)
