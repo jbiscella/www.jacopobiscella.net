@@ -1,0 +1,6 @@
+@startuml
+Client -> Server: GET /api/users\nAccept: application/vnd.company.api+json; version=1
+Server --> Client: 200 OK (User List - API v1 Format)
+Client -> Server: GET /api/users\nAccept: application/vnd.company.api+json; version=2
+Server --> Client: 200 OK (User List - API v2 Format)
+@enduml
