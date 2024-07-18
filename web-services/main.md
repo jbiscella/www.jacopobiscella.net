@@ -153,7 +153,6 @@ RESTful APIs can support multiple formats through a mechanism called content neg
   Accept: application/json
   ```
 - Requesting XML:
-
 ```http
 GET /api/users/123 HTTP/1.1
 Host: example.com
@@ -164,7 +163,6 @@ Accept: application/xml
 HTTP/1.1 200 OK
 Content-Type: application/json
 ```
-
 - Response in XML:
 ```http
 HTTP/1.1 200 OK
