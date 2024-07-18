@@ -1,0 +1,20 @@
+@startuml
+actor Client
+participant "API Server" as Server
+database "Database" as DB
+
+Client -> Server: GET /api/users?limit=20&offset=0
+Server -> DB: Query users (limit 20, offset 0)
+DB --> Server: Return first 20 users
+Server --> Client: 200 OK (Users 1-20)
+
+Client -> Server: GET /api/users?limit=20&offset=20
+Server -> DB: Query users (limit 20, offset 20)
+DB --> Server: Return next 20 users
+Server --> Client: 200 OK (Users 21-40)
+
+Client -> Server: GET /api/users?status=active&role=admin
+Server -> DB: Query users (status=active, role=admin)
+DB --> Server: Return matching users
+Server --> Client: 200 OK (Active admin users)
+@enduml
