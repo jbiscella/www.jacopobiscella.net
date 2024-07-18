@@ -1,0 +1,13 @@
+@startuml
+actor Client
+participant "API Server" as Server
+
+Client -> Server: GET /api/users/123\nAccept: application/json
+Server --> Client: HTTP/1.1 200 OK\nContent-Type: application/json\n{JSON data}
+
+Client -> Server: GET /api/users/123\nAccept: application/xml
+Server --> Client: HTTP/1.1 200 OK\nContent-Type: application/xml\n<XML data>
+
+Client -> Server: GET /api/users/123\nAccept: application/yaml
+Server --> Client: HTTP/1.1 406 Not Acceptable\nContent-Type: application/json\n{"error": "YAML not supported"}
+@enduml
