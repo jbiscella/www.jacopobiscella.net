@@ -109,11 +109,46 @@ Hypermedia as the Engine of Application State (HATEOAS) is a constraint of REST 
 ### Request/Response Formats
 - **JSON (JavaScript Object Notation):** Lightweight, easy for humans to read and write, easy for machines to parse and generate
 - **XML (eXtensible Markup Language):** More verbose than JSON, but can be more expressive
+- **HTML (HyperText Markup Language):** Used for serving web pages
+- **Plain Text:** Simple and useful for basic communication or logging
+- **YAML (YAML Ain't Markup Language):** Human-readable data serialization standard that can be used for configuration files and data exchange
+- **Protocol Buffers (Protobuf):** Language-neutral, platform-neutral, extensible mechanism for serializing structured data. Used by Google for internal APIs and more efficient than JSON or XML
+- **CBOR (Concise Binary Object Representation):** Binary data serialization format which is efficient for both encoding and decoding
+
+### Content Negotiation
+RESTful APIs can support multiple formats through a mechanism called content negotiation, where the client and server negotiate the best format for the response. The client specifies the desired response format using the `Accept` header in the HTTP request, and the server responds with the appropriate format, specified in the `Content-Type` header of the HTTP response.
+
+**Example of Content Negotiation:**
+
+- Requesting JSON:
+  ```http
+  GET /api/users/123 HTTP/1.1
+  Host: example.com
+  Accept: application/json
+  ```
+- Requesting XML:
+
+```http
+GET /api/users/123 HTTP/1.1
+Host: example.com
+Accept: application/xml
+```
+- Response in JSON:
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+```
+
+- Response in XML:
+```http
+HTTP/1.1 200 OK
+Content-Type: application/xml
+```
 
 ### Pagination and Filtering
-- **Offset Pagination:** `/api/users?limit=20&offset=100`
-- **Cursor-based Pagination:** `/api/users?limit=20&after=lastUserIdFromPreviousPage`
-- **Filtering:** `/api/users?status=active&role=admin`
+- Offset Pagination: /api/users?limit=20&offset=100
+- Cursor-based Pagination: /api/users?limit=20&after=lastUserIdFromPreviousPage
+- Filtering: /api/users?status=active&role=admin
 
 ### Error Handling in REST APIs
 - Use appropriate HTTP status codes
@@ -121,7 +156,8 @@ Hypermedia as the Engine of Application State (HATEOAS) is a constraint of REST 
 - Include an error code for programmatic error handling
 - Optionally include a link to error documentation
 
-**Example error response:**
+### Example error response:
+
 ```json
 {
   "error": {
@@ -135,3 +171,4 @@ Hypermedia as the Engine of Application State (HATEOAS) is a constraint of REST 
     ]
   }
 }
+```
