@@ -182,3 +182,11 @@ Content-Type: application/xml
 ```
 
 ![Error handling diagram](./error-handling.svg)
+
+## 4.REST API Design Quizzes and Answers
+
+- [Quiz 1](quiz1.md)
+- [Quiz 2](quiz2.md)
+- [Quiz 3](quiz3.md)
+- [Quiz 4](quiz4.md)
+- [Answers](answers.md)
