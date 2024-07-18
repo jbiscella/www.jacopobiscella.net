@@ -1,0 +1,16 @@
+@startuml
+actor Client
+participant "API Server" as Server
+
+Client -> Server: POST /api/users\n{Invalid user data}
+Server -> Server: Validate request
+Server --> Client: HTTP/1.1 400 Bad Request\nContent-Type: application/json\n{\n  "error": {\n    "code": "INVALID_REQUEST",\n    "message": "The request was invalid.",\n    "details": [\n      {\n        "field": "email",\n        "issue": "Invalid email format"\n      }\n    ]\n  }\n}
+
+Client -> Server: GET /api/users/999
+Server -> Server: Check user existence
+Server --> Client: HTTP/1.1 404 Not Found\nContent-Type: application/json\n{\n  "error": {\n    "code": "RESOURCE_NOT_FOUND",\n    "message": "The requested user does not exist."\n  }\n}
+
+Client -> Server: GET /api/users
+Server -> Server: Internal error occurs
+Server --> Client: HTTP/1.1 500 Internal Server Error\nContent-Type: application/json\n{\n  "error": {\n    "code": "INTERNAL_ERROR",\n    "message": "An unexpected error occurred."\n  }\n}
+@enduml
