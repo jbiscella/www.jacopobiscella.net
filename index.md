@@ -31,7 +31,7 @@ On this website you'll find my personal notes and knowledge, shared as a courtes
 
 ## CV
 
-Download my [CV (PDF)](/ats_resume_with_photo.pdf).
+View my [CV](/cv/) online, or [download the PDF](/ats_resume_with_photo.pdf).
 
 ## Connect
 
