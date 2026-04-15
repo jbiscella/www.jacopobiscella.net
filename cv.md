@@ -1,11 +1,7 @@
 ---
-layout: single
-title: "Jacopo Biscella"
-subtitle: "Senior Backend Engineer / Software Architect"
-author_profile: true
-toc: true
-toc_sticky: true
-toc_label: "Contents"
+layout: default
+title: CV
+nav_order: 7
 ---
 
 **Senior Backend Engineer / Software Architect**

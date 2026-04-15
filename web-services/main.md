@@ -1,9 +1,8 @@
 ---
-layout: single
-title: "Web Services & REST API Design"
-author_profile: true
-toc: true
-toc_sticky: true
+layout: default
+title: Web Services & REST
+nav_order: 6
+has_children: true
 ---
 
 # REST and API Design Study Guide

@@ -1,9 +1,7 @@
 ---
-layout: single
-title: "Notes on System Architecture"
-author_profile: true
-toc: true
-toc_sticky: true
+layout: default
+title: System Architecture
+nav_order: 5
 ---
 
 ### **Notes of System Architecture**

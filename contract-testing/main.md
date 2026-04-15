@@ -1,9 +1,7 @@
 ---
-layout: single
-title: "Introduction to Contract Testing"
-author_profile: true
-toc: true
-toc_sticky: true
+layout: default
+title: Contract Testing
+nav_order: 3
 ---
 
 # **Introduction to Contract Testing**
