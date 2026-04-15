@@ -29,6 +29,10 @@ On this website you'll find my personal notes and knowledge, shared as a courtes
 
 - [functional-validator](https://github.com/jbiscella/functional-validator) — A functional approach to data validation
 
+## CV
+
+Download my [CV (PDF)](/ats_resume_with_photo.pdf).
+
 ## Connect
 
 Feel free to connect on [LinkedIn](https://www.linkedin.com/in/jacopobiscella/) if you have any inquiries or would like to stay updated on my work.
