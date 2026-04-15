@@ -1,8 +1,8 @@
 ---
-layout: single
-title: "REST API Design Quiz 3"
-author_profile: true
-toc: false
+layout: default
+title: Quiz 3
+parent: Web Services & REST
+nav_order: 3
 ---
 
 # REST API Design Multiple Choice Quiz 3

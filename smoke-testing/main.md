@@ -1,9 +1,7 @@
 ---
-layout: single
-title: "Smoke Testing in Highly Regulated Environments"
-author_profile: true
-toc: true
-toc_sticky: true
+layout: default
+title: Smoke Testing
+nav_order: 4
 ---
 
 ### **Introduction to Smoke Testing in Highly Regulated Environments**

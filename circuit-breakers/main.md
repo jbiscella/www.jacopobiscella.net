@@ -1,9 +1,7 @@
 ---
-layout: single
-title: "Introduction to Circuit Breakers"
-author_profile: true
-toc: true
-toc_sticky: true
+layout: default
+title: Circuit Breakers
+nav_order: 2
 ---
 
 ### **Introduction to Circuit Breakers**
