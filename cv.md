@@ -45,8 +45,8 @@ Work Authorization: Swiss B-Permit; British & Italian citizenship
 
 ## Experience
 
-### Senior Software Engineer
-**Richemont Group (via ALTEN)** · Meyrin, CH · *Dec 2024 – Present*
+### Richemont Group — Senior Software Engineer
+*via ALTEN · Meyrin, CH · Dec 2024 – Present*
 
 Largest Swiss luxury group (Cartier, Van Cleef & Arpels, etc.). Middleware & OMS integration.
 
@@ -57,8 +57,8 @@ Largest Swiss luxury group (Cartier, Van Cleef & Arpels, etc.). Middleware & OMS
 
 ---
 
-### Senior Software Engineer (acting Team Leader)
-**Global Relay** · London, UK · *Jan 2022 – Nov 2024*
+### Global Relay — Senior Software Engineer
+*acting Team Leader · London, UK · Jan 2022 – Nov 2024*
 
 RegTech archiving/compliance for 22/25 top global banks; high-scale, regulated workloads.
 
@@ -73,8 +73,8 @@ RegTech archiving/compliance for 22/25 top global banks; high-scale, regulated w
 
 ---
 
-### Senior Software Engineer
-**Ocado Technology** · London, UK · *Oct 2020 – Jan 2022*
+### Ocado Technology — Senior Software Engineer
+*London, UK · Oct 2020 – Jan 2022*
 
 Technology company designing cloud orchestration systems for automated robotic warehouses, grocery ecommerce platforms and logistics globally.
 
@@ -86,8 +86,8 @@ Technology company designing cloud orchestration systems for automated robotic w
 
 ---
 
-### Senior Software Engineer & Scrum Master
-**Amadeus** · London, UK · *Jul 2015 – Oct 2020*
+### Amadeus — Senior Software Engineer & Scrum Master
+*London, UK · Jul 2015 – Oct 2020*
 
 Global travel IT processing 400M+ transactions daily across airline partners and travel agencies.
 
@@ -101,8 +101,8 @@ Global travel IT processing 400M+ transactions daily across airline partners and
 
 ---
 
-### Co-Founder & Engineering Lead
-**NetProphecy LTD** · London, UK · *Apr 2011 – Jul 2015*
+### NetProphecy — Co-Founder & Engineering Lead
+*London, UK · Apr 2011 – Jul 2015*
 
 - Managed multiple projects/teams using Agile; led hiring & training for us and clients.
 - Delivered a custom **ERP/CRM system** increasing operational efficiency by **25%** for 5+ SME clients across London and Milan.
@@ -112,8 +112,8 @@ Global travel IT processing 400M+ transactions daily across airline partners and
 
 ---
 
-### Earlier Roles
-**University of Milan; Mixel S.c.a.r.l.; AIMPES Servizi SRL; Italian public administration** · Italy · *2002 – 2011*
+### Earlier Roles — Italy
+*University of Milan · Mixel · AIMPES · Public Administration · 2002 – 2011*
 
 Built ERP and mobile solutions adopted across public sector administrations in Italy (ZK, JBoss, MySQL).
 
