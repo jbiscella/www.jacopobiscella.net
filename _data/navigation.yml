@@ -12,4 +12,4 @@ main:
       - title: "Web Services & REST"
         url: /web-services/main/
   - title: "CV"
-    url: /ats_resume_with_photo.pdf
+    url: /cv/
