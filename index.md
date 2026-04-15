@@ -27,7 +27,7 @@ On this website you'll find my personal notes and knowledge, shared as a courtes
 
 ## Fun Projects
 
-- [functional-validator](https://github.com/jbiscella/functional-validator) — A functional approach to data validation
+- [functional-validator](https://github.com/jbiscella/functional-validator) — A quick proof-of-concept exploring a functional approach to data validation. Built as a learning exercise and not intended for production use.
 
 ## CV
 
