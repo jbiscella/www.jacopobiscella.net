@@ -1,3 +1,11 @@
+---
+layout: single
+title: "Web Services & REST API Design"
+author_profile: true
+toc: true
+toc_sticky: true
+---
+
 # REST and API Design Study Guide
 
 1. [Web Services and REST Architecture](#1-web-services-and-rest-architecture)

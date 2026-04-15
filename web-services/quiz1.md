@@ -1,3 +1,10 @@
+---
+layout: single
+title: "REST API Design Quiz 1"
+author_profile: true
+toc: false
+---
+
 # REST API Design Multiple Choice Quiz 1
 
 1. What does REST stand for?

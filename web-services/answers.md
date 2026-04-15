@@ -1,3 +1,10 @@
+---
+layout: single
+title: "REST API Design Quiz Answers"
+author_profile: true
+toc: false
+---
+
 # Answers to REST API Design Multiple Choice Quizzes
 
 | Question | Quiz 1 | Quiz 2 | Quiz 3 | Quiz 4 |

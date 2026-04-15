@@ -1,3 +1,10 @@
+---
+layout: single
+title: "REST API Design Quiz 4"
+author_profile: true
+toc: false
+---
+
 # REST API Design Multiple Choice Quiz 4
 
 1. What is the Richardson Maturity Model used for?

@@ -1,3 +1,11 @@
+---
+layout: single
+title: "Smoke Testing in Highly Regulated Environments"
+author_profile: true
+toc: true
+toc_sticky: true
+---
+
 ### **Introduction to Smoke Testing in Highly Regulated Environments**
 
 1. [**Definition and Overview**](#1-definition-and-overview)

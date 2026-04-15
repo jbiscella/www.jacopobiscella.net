@@ -1,0 +1,64 @@
+title: "Jacopo Biscella"
+subtitle: "Engineering Notes & Knowledge Sharing"
+name: "Jacopo Biscella"
+description: "Personal notes on software engineering, system architecture, and testing."
+url: "https://www.jacopobiscella.net"
+baseurl: ""
+repository: "jbiscella/www.jacopobiscella.net"
+
+remote_theme: "mmistakes/minimal-mistakes@4.26.2"
+minimal_mistakes_skin: "dark"
+
+plugins:
+  - jekyll-remote-theme
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-include-cache
+
+author:
+  name: "Jacopo Biscella"
+  bio: "Experienced IT professional based in London. Sharing notes on engineering and leadership."
+  location: "London, UK"
+  links:
+    - label: "LinkedIn"
+      icon: "fab fa-fw fa-linkedin"
+      url: "https://www.linkedin.com/in/jacopobiscella/"
+    - label: "GitHub"
+      icon: "fab fa-fw fa-github"
+      url: "https://github.com/jbiscella"
+
+# Apply default layout to all pages with front matter
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: "single"
+      author_profile: true
+      toc: true
+      toc_sticky: true
+
+# Navigation
+navigation:
+  main:
+    - title: "Notes"
+      children:
+        - title: "Circuit Breakers"
+          url: /circuit-breakers/main/
+        - title: "Contract Testing"
+          url: /contract-testing/main/
+        - title: "Smoke Testing"
+          url: /smoke-testing/main/
+        - title: "System Architecture"
+          url: /system-architecture/main/
+        - title: "Web Services & REST"
+          url: /web-services/main/
+    - title: "CV"
+      url: /cv_setl_english.html
+
+# Exclude files not to be processed by Jekyll
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - vendor/
+  - "*.puml"
+  - README.md
