@@ -17,8 +17,8 @@ plugins:
 
 author:
   name: "Jacopo Biscella"
-  bio: "Experienced IT professional based in London. Sharing notes on engineering and leadership."
-  location: "London, UK"
+  bio: "Experienced IT professional based in Switzerland. Sharing notes on engineering and leadership."
+  location: "Switzerland"
   links:
     - label: "LinkedIn"
       icon: "fab fa-fw fa-linkedin"

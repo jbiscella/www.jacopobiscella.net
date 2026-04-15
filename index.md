@@ -7,7 +7,7 @@ toc: false
 
 ## About Me
 
-I am Jacopo Biscella, an experienced IT professional currently working in London.
+I am Jacopo Biscella, an experienced IT professional currently working in Switzerland.
 
 ## Knowledge Sharing
 

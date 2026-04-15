@@ -1,7 +1,7 @@
 # Welcome to Jacopo Biscella's personal notes space
 
 ## About Me
-I am Jacopo Biscella, an experienced IT professional currently working in London. 
+I am Jacopo Biscella, an experienced IT professional currently working in Switzerland. 
 
 ## Knowledge Sharing
 On this website, you'll find my personal notes and knowledge, shared as a courtesy to facilitate knowledge-sharing with collaborators and anyone seeking insights in the fields of engineering and leadership. 
