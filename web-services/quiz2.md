@@ -1,3 +1,10 @@
+---
+layout: single
+title: "REST API Design Quiz 2"
+author_profile: true
+toc: false
+---
+
 # REST API Design Multiple Choice Quiz 2
 
 1. What is the main difference between PUT and PATCH methods?

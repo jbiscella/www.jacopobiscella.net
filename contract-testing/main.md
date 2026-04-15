@@ -1,3 +1,11 @@
+---
+layout: single
+title: "Introduction to Contract Testing"
+author_profile: true
+toc: true
+toc_sticky: true
+---
+
 # **Introduction to Contract Testing**
 
 ---

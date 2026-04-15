@@ -1,0 +1,15 @@
+main:
+  - title: "Notes"
+    children:
+      - title: "Circuit Breakers"
+        url: /circuit-breakers/main/
+      - title: "Contract Testing"
+        url: /contract-testing/main/
+      - title: "Smoke Testing"
+        url: /smoke-testing/main/
+      - title: "System Architecture"
+        url: /system-architecture/main/
+      - title: "Web Services & REST"
+        url: /web-services/main/
+  - title: "CV"
+    url: /cv_setl_english.html

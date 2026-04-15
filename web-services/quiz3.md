@@ -1,3 +1,10 @@
+---
+layout: single
+title: "REST API Design Quiz 3"
+author_profile: true
+toc: false
+---
+
 # REST API Design Multiple Choice Quiz 3
 
 1. What is the primary purpose of the Vary header in HTTP responses?

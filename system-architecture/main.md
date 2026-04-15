@@ -1,3 +1,11 @@
+---
+layout: single
+title: "Notes on System Architecture"
+author_profile: true
+toc: true
+toc_sticky: true
+---
+
 ### **Notes of System Architecture**
 
 1. [**Introduction**]()
