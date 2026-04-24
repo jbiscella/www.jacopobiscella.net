@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Web Services & REST
+parent: Blog
 nav_order: 6
 has_children: true
 ---

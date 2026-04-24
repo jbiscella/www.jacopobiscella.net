@@ -2,6 +2,7 @@
 layout: default
 title: Quiz 2
 parent: Web Services & REST
+grand_parent: Blog
 nav_order: 2
 ---
 

@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Smoke Testing
+parent: Blog
 nav_order: 4
 ---
 

@@ -2,7 +2,7 @@
 layout: default
 title: Miniature Hobby
 parent: Blog
-nav_order: 1
+nav_order: 7
 has_children: true
 ---
 
