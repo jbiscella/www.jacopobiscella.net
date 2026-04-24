@@ -1,11 +1,10 @@
 ---
 layout: default
-title: "The Terracotta Army – Part 2: Mechanics and Behavior"
-date: 2026-04-25 09:00:00 +0200
-categories: hobby technique
+title: "Part 2: Mechanics and Behavior"
 parent: Miniature Hobby
 grand_parent: Blog
 nav_order: 2
+date: 2026-04-25
 ---
 
 # The Terracotta Army – Part 2: Mechanics and Behavior
@@ -23,3 +22,6 @@ The wager is simple. A **Kolinsky** aims for a perfect triangle, balancing all t
 By choosing a brush based on its **cuticular structure** rather than its brand name, I'm testing if we can achieve "pro" results through mechanical specialization.
 
 *But how do we handle these tools, and how will I know if they've actually won? Part 3 will set the rules of the game.*
+
+---
+[← Part 1: The Strategy](../terracotta-army-part-1/) &nbsp;·&nbsp; [Part 3: Ergonomics and Protocol →](../terracotta-army-part-3/)

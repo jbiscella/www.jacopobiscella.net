@@ -1,11 +1,10 @@
 ---
 layout: default
-title: "The Terracotta Army – Part 1: The Strategy"
-date: 2026-04-24 09:00:00 +0200
-categories: hobby technique
+title: "Part 1: The Strategy"
 parent: Miniature Hobby
 grand_parent: Blog
 nav_order: 1
+date: 2026-04-24
 ---
 
 # The Terracotta Army – Part 1: The Strategy
@@ -25,3 +24,6 @@ With a **$56 wager**, I've bypassed the hobby "elites" to test a different archi
 I've acquired an army of 78 units for the price of two standard sets. The challenge is understanding if the **functional decomposition of quality** can outperform the balanced integration of traditional hobby champions.
 
 *In the next episode, we look at the mechanics: why a 20-cent specialist can technically challenge a decathlete in its specific domain.*
+
+---
+[Part 2: Mechanics and Behavior →](../terracotta-army-part-2/)
