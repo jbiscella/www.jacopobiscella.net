@@ -12,9 +12,9 @@ Senior Backend Engineer / Software Architect based in Nyon, Switzerland.
 
 ---
 
-## Notes
+## Engineering Notes
 
-Personal notes on engineering and leadership, shared as a courtesy for knowledge-sharing with collaborators and the broader tech community.
+Personal notes shared for knowledge-sharing with collaborators and the broader tech community.
 
 > These notes have been partially processed with AI and are not necessarily reviewed in depth.
 
@@ -28,7 +28,19 @@ Personal notes on engineering and leadership, shared as a courtesy for knowledge
 
 ---
 
-## Fun Projects
+## Latest from the Blog
+
+**Miniature Hobby** — The Terracotta Army series: a $56 wager on 78 specialist Chinese brushes vs. premium Western brands.
+
+- [Part 1: The Strategy](/blog/miniature-hobby/terracotta-army-part-1/) — The hypothesis and the army
+- [Part 2: Mechanics and Behavior](/blog/miniature-hobby/terracotta-army-part-2/) — Micro-mechanics and measurement
+- [Part 3: Ergonomics and Protocol](/blog/miniature-hobby/terracotta-army-part-3/) — The testing protocol
+
+→ [All posts](/blog/)
+
+---
+
+## Projects
 
 - [functional-validator](https://github.com/jbiscella/functional-validator) — A quick proof-of-concept exploring a functional approach to data validation. Built as a learning exercise and not intended for production use.
 

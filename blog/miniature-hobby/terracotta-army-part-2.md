@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "Part 2: Mechanics and Behavior"
+title: "Terracotta Army – Part 2: Mechanics"
 parent: Miniature Hobby
 grand_parent: Blog
 nav_order: 2

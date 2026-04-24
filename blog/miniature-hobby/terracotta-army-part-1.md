@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "Part 1: The Strategy"
+title: "Terracotta Army – Part 1: The Strategy"
 parent: Miniature Hobby
 grand_parent: Blog
 nav_order: 1

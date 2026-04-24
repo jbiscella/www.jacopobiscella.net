@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "Part 3: Ergonomics and Protocol"
+title: "Terracotta Army – Part 3: Protocol"
 parent: Miniature Hobby
 grand_parent: Blog
 nav_order: 3

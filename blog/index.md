@@ -7,16 +7,14 @@ has_children: true
 
 # Blog
 
-Thoughts on engineering, leadership, and hobbies.
+Writing on engineering, leadership, and hobbies.
 
 ---
 
-{% assign sorted_posts = site.posts | sort: 'date' | reverse %}
-{% for post in sorted_posts %}
-### [{{ post.title }}]({{ post.url }})
-*{{ post.date | date: "%B %d, %Y" }}*
+## Miniature Hobby
 
-{{ post.excerpt }}
+Notes and experiments from the hobby desk — brush reviews, painting techniques, and miniature projects.
 
----
-{% endfor %}
+→ [The Terracotta Army – Part 1: The Strategy](/blog/miniature-hobby/terracotta-army-part-1/)  
+→ [The Terracotta Army – Part 2: Mechanics and Behavior](/blog/miniature-hobby/terracotta-army-part-2/)  
+→ [The Terracotta Army – Part 3: Ergonomics and Protocol](/blog/miniature-hobby/terracotta-army-part-3/)
