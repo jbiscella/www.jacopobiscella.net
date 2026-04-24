@@ -1,12 +1,16 @@
 ---
 layout: default
 title: Web Services & REST
-parent: Blog
-nav_order: 6
-has_children: true
+parent: Software Engineering Notes
+grand_parent: Blog
+nav_order: 5
 ---
 
 # REST and API Design Study Guide
+
+**Quizzes:** [Quiz 1](/web-services/quiz1/) · [Quiz 2](/web-services/quiz2/) · [Quiz 3](/web-services/quiz3/) · [Quiz 4](/web-services/quiz4/) · [Answers](/web-services/answers/)
+
+---
 
 1. [Web Services and REST Architecture](#1-web-services-and-rest-architecture)
    - [Definition of Web Services](#definition-of-web-services)

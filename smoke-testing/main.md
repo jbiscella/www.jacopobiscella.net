@@ -1,8 +1,9 @@
 ---
 layout: default
 title: Smoke Testing
-parent: Blog
-nav_order: 4
+parent: Software Engineering Notes
+grand_parent: Blog
+nav_order: 3
 ---
 
 ### **Introduction to Smoke Testing in Highly Regulated Environments**
