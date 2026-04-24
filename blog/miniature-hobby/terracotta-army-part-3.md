@@ -1,11 +1,10 @@
 ---
 layout: default
-title: "The Terracotta Army – Part 3: Ergonomics and Protocol"
-date: 2026-04-26 09:00:00 +0200
-categories: hobby technique
+title: "Part 3: Ergonomics and Protocol"
 parent: Miniature Hobby
 grand_parent: Blog
 nav_order: 3
+date: 2026-04-26
 ---
 
 # The Terracotta Army – Part 3: Ergonomics and Protocol
@@ -34,3 +33,6 @@ The experiment is a success if the specialist **matches or beats the control bru
 Each hair type has specific needs—Goat deforms easily, and Rat Beard is incredibly fragile. I will be using a differentiated maintenance routine, which I'll detail in the results. For those looking to join the experiment, these were sourced via **Oopbuy/Taobao**; links will be provided in the next installment.
 
 *The hypothesis is set. The brushes are ready. In the final episode, we see if the Terracotta Army conquers the hobby desk.*
+
+---
+[← Part 2: Mechanics and Behavior](../terracotta-army-part-2/)
