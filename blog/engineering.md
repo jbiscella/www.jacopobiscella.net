@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Engineering
+title: Software Engineering Notes
 parent: Blog
 nav_order: 2
 has_children: true

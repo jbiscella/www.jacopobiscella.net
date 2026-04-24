@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Smoke Testing
-parent: Engineering
+parent: Software Engineering Notes
 grand_parent: Blog
 nav_order: 3
 ---

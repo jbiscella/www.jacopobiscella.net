@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Contract Testing
-parent: Engineering
+parent: Software Engineering Notes
 grand_parent: Blog
 nav_order: 2
 ---

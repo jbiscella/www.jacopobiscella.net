@@ -1,7 +1,7 @@
 ---
 layout: default
 title: System Architecture
-parent: Engineering
+parent: Software Engineering Notes
 grand_parent: Blog
 nav_order: 4
 ---
