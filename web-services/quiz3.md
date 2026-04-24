@@ -1,9 +1,7 @@
 ---
 layout: default
 title: Quiz 3
-parent: Web Services & REST
-grand_parent: Blog
-nav_order: 3
+nav_exclude: true
 ---
 
 # REST API Design Multiple Choice Quiz 3

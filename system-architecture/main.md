@@ -1,8 +1,9 @@
 ---
 layout: default
 title: System Architecture
-parent: Blog
-nav_order: 5
+parent: Engineering
+grand_parent: Blog
+nav_order: 4
 ---
 
 ### **Notes of System Architecture**
