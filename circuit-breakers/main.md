@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Circuit Breakers
+parent: Blog
 nav_order: 2
 ---
 

@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Contract Testing
+parent: Blog
 nav_order: 3
 ---
 

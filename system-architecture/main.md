@@ -1,6 +1,7 @@
 ---
 layout: default
 title: System Architecture
+parent: Blog
 nav_order: 5
 ---
 

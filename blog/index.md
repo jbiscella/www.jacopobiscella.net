@@ -1,22 +1,10 @@
 ---
 layout: default
 title: Blog
-nav_order: 7
+nav_order: 2
 has_children: true
 ---
 
 # Blog
 
-Thoughts on engineering, leadership, and hobbies.
-
----
-
-{% assign sorted_posts = site.posts | sort: 'date' | reverse %}
-{% for post in sorted_posts %}
-### [{{ post.title }}]({{ post.url }})
-*{{ post.date | date: "%B %d, %Y" }}*
-
-{{ post.excerpt }}
-
----
-{% endfor %}
+Engineering notes, leadership insights, and hobby experiments.
