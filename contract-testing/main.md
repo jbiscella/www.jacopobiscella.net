@@ -1,8 +1,9 @@
 ---
 layout: default
 title: Contract Testing
-parent: Blog
-nav_order: 3
+parent: Engineering
+grand_parent: Blog
+nav_order: 2
 ---
 
 # **Introduction to Contract Testing**

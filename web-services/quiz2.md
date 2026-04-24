@@ -1,9 +1,7 @@
 ---
 layout: default
 title: Quiz 2
-parent: Web Services & REST
-grand_parent: Blog
-nav_order: 2
+nav_exclude: true
 ---
 
 # REST API Design Multiple Choice Quiz 2

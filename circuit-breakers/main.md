@@ -1,8 +1,9 @@
 ---
 layout: default
 title: Circuit Breakers
-parent: Blog
-nav_order: 2
+parent: Engineering
+grand_parent: Blog
+nav_order: 1
 ---
 
 ### **Introduction to Circuit Breakers**
