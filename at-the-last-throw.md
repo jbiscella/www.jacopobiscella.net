@@ -1,8 +1,7 @@
 ---
 layout: default
 title: At the Last Throw
-parent: Blog
-nav_order: 8
+nav_order: 4
 ---
 
 # At the Last Throw
