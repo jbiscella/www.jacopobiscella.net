@@ -83,10 +83,10 @@ Need to push beyond your limits? **Exertion**: take a wound, add a die. Risk eve
 
 The rulebook is free. Print it, play it, share it.
 
-| Language | File |
-|----------|------|
-| 🇬🇧 English | [At the Last Throw (EN)](/assets/downloads/at-the-last-throw-en.pdf) |
-| 🇮🇹 Italian | [All'Ultimo Tiro (IT)](/assets/downloads/all-ultimo-tiro-it.pdf) |
+| | 🇬🇧 English | 🇮🇹 Italian |
+|---|---|---|
+| **Rulebook** | [At the Last Throw (EN)](/assets/downloads/at-the-last-throw-en.pdf) | [All'Ultimo Tiro (IT)](/assets/downloads/all-ultimo-tiro-it.pdf) |
+| **Character Sheet** | [Player Card (EN)](/assets/downloads/player_-_card_-_ENG.png) | [Scheda Personaggio (IT)](/assets/downloads/player_-_card_-_ITA.png) |
 
 ---
 
