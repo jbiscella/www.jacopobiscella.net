@@ -1,7 +1,7 @@
 ---
 layout: default
 title: System Architecture
-description: Study notes covering system design fundamentals — scalability, reliability, trade-offs, and the vocabulary used in architecture discussions and technical interviews.
+post_excerpt: Study notes covering system design fundamentals — scalability, reliability, trade-offs, and the vocabulary used in architecture discussions and technical interviews.
 parent: Software Engineering Notes
 grand_parent: Blog
 nav_order: 4

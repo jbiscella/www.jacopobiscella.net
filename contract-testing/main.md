@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Contract Testing
-description: A testing approach that verifies each side of a service integration meets the agreed contract, catching integration bugs without requiring both services to be running together.
+post_excerpt: A testing approach that verifies each side of a service integration meets the agreed contract, catching integration bugs without requiring both services to be running together.
 parent: Software Engineering Notes
 grand_parent: Blog
 nav_order: 2

@@ -6,6 +6,7 @@ grand_parent: Blog
 nav_order: 10
 date: 2026-05-10
 tags: [aws, lambda, dynamodb, java, micronaut, bedrock, heikin-ashi, serverless]
+post_excerpt: A serverless monitoring service for equities — computes Heikin Ashi candles, detects patterns, enriches alerts with AI-generated fundamental context, and sends them by email. Designed entirely in a long chat with Claude.
 ---
 
 # Designing a Heikin Ashi Monitoring Service from Scratch

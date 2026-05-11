@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Web Services & REST
-description: A study guide on REST principles, HTTP semantics, and API design — including four quizzes to test understanding of the core concepts.
+post_excerpt: A study guide on REST principles, HTTP semantics, and API design — including four quizzes to test understanding of the core concepts.
 parent: Software Engineering Notes
 grand_parent: Blog
 nav_order: 5

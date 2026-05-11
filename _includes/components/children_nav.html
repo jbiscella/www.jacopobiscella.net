@@ -18,27 +18,7 @@
           <li class="article-item">
             <a href="{{ article.url | relative_url }}" class="article-title">{{ article.title }}</a>
             {% if article.date %}<span class="article-date">{{ article.date | date: "%b %d, %Y" }}</span>{% endif %}
-            {% if article.description %}
-              <p class="article-preview">{{ article.description }}</p>
-            {% else %}
-              {% assign paragraphs = article.content | split: "\n\n" %}
-              {% assign preview = "" %}
-              {% for para in paragraphs %}
-                {% if preview == "" %}
-                  {% assign stripped = para | strip %}
-                  {% unless stripped == "" or stripped contains "#" or stripped contains "---" %}
-                    {% assign first_char = stripped | slice: 0 %}
-                    {% unless first_char == "|" or first_char == "*" or first_char == "-" or first_char == "!" %}
-                      {% assign is_list_item = stripped | slice: 0, 3 %}
-                      {% unless is_list_item == "1. " or is_list_item == "2. " %}
-                        {% assign preview = stripped | strip_html | truncatewords: 35 %}
-                      {% endunless %}
-                    {% endunless %}
-                  {% endunless %}
-                {% endif %}
-              {% endfor %}
-              {% if preview != "" %}<p class="article-preview">{{ preview }}</p>{% endif %}
-            {% endif %}
+            {% if article.post_excerpt %}<p class="article-preview">{{ article.post_excerpt }}</p>{% endif %}
           </li>
           {% endfor %}
         </ul>
@@ -65,27 +45,7 @@
         {% if article.tags.size > 0 %}
           <span class="article-tags">{% for tag in article.tags %}{{ tag }}{% unless forloop.last %}, {% endunless %}{% endfor %}</span>
         {% endif %}
-        {% if article.description %}
-          <p class="article-preview">{{ article.description }}</p>
-        {% else %}
-          {% assign paragraphs = article.content | split: "\n\n" %}
-          {% assign preview = "" %}
-          {% for para in paragraphs %}
-            {% if preview == "" %}
-              {% assign stripped = para | strip %}
-              {% unless stripped == "" or stripped contains "#" or stripped contains "---" %}
-                {% assign first_char = stripped | slice: 0 %}
-                {% unless first_char == "|" or first_char == "*" or first_char == "-" or first_char == "!" %}
-                  {% assign is_list_item = stripped | slice: 0, 3 %}
-                  {% unless is_list_item == "1. " or is_list_item == "2. " %}
-                    {% assign preview = stripped | strip_html | truncatewords: 35 %}
-                  {% endunless %}
-                {% endunless %}
-              {% endunless %}
-            {% endif %}
-          {% endfor %}
-          {% if preview != "" %}<p class="article-preview">{{ preview }}</p>{% endif %}
-        {% endif %}
+        {% if article.post_excerpt %}<p class="article-preview">{{ article.post_excerpt }}</p>{% endif %}
       </li>
       {% endfor %}
     </ul>
