@@ -1,0 +1,94 @@
+{% if page.title == "Blog" %}
+
+  {% assign categories = site.pages | where: "parent", "Blog" | sort: "nav_order" %}
+  <div class="blog-index">
+    {% for cat in categories %}
+      {% assign cat_articles = site.pages | where: "parent", cat.title %}
+      {% if cat_articles.size > 0 %}
+        {% assign has_dates = false %}
+        {% for a in cat_articles %}{% if a.date %}{% assign has_dates = true %}{% endif %}{% endfor %}
+        {% if has_dates %}
+          {% assign cat_articles = cat_articles | sort: "date" | reverse %}
+        {% else %}
+          {% assign cat_articles = cat_articles | sort: "nav_order" %}
+        {% endif %}
+        <h3 class="category-header"><a href="{{ cat.url | relative_url }}">{{ cat.title }}</a></h3>
+        <ul class="article-list">
+          {% for article in cat_articles %}
+          <li class="article-item">
+            <a href="{{ article.url | relative_url }}" class="article-title">{{ article.title }}</a>
+            {% if article.date %}<span class="article-date">{{ article.date | date: "%b %d, %Y" }}</span>{% endif %}
+            {% if article.description %}
+              <p class="article-preview">{{ article.description }}</p>
+            {% else %}
+              {% assign paragraphs = article.content | split: "\n\n" %}
+              {% assign preview = "" %}
+              {% for para in paragraphs %}
+                {% if preview == "" %}
+                  {% assign stripped = para | strip %}
+                  {% unless stripped == "" or stripped contains "#" or stripped contains "---" %}
+                    {% assign first_char = stripped | slice: 0 %}
+                    {% unless first_char == "|" or first_char == "*" or first_char == "-" or first_char == "!" %}
+                      {% assign is_list_item = stripped | slice: 0, 3 %}
+                      {% unless is_list_item == "1. " or is_list_item == "2. " %}
+                        {% assign preview = stripped | strip_html | truncatewords: 35 %}
+                      {% endunless %}
+                    {% endunless %}
+                  {% endunless %}
+                {% endif %}
+              {% endfor %}
+              {% if preview != "" %}<p class="article-preview">{{ preview }}</p>{% endif %}
+            {% endif %}
+          </li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    {% endfor %}
+  </div>
+
+{% else %}
+
+  {% assign articles = site.pages | where: "parent", page.title %}
+  {% if articles.size > 0 %}
+    {% assign has_dates = false %}
+    {% for a in articles %}{% if a.date %}{% assign has_dates = true %}{% endif %}{% endfor %}
+    {% if has_dates %}
+      {% assign articles = articles | sort: "date" | reverse %}
+    {% else %}
+      {% assign articles = articles | sort: "nav_order" %}
+    {% endif %}
+    <ul class="article-list">
+      {% for article in articles %}
+      <li class="article-item">
+        <a href="{{ article.url | relative_url }}" class="article-title">{{ article.title }}</a>
+        {% if article.date %}<span class="article-date">{{ article.date | date: "%b %d, %Y" }}</span>{% endif %}
+        {% if article.tags.size > 0 %}
+          <span class="article-tags">{% for tag in article.tags %}{{ tag }}{% unless forloop.last %}, {% endunless %}{% endfor %}</span>
+        {% endif %}
+        {% if article.description %}
+          <p class="article-preview">{{ article.description }}</p>
+        {% else %}
+          {% assign paragraphs = article.content | split: "\n\n" %}
+          {% assign preview = "" %}
+          {% for para in paragraphs %}
+            {% if preview == "" %}
+              {% assign stripped = para | strip %}
+              {% unless stripped == "" or stripped contains "#" or stripped contains "---" %}
+                {% assign first_char = stripped | slice: 0 %}
+                {% unless first_char == "|" or first_char == "*" or first_char == "-" or first_char == "!" %}
+                  {% assign is_list_item = stripped | slice: 0, 3 %}
+                  {% unless is_list_item == "1. " or is_list_item == "2. " %}
+                    {% assign preview = stripped | strip_html | truncatewords: 35 %}
+                  {% endunless %}
+                {% endunless %}
+              {% endunless %}
+            {% endif %}
+          {% endfor %}
+          {% if preview != "" %}<p class="article-preview">{{ preview }}</p>{% endif %}
+        {% endif %}
+      </li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+
+{% endif %}
