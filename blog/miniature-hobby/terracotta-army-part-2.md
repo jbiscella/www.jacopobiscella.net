@@ -5,6 +5,7 @@ parent: Miniature Hobby
 grand_parent: Blog
 nav_order: 2
 date: 2026-04-25
+post_excerpt: A dive into hair micro-mechanics — how snapback, stroke memory, and capillary flow explain why a 20-cent specialist brush might beat a $30 Kolinsky at its own game.
 ---
 
 # The Terracotta Army – Part 2: Mechanics and Behavior
