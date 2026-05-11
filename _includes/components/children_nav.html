@@ -18,6 +18,7 @@
           <li class="article-item">
             <a href="{{ article.url | relative_url }}" class="article-title">{{ article.title }}</a>
             {% if article.date %}<span class="article-date">{{ article.date | date: "%b %d, %Y" }}</span>{% endif %}
+            {% if article.post_excerpt %}<p class="article-preview">{{ article.post_excerpt }}</p>{% endif %}
           </li>
           {% endfor %}
         </ul>
@@ -42,8 +43,9 @@
         <a href="{{ article.url | relative_url }}" class="article-title">{{ article.title }}</a>
         {% if article.date %}<span class="article-date">{{ article.date | date: "%b %d, %Y" }}</span>{% endif %}
         {% if article.tags.size > 0 %}
-        <span class="article-tags">{% for tag in article.tags %}{{ tag }}{% unless forloop.last %}, {% endunless %}{% endfor %}</span>
+          <span class="article-tags">{% for tag in article.tags %}{{ tag }}{% unless forloop.last %}, {% endunless %}{% endfor %}</span>
         {% endif %}
+        {% if article.post_excerpt %}<p class="article-preview">{{ article.post_excerpt }}</p>{% endif %}
       </li>
       {% endfor %}
     </ul>

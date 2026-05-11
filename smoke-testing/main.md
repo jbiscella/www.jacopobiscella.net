@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Smoke Testing
+post_excerpt: Notes on smoke testing in regulated environments — fast sanity checks run after a deployment to confirm critical paths still work before deeper verification begins.
 parent: Software Engineering Notes
 grand_parent: Blog
 nav_order: 3

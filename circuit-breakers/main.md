@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Circuit Breakers
+post_excerpt: A pattern that prevents cascading failures in distributed systems by short-circuiting calls to a failing service, letting it recover before traffic is restored.
 parent: Software Engineering Notes
 grand_parent: Blog
 nav_order: 1
