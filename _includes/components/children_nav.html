@@ -1,30 +1,15 @@
 {% if page.title == "Blog" %}
 
-  {% assign categories = site.pages | where: "parent", "Blog" | sort: "nav_order" %}
-  <div class="blog-index">
-    {% for cat in categories %}
-      {% assign cat_articles = site.pages | where: "parent", cat.title %}
-      {% if cat_articles.size > 0 %}
-        {% assign has_dates = false %}
-        {% for a in cat_articles %}{% if a.date %}{% assign has_dates = true %}{% endif %}{% endfor %}
-        {% if has_dates %}
-          {% assign cat_articles = cat_articles | sort: "date" | reverse %}
-        {% else %}
-          {% assign cat_articles = cat_articles | sort: "nav_order" %}
-        {% endif %}
-        <h3 class="category-header"><a href="{{ cat.url | relative_url }}">{{ cat.title }}</a></h3>
-        <ul class="article-list">
-          {% for article in cat_articles %}
-          <li class="article-item">
-            <a href="{{ article.url | relative_url }}" class="article-title">{{ article.title }}</a>
-            {% if article.date %}<span class="article-date">{{ article.date | date: "%b %d, %Y" }}</span>{% endif %}
-            {% if article.post_excerpt %}<p class="article-preview">{{ article.post_excerpt }}</p>{% endif %}
-          </li>
-          {% endfor %}
-        </ul>
-      {% endif %}
+  {% assign all_articles = site.pages | where: "grand_parent", "Blog" | sort: "date" | reverse %}
+  <ul class="article-list">
+    {% for article in all_articles %}
+    <li class="article-item">
+      <a href="{{ article.url | relative_url }}" class="article-title">{{ article.title }}</a>
+      {% if article.date %}<span class="article-date">{{ article.date | date: "%b %d, %Y" }}</span>{% endif %}
+      {% if article.post_excerpt %}<p class="article-preview">{{ article.post_excerpt }}</p>{% endif %}
+    </li>
     {% endfor %}
-  </div>
+  </ul>
 
 {% else %}
 
