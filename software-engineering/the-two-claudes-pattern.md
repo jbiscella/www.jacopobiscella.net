@@ -50,28 +50,7 @@ Two artifacts move information between the two Claudes:
 
 ## The workflow loop
 
-```
-┌──────────────────────────────────────────────────────────┐
-│ Claude Code (in the repo)                                │
-│                                                            │
-│  - implements specifications from CLAUDE.md                │
-│  - on request, generates CONTEXT_BUNDLE.md                 │
-└────────────────────────┬─────────────────────────────────┘
-                         │
-                         │  copy/attach the bundle
-                         ▼
-┌──────────────────────────────────────────────────────────┐
-│ Claude (chat)                                            │
-│                                                            │
-│  - reads CLAUDE.md + CONTEXT_BUNDLE.md                     │
-│  - discusses new increment                                 │
-│  - produces an updated CLAUDE.md (new block or patch)      │
-└────────────────────────┬─────────────────────────────────┘
-                         │
-                         │  commit the updated CLAUDE.md
-                         ▼
-                  back to Claude Code
-```
+![Two Claudes workflow loop](/assets/images/two-claudes-workflow-loop.png)
 
 A typical iteration: I want to add a fourth pattern (say, a three-bar reversal). I open Claude Code, run the bundle command, get a snapshot of where the codebase actually is. I open chat, attach `CLAUDE.md` and the bundle, and write something like:
 
