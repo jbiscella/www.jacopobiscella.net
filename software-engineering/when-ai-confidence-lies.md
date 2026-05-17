@@ -4,7 +4,7 @@ title: "Heikin Ashi – Part 6: When AI Confidence Lies"
 parent: Software Engineering Notes
 grand_parent: Blog
 nav_order: 16
-date: 2026-05-23
+date: 2026-05-22
 tags: [claude, anthropic, ai-assisted-development, epistemology, debugging, prompt-engineering]
 post_excerpt: AI confidence fails in at least five distinct ways, each with its own recognition signal, its own typical cost, and its own counter-move. A field guide to premise drift, false architectural confidence, speculation as diagnosis, over-generalization from precedent, and confident invention of identifiers.
 ---
