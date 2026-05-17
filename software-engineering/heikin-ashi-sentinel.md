@@ -131,3 +131,5 @@ managing the watchlist, a few more patterns, and tightening the gap between
 If you've ever wanted a quiet, opinionated little robot that watches your
 stocks and respects your attention — that's the whole idea. The inbox is the
 interface.
+
+The project is [on GitHub](https://github.com/jbiscella/H-tchen-Mail). For the engineering retrospective — how the design was built in chat, the workflow that emerged, and the production failures — see the [six-part series](/software-engineering/heikin-ashi-monitoring-service/).
