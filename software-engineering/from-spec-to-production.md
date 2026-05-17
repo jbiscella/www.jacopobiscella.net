@@ -3,7 +3,7 @@ layout: default
 title: "Heikin Ashi – Part 4: From Spec to Production"
 parent: Software Engineering Notes
 grand_parent: Blog
-nav_order: 14
+nav_order: -20260517
 date: 2026-05-17
 tags: [claude, anthropic, claude-code, aws, lambda, iam, terraform, devops]
 post_excerpt: Eight hours debugging production-only failures on a system that took thirty hours to design and build. A taxonomy of the boundary defects that CLAUDE.md can state but is structurally unable to prove.

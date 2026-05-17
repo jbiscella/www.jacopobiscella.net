@@ -3,7 +3,7 @@ layout: default
 title: "Heikin Ashi – Part 2: Designing by Chat"
 parent: Software Engineering Notes
 grand_parent: Blog
-nav_order: 11
+nav_order: -20260511
 date: 2026-05-11
 tags: [claude, anthropic, ai, design, retrospective, prompt-engineering, epistemology]
 post_excerpt: A 50-turn design conversation reconstructed as a dialogue with an imaginary critic — on premise drift, false architectural confidence, and why CLAUDE.md is not documentation but executable belief.

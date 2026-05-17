@@ -3,7 +3,7 @@ layout: default
 title: "Terracotta Army – Part 3: Ergonomics and Protocol"
 parent: Miniature Hobby
 grand_parent: Blog
-nav_order: 3
+nav_order: -20260426
 date: 2026-04-26
 post_excerpt: Before the first drop of paint, we address the ergonomic gap and define the protocol — four trials pitting 78 specialists against Raphaël 8404 and Winsor & Newton Series 7 controls.
 ---

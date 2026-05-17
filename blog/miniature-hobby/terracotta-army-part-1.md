@@ -3,7 +3,7 @@ layout: default
 title: "Terracotta Army – Part 1: The Strategy"
 parent: Miniature Hobby
 grand_parent: Blog
-nav_order: 1
+nav_order: -20260424
 date: 2026-04-24
 post_excerpt: A $56 wager on 78 specialist Chinese brushes — testing whether extreme functional decomposition of quality can outperform a few expensive all-rounders in miniature painting.
 ---

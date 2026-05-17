@@ -3,7 +3,7 @@ layout: default
 title: "A watchlist sentinel that emails me only when a stock does something interesting"
 parent: Software Engineering Notes
 grand_parent: Blog
-nav_order: 13
+nav_order: -20260516
 date: 2026-05-16
 tags: [aws, lambda, java, micronaut, trading, side-project]
 post_excerpt: A serverless daily watchlist watcher that stays silent until a stock forms a meaningful Heikin Ashi pattern — then sends one email with a chart, the numbers, and AI-generated context. The inbox is the interface.
@@ -131,3 +131,5 @@ managing the watchlist, a few more patterns, and tightening the gap between
 If you've ever wanted a quiet, opinionated little robot that watches your
 stocks and respects your attention — that's the whole idea. The inbox is the
 interface.
+
+The project is [on GitHub](https://github.com/jbiscella/H-tchen-Mail). For the engineering retrospective — how the design was built in chat, the workflow that emerged, and the production failures — see the [six-part series](/software-engineering/heikin-ashi-monitoring-service/).
