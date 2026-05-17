@@ -11,6 +11,8 @@ post_excerpt: A serverless monitoring service for equities — computes Heikin A
 
 # Designing a Heikin Ashi Monitoring Service from Scratch
 
+*Part 1 of 6 in the [Heikin Ashi series](#series-navigation).*
+
 I wanted a service that watches a small list of equities, computes Heikin Ashi candles on daily and weekly timeframes, detects a few patterns I care about, and emails me when something interesting happens. Not a trading bot. Not a backtesting platform. A monitoring service for medium-to-long-term investment decisions, with enough fundamental context in the alert to know whether the technical signal is worth a second look.
 
 This post is the architectural digest of the system, designed entirely in a long chat with Claude. The next two posts cover the retrospective on what went wrong during that conversation, and the workflow pattern that emerged for using two different Claude products together.
@@ -203,3 +205,11 @@ This has a structural consequence. The natural temptation is to organise by doma
 The next post covers the retrospective: how the design conversation went, which decisions reversed three times, and what went wrong epistemically. The third post covers the workflow pattern I ended up adopting, including the regimes where it doesn't apply.
 
 The full `CLAUDE.md` specification will go up alongside the code once the first version ships.
+
+---
+
+## Series navigation {#series-navigation}
+
+| | |
+|---|---|
+| → Part 2 | [Designing by Chat: A Retrospective in Dialogue](/software-engineering/designing-by-chat-retrospective/) |

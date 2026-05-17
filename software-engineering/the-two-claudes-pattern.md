@@ -11,6 +11,8 @@ post_excerpt: A workflow pattern using two Claude products as distinct roles —
 
 # The Two Claudes Pattern: Chat for Thinking, Code for Building
 
+*Part 3 of 6 in the [Heikin Ashi series](#series-navigation).*
+
 The previous two posts described a Heikin Ashi monitoring service and the design conversation that produced its specifications. This one describes the workflow pattern that emerged for actually building and maintaining it: two different Claude products, used for what each is good at, with a programmatic bridge that keeps them aligned. It also describes the situations in which the pattern doesn't work and shouldn't be used.
 
 I call it the **Two Claudes pattern**, for lack of a better name.
@@ -166,3 +168,12 @@ Two Claudes, two roles, one shared memory (`CLAUDE.md`) and a regenerable snapsh
 The pattern works. It also has failure modes that compound silently and a domain of applicability that doesn't include all software work. The discipline it requires is the discipline that documentation has always required, made more important by the fact that the documentation now reasons.
 
 If I had to compress all three posts into one sentence: the AI tools change what's worth formalizing and what isn't, and the design judgment of when to invoke heavy structure versus when to skip it is increasingly the work that matters.
+
+---
+
+## Series navigation {#series-navigation}
+
+| | |
+|---|---|
+| ← Part 2 | [Designing by Chat: A Retrospective in Dialogue](/software-engineering/designing-by-chat-retrospective/) |
+| → Part 4 | [From Spec to Production: What CLAUDE.md Can't Prove](/software-engineering/from-spec-to-production/) |
