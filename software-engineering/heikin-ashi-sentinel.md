@@ -16,7 +16,7 @@ not miss the moment a stock I care about turns. So I built a small service
 that does the staring for me and emails me — only when something is worth a
 second look.
 
-It's called the **Heikin Ashi Monitoring Service**. You hand it a handful of
+It's called **[H-tchen Mail](https://github.com/jbiscella/H-tchen-Mail)** — the Heikin Ashi Monitoring Service. You hand it a handful of
 tickers; it watches them once a day and stays silent. Most days nothing
 arrives. When one of them forms a meaningful candle pattern, a single email
 shows up: a chart, the numbers, and a short plain-language note. **The inbox
