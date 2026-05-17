@@ -11,7 +11,7 @@ post_excerpt: Eight hours debugging production-only failures on a system that to
 
 # From Spec to Production: What CLAUDE.md Can't Prove
 
-*Part 4 of 6 in the [Heikin Ashi series](#series-navigation).*
+*Part 4 of 6 in the [Heikin Ashi series](#series-navigation). The project's full `CLAUDE.md` spec is [on GitHub](https://github.com/jbiscella/H-tchen-Mail/blob/main/CLAUDE.md).*
 
 The previous three posts described a Heikin Ashi monitoring service, the design conversation that shaped it, and the workflow pattern that produced it. They all live in the design-time half of the project. This post is about what happened when the design met production: the class of failures that the specification could express in principle but had no way to enforce in practice.
 
