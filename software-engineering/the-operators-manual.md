@@ -3,7 +3,7 @@ layout: default
 title: "Heikin Ashi – Part 5: The Operator's Manual"
 parent: Software Engineering Notes
 grand_parent: Blog
-nav_order: 15
+nav_order: -20260520
 date: 2026-05-20
 tags: [claude, anthropic, ai-assisted-development, debugging, operations, runbook]
 post_excerpt: Debugging a running serverless system is not design chat. A third mode — operational chat — has its own rules: one command per turn, hypotheses labelled as hypotheses, file paths verified not guessed. A taxonomy of where my own deployment sessions broke those rules and why it mattered.
