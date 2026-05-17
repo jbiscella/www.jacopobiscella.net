@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "Designing a Heikin Ashi Monitoring Service from Scratch"
+title: "Heikin Ashi – Part 1: Designing the Monitoring Service"
 parent: Software Engineering Notes
 grand_parent: Blog
 nav_order: 10
@@ -212,4 +212,4 @@ The full `CLAUDE.md` specification will go up alongside the code once the first 
 
 | | |
 |---|---|
-| → Part 2 | [Designing by Chat: A Retrospective in Dialogue](/software-engineering/designing-by-chat-retrospective/) |
+| → Part 2 | [Heikin Ashi – Part 2: Designing by Chat](/software-engineering/designing-by-chat-retrospective/) |

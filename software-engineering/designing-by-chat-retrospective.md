@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "Designing by Chat: A Retrospective in Dialogue"
+title: "Heikin Ashi – Part 2: Designing by Chat"
 parent: Software Engineering Notes
 grand_parent: Blog
 nav_order: 11
@@ -145,5 +145,5 @@ The next post in this series describes the workflow that emerged once I started 
 
 | | |
 |---|---|
-| ← Part 1 | [Designing a Heikin Ashi Monitoring Service from Scratch](/software-engineering/heikin-ashi-monitoring-service/) |
-| → Part 3 | [The Two Claudes Pattern: Chat for Thinking, Code for Building](/software-engineering/the-two-claudes-pattern/) |
+| ← Part 1 | [Heikin Ashi – Part 1: Designing the Monitoring Service](/software-engineering/heikin-ashi-monitoring-service/) |
+| → Part 3 | [Heikin Ashi – Part 3: The Two Claudes Pattern](/software-engineering/the-two-claudes-pattern/) |

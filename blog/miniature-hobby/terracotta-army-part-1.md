@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "Part 1: The Strategy"
+title: "Terracotta Army – Part 1: The Strategy"
 parent: Miniature Hobby
 grand_parent: Blog
 nav_order: 1
@@ -27,4 +27,9 @@ I've acquired an army of 78 units for the price of two standard sets. The challe
 *In the next episode, we look at the mechanics: why a 20-cent specialist can technically challenge a decathlete in its specific domain.*
 
 ---
-[Part 2: Mechanics and Behavior →](../terracotta-army-part-2/)
+
+## Series navigation {#series-navigation}
+
+| | |
+|---|---|
+| → Part 2 | [Terracotta Army – Part 2: Mechanics and Behavior](/blog/miniature-hobby/terracotta-army-part-2/) |

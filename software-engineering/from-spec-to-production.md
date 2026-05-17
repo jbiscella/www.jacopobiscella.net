@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "From Spec to Production: What CLAUDE.md Can't Prove"
+title: "Heikin Ashi – Part 4: From Spec to Production"
 parent: Software Engineering Notes
 grand_parent: Blog
 nav_order: 14
@@ -169,5 +169,5 @@ For now, the takeaway I'd offer to anyone applying the Two Claudes pattern to a 
 
 | | |
 |---|---|
-| ← Part 3 | [The Two Claudes Pattern: Chat for Thinking, Code for Building](/software-engineering/the-two-claudes-pattern/) |
+| ← Part 3 | [Heikin Ashi – Part 3: The Two Claudes Pattern](/software-engineering/the-two-claudes-pattern/) |
 | → Part 5 | *Coming soon* |

@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "Part 2: Mechanics and Behavior"
+title: "Terracotta Army – Part 2: Mechanics and Behavior"
 parent: Miniature Hobby
 grand_parent: Blog
 nav_order: 2
@@ -25,4 +25,10 @@ By choosing a brush based on its **cuticular structure** rather than its brand n
 *But how do we handle these tools, and how will I know if they've actually won? Part 3 will set the rules of the game.*
 
 ---
-[← Part 1: The Strategy](../terracotta-army-part-1/) &nbsp;·&nbsp; [Part 3: Ergonomics and Protocol →](../terracotta-army-part-3/)
+
+## Series navigation {#series-navigation}
+
+| | |
+|---|---|
+| ← Part 1 | [Terracotta Army – Part 1: The Strategy](/blog/miniature-hobby/terracotta-army-part-1/) |
+| → Part 3 | [Terracotta Army – Part 3: Ergonomics and Protocol](/blog/miniature-hobby/terracotta-army-part-3/) |
