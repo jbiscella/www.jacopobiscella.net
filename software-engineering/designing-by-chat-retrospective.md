@@ -11,6 +11,8 @@ post_excerpt: A 50-turn design conversation reconstructed as a dialogue with an 
 
 # Designing by Chat: A Retrospective in Dialogue
 
+*Part 2 of 6 in the [Heikin Ashi series](#series-navigation).*
+
 The previous post described a Heikin Ashi monitoring service. This one is about how the design got there: a conversation with Claude that took roughly 50 turns when 12 to 15 would have been enough. I tried writing this as a structured retrospective with categories and lessons learned. The result was levigated into uselessness. So I'm trying something else: I'm writing it as a dialogue with an imaginary critic, because the critic forces me to stay in the uncomfortable parts.
 
 What follows is structured as objections and responses. Some of the objections are real ones I received on a first draft of this post. Some I'm putting in the critic's mouth because they're the ones I was tempted to skip.
@@ -136,3 +138,12 @@ Second, watch for premise drift. When the conversation has been productive for s
 Third, take the artifact seriously. The specification document you produce isn't documentation in the traditional sense. It's a configuration that future AI tools will execute semantically. Treat it with the discipline you'd apply to a piece of code that could silently misbehave: keep it small, keep it close to the truth, and assume that any divergence between it and reality is actively dangerous, not merely untidy.
 
 The next post in this series describes the workflow that emerged once I started taking these things seriously. It's also the post where I'll explain the regimes where this whole approach doesn't apply at all.
+
+---
+
+## Series navigation {#series-navigation}
+
+| | |
+|---|---|
+| ← Part 1 | [Designing a Heikin Ashi Monitoring Service from Scratch](/software-engineering/heikin-ashi-monitoring-service/) |
+| → Part 3 | [The Two Claudes Pattern: Chat for Thinking, Code for Building](/software-engineering/the-two-claudes-pattern/) |
