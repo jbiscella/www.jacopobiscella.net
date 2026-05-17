@@ -161,4 +161,4 @@ The next post in the series, if there is one, will probably be the one I've been
 | | |
 |---|---|
 | ← Part 4 | [Heikin Ashi – Part 4: From Spec to Production](/software-engineering/from-spec-to-production/) |
-| → Part 6 | *Coming soon* |
+| → Part 6 | [Heikin Ashi – Part 6: When AI Confidence Lies](/software-engineering/when-ai-confidence-lies/) |
