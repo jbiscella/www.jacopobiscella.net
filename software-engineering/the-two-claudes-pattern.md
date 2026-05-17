@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "The Two Claudes Pattern: Chat for Thinking, Code for Building"
+title: "Heikin Ashi – Part 3: The Two Claudes Pattern"
 parent: Software Engineering Notes
 grand_parent: Blog
 nav_order: 12
@@ -175,5 +175,5 @@ If I had to compress all three posts into one sentence: the AI tools change what
 
 | | |
 |---|---|
-| ← Part 2 | [Designing by Chat: A Retrospective in Dialogue](/software-engineering/designing-by-chat-retrospective/) |
-| → Part 4 | [From Spec to Production: What CLAUDE.md Can't Prove](/software-engineering/from-spec-to-production/) |
+| ← Part 2 | [Heikin Ashi – Part 2: Designing by Chat](/software-engineering/designing-by-chat-retrospective/) |
+| → Part 4 | [Heikin Ashi – Part 4: From Spec to Production](/software-engineering/from-spec-to-production/) |

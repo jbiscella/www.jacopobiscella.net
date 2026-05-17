@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "Part 3: Ergonomics and Protocol"
+title: "Terracotta Army – Part 3: Ergonomics and Protocol"
 parent: Miniature Hobby
 grand_parent: Blog
 nav_order: 3
@@ -36,4 +36,10 @@ Each hair type has specific needs—Goat deforms easily, and Rat Beard is incred
 *The hypothesis is set. The brushes are ready. In the final episode, we see if the Terracotta Army conquers the hobby desk.*
 
 ---
-[← Part 2: Mechanics and Behavior](../terracotta-army-part-2/)
+
+## Series navigation {#series-navigation}
+
+| | |
+|---|---|
+| ← Part 2 | [Terracotta Army – Part 2: Mechanics and Behavior](/blog/miniature-hobby/terracotta-army-part-2/) |
+| → Part 4 | *Coming soon* |
