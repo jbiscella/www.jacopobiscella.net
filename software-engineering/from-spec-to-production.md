@@ -170,4 +170,4 @@ For now, the takeaway I'd offer to anyone applying the Two Claudes pattern to a 
 | | |
 |---|---|
 | ← Part 3 | [Heikin Ashi – Part 3: The Two Claudes Pattern](/software-engineering/the-two-claudes-pattern/) |
-| → Part 5 | *Coming soon* |
+| → Part 5 | [Heikin Ashi – Part 5: The Operator's Manual](/software-engineering/the-operators-manual/) |
