@@ -8,7 +8,11 @@ nav_order: 1
 
 Senior Backend Engineer / Software Architect · Nyon, Switzerland
 
-20+ years building event-driven microservices on the JVM in mission-critical environments (luxury retail, RegTech, travel). Focused on simplicity, testability, observability, and predictable Agile delivery.
+Most of my work has been on systems that have to keep running while people use them, often in high-regulatory environments — compliant archiving at Global Relay, plus pricing engines, order flows, booking platforms, and services across transport, government, banking, and insurance. That constraint shapes the practice: keep the design small, make failures legible, and notice where complexity accumulates between parts that each look reasonable in isolation. The technology stack has changed a lot over the years; that orientation hasn't.
+
+This site is where I write down the things I want to keep. The engineering notes are the largest section, but the same instinct shows up elsewhere. I write about [tabletop miniature painting](https://www.jacopobiscella.net/blog/miniature-hobby/) the way I'd write about a tooling experiment, because the questions turn out to be similar: what should specialize, when is the popular default still the right choice, and where does a small wager beat a large one. I'm also a passionate amateur photographer; if that grows into its own section, it will probably follow the same habit of looking closely at framing, constraint, and consequence.
+
+The recent focus has been on working seriously with AI tools — not as a productivity shortcut, but as a collaborator that fails in unfamiliar ways. The [Heikin Ashi series](https://www.jacopobiscella.net/software-engineering/heikin-ashi-monitoring-service/) is the long version of that investigation, built around an actual side project I've taken from design to production. What emerged is not a recipe, but a record of the disciplines, artifacts, and failure modes that shaped the work.
 
 ## Personal Projects
 
