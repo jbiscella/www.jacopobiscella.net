@@ -11,7 +11,7 @@ post_excerpt: A 50-turn design conversation reconstructed as a dialogue with an 
 
 # Designing by Chat: A Retrospective in Dialogue
 
-*Part 2 of 6 in the [Heikin Ashi series](#series-navigation).*
+*Part 2 of 7 in the [Heikin Ashi series](#series-navigation).*
 
 The previous post described a Heikin Ashi monitoring service. This one is about how the design got there: a conversation with Claude that took roughly 50 turns when 12 to 15 would have been enough. I tried writing this as a structured retrospective with categories and lessons learned. The result was levigated into uselessness. So I'm trying something else: I'm writing it as a dialogue with an imaginary critic, because the critic forces me to stay in the uncomfortable parts.
 

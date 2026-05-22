@@ -11,7 +11,7 @@ post_excerpt: A serverless monitoring service for equities — computes Heikin A
 
 # Designing a Heikin Ashi Monitoring Service from Scratch
 
-*Part 1 of 6 in the [Heikin Ashi series](#series-navigation). The project is [on GitHub](https://github.com/jbiscella/H-tchen-Mail).*
+*Part 1 of 7 in the [Heikin Ashi series](#series-navigation). The project is [on GitHub](https://github.com/jbiscella/H-tchen-Mail).*
 
 I wanted a service that watches a small list of equities, computes Heikin Ashi candles on daily and weekly timeframes, detects a few patterns I care about, and emails me when something interesting happens. Not a trading bot. Not a backtesting platform. A monitoring service for medium-to-long-term investment decisions, with enough fundamental context in the alert to know whether the technical signal is worth a second look.
 

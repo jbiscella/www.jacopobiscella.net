@@ -11,7 +11,7 @@ post_excerpt: AI confidence fails in at least five distinct ways, each with its 
 
 # When AI Confidence Lies: A Field Guide
 
-*Part 6 of 6 in the [Heikin Ashi series](#series-navigation).*
+*Part 6 of 7 in the [Heikin Ashi series](#series-navigation).*
 
 The second post in this series introduced *false architectural confidence* — the failure mode where an AI tool communicates directional certainty about a choice without having sufficient grounding to justify it. The concrete example was a market-data provider recommendation that turned out to lack the regional coverage the project needed. The post named the pattern and moved on.
 
@@ -138,3 +138,4 @@ The remaining gap, if there's another post in the series, is the one about extra
 | | |
 |---|---|
 | ← Part 5 | [Heikin Ashi – Part 5: The Operator's Manual](/software-engineering/the-operators-manual/) |
+| → Part 7 | [Heikin Ashi – Part 7: From Failures to Checklists](/software-engineering/from-failures-to-checklists/) |
