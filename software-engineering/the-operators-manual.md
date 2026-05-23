@@ -11,7 +11,7 @@ post_excerpt: "Debugging a running serverless system is not design chat. A third
 
 # The Operator's Manual: One Command at a Time
 
-*Part 5 of 6 in the [Heikin Ashi series](#series-navigation).*
+*Part 5 of 7 in the [Heikin Ashi series](#series-navigation).*
 
 The Two Claudes pattern describes two modes: chat for thinking, code for building. After deploying the Heikin Ashi service and spending an unexpectedly large fraction of the project debugging it, I realized the pattern was missing a third mode that I had been doing badly without naming. The previous post dealt with preventing boundary failures through verification at build, deploy, and runtime. This one deals with what happens after prevention is exhausted — when the system is running, something is wrong, and the loop between the human and the AI has to find the cause.
 
