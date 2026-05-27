@@ -7,6 +7,7 @@ nav_order: -20260511
 date: 2026-05-11
 tags: [claude, anthropic, ai, design, retrospective, prompt-engineering, epistemology]
 post_excerpt: A 50-turn design conversation reconstructed as a dialogue with an imaginary critic — on premise drift, false architectural confidence, and why CLAUDE.md is not documentation but executable belief.
+description: "A 50-turn design conversation reconstructed as a dialogue with an imaginary critic — on premise drift, false architectural confidence, and why CLAUDE.md is not documentation but executable belief."
 ---
 
 # Designing by Chat: A Retrospective in Dialogue

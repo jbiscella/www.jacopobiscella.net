@@ -7,6 +7,7 @@ nav_order: -20260525
 date: 2026-05-25
 tags: [claude, anthropic, ai-assisted-development, checklists, retrospective, discipline]
 post_excerpt: "Every AI-assisted project session generates failures worth keeping. Almost none of them get kept. The final discipline in the series: extracting what went wrong into artifacts the next session can actually use."
+description: "Every AI-assisted project session generates failures worth keeping. Almost none of them get kept. The final discipline in the series: extracting what went wrong into artifacts the next session can actually use."
 ---
 
 # From Failures to Checklists: Closing the Loop
