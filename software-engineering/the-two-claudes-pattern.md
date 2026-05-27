@@ -126,7 +126,7 @@ The bootstrap (creating the OIDC provider, the GitHub Actions role, the Terrafor
 
 ## When the pattern fails
 
-The previous post hinted that specifications consumed by LLMs are not documentation but executable belief. That observation has consequences here. The Two Claudes pattern is built on the assumption that `CLAUDE.md` accurately describes the system and remains synchronized with it. That assumption fails in three distinct ways, and each failure mode has a different remedy.
+The [previous post](/software-engineering/designing-by-chat-retrospective/) hinted that specifications consumed by LLMs are not documentation but executable belief. That observation has consequences here. The Two Claudes pattern is built on the assumption that `CLAUDE.md` accurately describes the system and remains synchronized with it. That assumption fails in three distinct ways, and each failure mode has a different remedy.
 
 **Specification entropy.** Over time, decisions drift. The spec says "we use the `de.sfuhrm:YahooFinanceAPI` library", but six months later the library has been quietly replaced by an Alpha Vantage adapter because Yahoo started rate-limiting more aggressively. The spec still claims the original choice. Chat Claude, asked to design a new feature involving market data, reasons inside the obsolete frame. The proposal it generates is internally coherent but inconsistent with the actual code. If I implement the proposal directly, I introduce a regression. If I notice the discrepancy and update the spec, I've spent a turn on housekeeping that should have been automatic.
 
@@ -164,7 +164,7 @@ The split avoids putting project-specific things in your global config (which wo
 
 ## In summary
 
-Two Claudes, two roles, one shared memory (`CLAUDE.md`) and a regenerable snapshot (the context bundle). The chat surface holds the conversation; the code surface holds the work; the markdown files are how they communicate. Deployment goes through CI, not through either Claude directly.
+Two Claudes, two roles, one shared memory (`CLAUDE.md`) and a regenerable snapshot (the context bundle). The chat surface holds the conversation; the code surface holds the work; the markdown files are how they communicate. Deployment goes through CI, not through either Claude directly. What the pattern can't see — the gap between specification and running artifact — is the subject of [Part 4](/software-engineering/from-spec-to-production/).
 
 The pattern works. It also has failure modes that compound silently and a domain of applicability that doesn't include all software work. The discipline it requires is the discipline that documentation has always required, made more important by the fact that the documentation now reasons.
 

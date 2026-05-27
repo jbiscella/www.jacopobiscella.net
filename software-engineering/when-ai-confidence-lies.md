@@ -14,7 +14,7 @@ description: "AI confidence fails in at least five distinct ways, each with its 
 
 *Part 6 of 7 in the [Heikin Ashi series](#series-navigation).*
 
-The second post in this series introduced *false architectural confidence* — the failure mode where an AI tool communicates directional certainty about a choice without having sufficient grounding to justify it. The concrete example was a market-data provider recommendation that turned out to lack the regional coverage the project needed. The post named the pattern and moved on.
+The [second post](/software-engineering/designing-by-chat-retrospective/) in this series introduced *false architectural confidence* — the failure mode where an AI tool communicates directional certainty about a choice without having sufficient grounding to justify it. The concrete example was a market-data provider recommendation that turned out to lack the regional coverage the project needed. The post named the pattern and moved on.
 
 The deployment session that followed produced enough additional material to turn the single failure mode into a taxonomy. What I observed across roughly forty hours of design-then-deploy work is that AI confidence fails in at least five distinct ways, each with its own recognition signal, its own typical cost, and its own appropriate intervention. They are easy to conflate when you encounter them one at a time. Naming them separately makes them easier to catch.
 
@@ -66,7 +66,7 @@ A single distinction does most of the work in defending against all five pattern
 
 **Recognition signal.** Causal language used without evidence. Phrases like "this is because," "the cause is," or "what's happening is" applied to a failure the model could not have directly observed. Genuine diagnosis arrives with the test that confirmed it.
 
-**Counter-move.** *"What one observation would confirm or falsify this hypothesis?"* If the model cannot name one, the explanation is speculation. Treat it as a candidate to test, not a fact to act on. The previous post in this series elaborates the broader discipline.
+**Counter-move.** *"What one observation would confirm or falsify this hypothesis?"* If the model cannot name one, the explanation is speculation. Treat it as a candidate to test, not a fact to act on. [The previous post](/software-engineering/the-operators-manual/) in this series elaborates the broader discipline.
 
 ---
 

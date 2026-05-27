@@ -160,9 +160,9 @@ Five changes I'm adopting in response to the experience, in order of decreasing 
 
 I'm still in the middle of writing the production-envelope discipline. The list above is partial; the boundary tests are partly written; the failure log has three entries. The honest current state is that I'm doing this work by hand, after each failure, with the discipline I should have applied before. That's not a workflow. It's pattern recognition turning into method, slowly.
 
-The first three posts described how to think about design with AI tools. This post described what the design can't reach. If a fifth post comes out of the series, it will be the one that tries to write the boundary discipline down properly — probably the `DEPLOYMENT.md` referenced above, with the boundary tests treated as production code rather than as scaffolding around them.
+The first three posts described how to think about design with AI tools. This post described what the design can't reach. The [next post](/software-engineering/the-operators-manual/) covers the third mode — what happens when the design was correct, the envelope held, and the system failed anyway. If a fifth post comes out of the series, it will be the one that tries to write the boundary discipline down properly — probably the `DEPLOYMENT.md` referenced above, with the boundary tests treated as production code rather than as scaffolding around them.
 
-For now, the takeaway I'd offer to anyone applying the Two Claudes pattern to a real deploy: the spec can make the intended system legible. The boundary checks are what make the deployed system accountable.
+For now, the takeaway I'd offer to anyone applying the [Two Claudes pattern](/software-engineering/the-two-claudes-pattern/) to a real deploy: the spec can make the intended system legible. The boundary checks are what make the deployed system accountable.
 
 ---
 
