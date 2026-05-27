@@ -7,6 +7,7 @@ nav_order: -20260516
 date: 2026-05-16
 tags: [aws, lambda, java, micronaut, trading, side-project]
 post_excerpt: A serverless daily watchlist watcher that stays silent until a stock forms a meaningful Heikin Ashi pattern — then sends one email with a chart, the numbers, and AI-generated context. The inbox is the interface.
+description: "A serverless daily watchlist watcher that stays silent until a stock forms a meaningful Heikin Ashi pattern — then sends one email with a chart, the numbers, and AI-generated context. The inbox is the interface."
 ---
 
 # A watchlist sentinel that emails me only when a stock does something interesting

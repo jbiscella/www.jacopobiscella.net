@@ -2,6 +2,7 @@
 layout: home
 title: Home
 nav_order: 1
+description: "Software engineering notes on AI-assisted development with Claude Code, Java systems on AWS Lambda, and Heikin Ashi trading tools — by Jacopo Biscella, backend engineer based in Nyon, Switzerland."
 ---
 
 # Jacopo Biscella

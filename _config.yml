@@ -1,5 +1,6 @@
 title: "Jacopo Biscella"
-description: "Personal notes on software engineering, system architecture, and testing."
+description: "Software engineering notes on AI-assisted development with Claude Code, Java systems on AWS Lambda, and Heikin Ashi trading tools — by Jacopo Biscella, backend engineer based in Nyon, Switzerland."
+author: Jacopo Biscella
 url: "https://www.jacopobiscella.net"
 baseurl: ""
 repository: "jbiscella/www.jacopobiscella.net"

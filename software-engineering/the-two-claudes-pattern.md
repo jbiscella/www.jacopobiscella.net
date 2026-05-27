@@ -7,6 +7,7 @@ nav_order: -20260513
 date: 2026-05-13
 tags: [claude, anthropic, claude-code, workflow, ai-assisted-development, devops, aws]
 post_excerpt: A workflow pattern using two Claude products as distinct roles — chat for architecture and decisions, Claude Code for implementation — with CLAUDE.md as shared memory and a context bundle as the regenerable bridge.
+description: "A workflow pattern using two Claude products as distinct roles — chat for architecture and decisions, Claude Code for implementation — with CLAUDE.md as shared memory and a context bundle as the regenerable bridge."
 ---
 
 # The Two Claudes Pattern: Chat for Thinking, Code for Building

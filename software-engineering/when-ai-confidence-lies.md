@@ -7,6 +7,7 @@ nav_order: -20260522
 date: 2026-05-22
 tags: [claude, anthropic, ai-assisted-development, epistemology, debugging, prompt-engineering]
 post_excerpt: AI confidence fails in at least five distinct ways, each with its own recognition signal, its own typical cost, and its own counter-move. A field guide to premise drift, false architectural confidence, speculation as diagnosis, over-generalization from precedent, and confident invention of identifiers.
+description: "AI confidence fails in at least five distinct ways, each with its own recognition signal, its own typical cost, and its own counter-move. A field guide to premise drift, false architectural confidence, speculation as diagnosis, over-generalization from precedent, and confident invention of identifiers."
 ---
 
 # When AI Confidence Lies: A Field Guide
