@@ -14,7 +14,7 @@ description: "A workflow pattern using two Claude products as distinct roles —
 
 *Part 3 of 7 in the [Heikin Ashi series](#series-navigation).*
 
-The previous two posts described a Heikin Ashi monitoring service and the design conversation that produced its specifications. This one describes the workflow pattern that emerged for actually building and maintaining it: two different Claude products, used for what each is good at, with a programmatic bridge that keeps them aligned. It also describes the situations in which the pattern doesn't work and shouldn't be used.
+The previous two posts described a Heikin Ashi monitoring service built on AWS Lambda with Java 25, and the design conversation that produced its specifications. This one describes the workflow pattern that emerged for actually building and maintaining it: Claude chat for architecture and decisions, Claude Code for implementation, with `CLAUDE.md` as the shared specification that keeps both aligned. It also describes the situations in which the pattern doesn't work and shouldn't be used.
 
 I call it the **Two Claudes pattern**, for lack of a better name.
 
