@@ -39,3 +39,35 @@
 
 
 </style>
+
+<!-- og:image for social sharing -->
+<meta property="og:image" content="{{ '/assets/images/og-image.jpg' | absolute_url }}">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:image" content="{{ '/assets/images/og-image.jpg' | absolute_url }}">
+<meta name="twitter:card" content="summary_large_image">
+
+<!-- BlogPosting / Person schema for blog articles -->
+{% if page.grand_parent == "Blog" %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": {{ page.title | jsonify }},
+  "description": {{ page.description | default: page.post_excerpt | jsonify }},
+  "datePublished": "{{ page.date | date_to_xmlschema }}",
+  "url": "{{ page.url | absolute_url }}",
+  "author": {
+    "@type": "Person",
+    "name": "Jacopo Biscella",
+    "url": "{{ site.url }}"
+  },
+  "publisher": {
+    "@type": "Person",
+    "name": "Jacopo Biscella",
+    "url": "{{ site.url }}"
+  }{% if page.tags.size > 0 %},
+  "keywords": {{ page.tags | join: ", " | jsonify }}{% endif %}
+}
+</script>
+{% endif %}
