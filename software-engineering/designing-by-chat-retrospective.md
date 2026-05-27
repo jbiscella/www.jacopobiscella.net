@@ -100,7 +100,7 @@ I haven't built that discipline yet. The current `CLAUDE.md` is already, three w
 
 ---
 
-**"OK, let me push on this. You're presenting `CLAUDE.md` as a problem. But your whole third post will recommend it as a workflow. Which is it?"**
+**"OK, let me push on this. You're presenting `CLAUDE.md` as a problem. But your whole [third post](/software-engineering/the-two-claudes-pattern/) will recommend it as a workflow. Which is it?"**
 
 Both. The pattern is useful and the pattern has failure modes that I think are underappreciated. The third post will go into the failure modes more directly. For now: the recommendation is conditional, not absolute, and the conditions matter.
 
@@ -138,7 +138,7 @@ Second, watch for premise drift. When the conversation has been productive for s
 
 Third, take the artifact seriously. The specification document you produce isn't documentation in the traditional sense. It's a configuration that future AI tools will execute semantically. Treat it with the discipline you'd apply to a piece of code that could silently misbehave: keep it small, keep it close to the truth, and assume that any divergence between it and reality is actively dangerous, not merely untidy.
 
-The next post in this series describes the workflow that emerged once I started taking these things seriously. It's also the post where I'll explain the regimes where this whole approach doesn't apply at all.
+[The next post](/software-engineering/the-two-claudes-pattern/) in this series describes the workflow that emerged once I started taking these things seriously. It's also the post where I'll explain the regimes where this whole approach doesn't apply at all.
 
 ---
 

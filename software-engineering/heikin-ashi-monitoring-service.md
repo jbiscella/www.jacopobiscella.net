@@ -16,7 +16,7 @@ description: "A serverless monitoring service for equities — computes Heikin A
 
 I wanted a service that watches a small list of equities, computes Heikin Ashi candles on daily and weekly timeframes, detects a few patterns I care about, and emails me when something interesting happens. Not a trading bot. Not a backtesting platform. A monitoring service for medium-to-long-term investment decisions, with enough fundamental context in the alert to know whether the technical signal is worth a second look.
 
-This post is the architectural digest of the system, designed entirely in a long chat with Claude. The next two posts cover the retrospective on what went wrong during that conversation, and the workflow pattern that emerged for using two different Claude products together.
+This post is the architectural digest of the system — built on AWS Lambda with Java 25 and Micronaut, designed entirely in a long chat with Claude. The next two posts cover the [retrospective on what went wrong](/software-engineering/designing-by-chat-retrospective/) during that conversation, and the [workflow pattern](/software-engineering/the-two-claudes-pattern/) that emerged for using Claude chat and Claude Code together.
 
 ---
 

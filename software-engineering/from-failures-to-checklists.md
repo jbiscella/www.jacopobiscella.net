@@ -14,7 +14,7 @@ description: "Every AI-assisted project session generates failures worth keeping
 
 *Part 7 of 7 in the [Heikin Ashi series](#series-navigation).*
 
-The previous post catalogued five patterns through which AI confidence fails. The post before that catalogued three disciplines for operational chat. The posts before those catalogued the Two Claudes pattern, the production envelope problem, and the failures of the design conversation that started the project.
+The previous post catalogued five patterns through which AI confidence fails. The post before that catalogued three disciplines for operational chat. The posts before those catalogued the [Two Claudes pattern](/software-engineering/the-two-claudes-pattern/), the production envelope problem, and the failures of the design conversation that started the project.
 
 Six posts of named failure modes. A single question I have been avoiding: what does naming accomplish, if the names live in chat history and nowhere else?
 
@@ -56,7 +56,7 @@ These three components reflect what the operational-mode conversation actually n
 
 ## What the Heikin Ashi checklists look like
 
-Part 5 of this series gestured at three reusable diagnostic sequences. Until now, they have not been written in a form that survives the session. Here they are.
+[Part 5](/software-engineering/the-operators-manual/) of this series gestured at three reusable diagnostic sequences. Until now, they have not been written in a form that survives the session. Here they are.
 
 **Checklist: Lambda boot failure**
 
@@ -103,7 +103,7 @@ Part 5 of this series gestured at three reusable diagnostic sequences. Until now
 
 ## The design-time counterpart
 
-Checklists for operational sessions address failures that happen after deployment. The design-time counterpart addresses failures that happen during the design conversation — the premise drift and false architectural confidence patterns from posts 2 and 6.
+Checklists for operational sessions address failures that happen after deployment. The design-time counterpart addresses failures that happen during the design conversation — the premise drift and false architectural confidence patterns from [post 2](/software-engineering/designing-by-chat-retrospective/) and [post 6](/software-engineering/when-ai-confidence-lies/).
 
 The design-time checklist is simpler because design failures are recoverable without urgency. It just needs to interrupt the conversation periodically and ask the right questions.
 
