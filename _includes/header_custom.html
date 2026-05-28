@@ -1,0 +1,34 @@
+<div class="author-header">
+  <img src="{{ '/assets/images/og-image.jpg' | relative_url }}" alt="Jacopo Biscella" class="author-header-avatar">
+  <span class="author-header-name">Jacopo Biscella</span>
+</div>
+
+<style>
+  .author-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-left: auto;
+    padding-right: 1rem;
+  }
+
+  .author-header-avatar {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+  }
+
+  .author-header-name {
+    font-size: 0.82rem;
+    color: var(--header-child-text-color, #fff);
+    white-space: nowrap;
+  }
+
+  @media (max-width: 50rem) {
+    .author-header-name {
+      display: none;
+    }
+  }
+</style>
