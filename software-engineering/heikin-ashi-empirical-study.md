@@ -3,8 +3,8 @@ layout: default
 title: "Heikin-Ashi – An Empirical Study with Ablation, Across Equities, FX and Crypto"
 parent: Software Engineering Notes
 grand_parent: Blog
-nav_order: -20260606
-date: 2026-06-06
+nav_order: -20260614
+date: 2026-06-14
 tags: [heikin-ashi, backtesting, technical-analysis, quantitative-finance, ablation, wichtelm]
 post_excerpt: An empirical evaluation of Heikin-Ashi trend-following — with an ablation that isolates the HA signal from its EMA/stop scaffolding — across 25 equities, 12 FX pairs and 8 crypto assets, plus a 20-year daily cross-section (2006–2026).
 description: "An empirical, ablation-based evaluation of Heikin-Ashi trend-following across equities, FX and crypto: isolating the HA contribution, transaction-cost break-even, regime analysis, and a 20-year daily robustness test."
