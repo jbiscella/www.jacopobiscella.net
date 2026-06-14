@@ -583,7 +583,8 @@ shown are **derived performance indices** (growth of $1), not raw prices, so the
 contain no redistributable licensed data. Transaction costs were applied post-hoc
 from each run's round-trip count. For reproducibility the runs are pinned to a
 fixed build: every result here was re-run end-to-end on `wichtelm-app` commit
-`a3b1cbf` (the gap-aware protective-fill build, PR #64) and reproduced to the
+`6ee5a1c` (the gap-aware protective-fill build, merged to `main` via PR #64) and
+reproduced to the
 reported precision; the FX cross-section was additionally broadened from eight to
 twelve pairs (§4.7). The strategy `.strat` files are reproduced verbatim in §3.1
 and §3.4 fixes the one parameter set used throughout; the per-run TOML configs and
