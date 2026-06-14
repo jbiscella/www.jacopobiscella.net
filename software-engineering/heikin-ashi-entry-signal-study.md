@@ -1,75 +1,65 @@
 ---
 layout: default
-title: "Heikin-Ashi, Role-Resolved – The Signal Lives at the Entry, Not the Exit"
+title: "Heikin-Ashi, Resolved – It's the Bullish Flip, Not the Role"
 parent: Software Engineering Notes
 grand_parent: Blog
 nav_order: -20260615
 date: 2026-06-14
 tags: [heikin-ashi, backtesting, technical-analysis, quantitative-finance, ablation, walk-forward, wichtelm]
-post_excerpt: A follow-up that asks the question the first study did not — does ANY Heikin-Ashi rule add value? Resolving HA by role (entry vs exit) over a 3-fold walk-forward, the HA colour-reversal entry beats a turnover-matched non-HA baseline out-of-sample (p ≈ 0.001), while HA at the exit destroys value.
-description: "A role-resolved, walk-forward Heikin-Ashi discovery study: HA carries incremental value specifically at the entry (colour-reversal trigger), survives a turnover-matched control out-of-sample, but destroys value at the exit — which explains why a symmetric HA composite looked dead."
+post_excerpt: A follow-up that asks the question the first study did not — does ANY Heikin-Ashi rule add value? Resolving HA by role and by direction over a walk-forward, the value turns out to live in the bullish colour reversal (the "green flip"), aligned with the equity drift — it beats a turnover-matched baseline whether used to enter longs or cover shorts (p ≈ 0.001), while the bearish flip destroys value, and none of it transfers to crypto.
+description: "A role- and direction-resolved walk-forward Heikin-Ashi discovery study: the value lives in the bullish colour reversal (green flip), not in where it sits in the trade. It survives turnover-matched controls on both the long and short side, holds intraday, and aligns with the equity drift — but does not transfer to crypto."
 ---
 
-# Heikin-Ashi, Role-Resolved – The Signal Lives at the Entry, Not the Exit
+# Heikin-Ashi, Resolved – It's the Bullish Flip, Not the Role
 
 ## Abstract
 
-A [previous study](/software-engineering/heikin-ashi-empirical-study/)
-falsified **one** Heikin-Ashi (HA) strategy family — a strong-candle trend rule
-that used HA on **both** the entry and the exit — and found its marginal
-contribution over an EMA-cross was ≈ 0 on equities. A fair objection: that tests
-one architecture, not the HA hypothesis space. This follow-up asks the
-discovery question instead — *does any HA rule add incremental value?* — and
-narrows it to the cleanest testable axis: the **role** HA plays. Using a 2×2
-factorial (entry ∈ {HA colour-reversal, EMA-cross} × exit ∈ {HA, EMA}), validated
-by a **3-fold expanding-window walk-forward** over 22 daily equities (2006–2026),
-the result is **role-specific**: an HA bullish-reversal used **at the entry**
-(EMA-cross exit held constant) beats its behaviour-matched non-HA baseline on
-**44 of 66** out-of-sample stock-folds (sign-test *p* ≈ 0.005, median +0.10
-Sharpe, net of cost), and the edge **survives a turnover-matched control** against
-a faster EMA that trades just as often (**46/66, *p* ≈ 0.001**). The same HA
-signal used **at the exit** significantly *destroys* value (14/66). This resolves
-the earlier null: a symmetric HA composite looks dead because its harmful HA exit
-cancels its useful HA entry. The effect is **modest and still loses to
-buy-and-hold** — this is a better *rule*, not an *alpha* — but it is real,
-directional, and reproducible. As before, this is exploratory research built on
-the open-source [`wichtelm`](https://github.com/jbiscella/wichtelm-app)
-backtester.
+A [previous study](/software-engineering/heikin-ashi-empirical-study/) falsified
+**one** Heikin-Ashi (HA) strategy family — a strong-candle trend rule that used HA
+on **both** the entry and the exit — and found its marginal contribution over an
+EMA-cross was ≈ 0 on equities. A fair objection: that tests one architecture, not
+the HA hypothesis space. This follow-up runs the discovery experiment instead —
+*does any HA rule add incremental value, and where?* — through a 2×2 factorial
+(entry ∈ {HA colour-reversal, EMA-cross} × exit ∈ {HA, EMA}) under a
+**walk-forward** with **turnover-matched** controls. The first cut looks
+role-specific: an HA bullish-reversal **at the entry** beats its behaviour-matched
+baseline on **44/66** out-of-sample stock-folds (*p* ≈ 0.005), while the same
+signal at the **exit** destroys value. But the **short-side control flips the
+pattern exactly** — and reveals the real mechanism: the value lives in the
+**bullish colour reversal (the "green flip")**, *wherever* it is used. The green
+flip beats a **turnover-matched** EMA whether it enters a long (**46/66, *p* ≈
+0.001**) or covers a short (**58/66, *p* ≈ 0.001**); the bearish flip (the "red
+flip") loses in both roles (12–14/66). The edge **holds intraday** (34/50, *p* ≈
+0.008) but does **not transfer to crypto** (5/16). It aligns with the equity
+upward drift, is **modest, and still loses to buy-and-hold** — a better *rule*,
+not an *alpha*. As before, everything runs on the open-source
+[`wichtelm`](https://github.com/jbiscella/wichtelm-app) backtester.
 
 ---
 
 ## 1. Why a second study
 
-The first article's verdict — "HA adds no measurable edge over an equivalent
-trend rule on equities" — was correct *about the thing it tested*: a strong-candle
-rule that fires HA on the way in and HA on the way out, bundled with EMA filters
-and stops. But "this one HA architecture fails" is not "HA is useless." HA is a
-**family** of signals (colour reversals, run-length, body geometry, strong
-candles) that can play several **roles** (entry trigger, exit trigger,
-confirmation filter). A single failed composite cannot speak for that space.
-
-So this study changes the question from *falsification* to *discovery*, and
-imposes the discipline the first one earned the right to demand of it:
-
-- A **pre-specified factorial**, not a grab-bag of strategies, so the result is a
-  clean statement about *where* HA helps, not *whether some configuration*
-  happened to win.
-- **Walk-forward** parameter selection (out-of-sample by construction), not a
-  single in-sample window.
-- A **behaviour-matched** non-HA baseline, and then a **turnover-matched**
-  control, because the first article's own §4.2.2 lesson was that an apparent
-  edge often dissolves once you neutralise the obvious confound.
+The first article's verdict — "HA adds no measurable edge over an equivalent trend
+rule on equities" — was correct *about the thing it tested*: a strong-candle rule
+that fires HA on the way in and HA on the way out. But "this one HA architecture
+fails" is not "HA is useless." HA is a **family** of signals that can play several
+**roles**, and a single failed composite cannot speak for that space. So this study
+changes the question from *falsification* to *discovery*, with the discipline the
+first one earned the right to demand: a **pre-specified factorial** (not a
+grab-bag), **walk-forward** selection (out-of-sample by construction), and a
+**behaviour-matched** baseline hardened by a **turnover-matched** control — because
+the first article's own lesson was that an apparent edge often dissolves once you
+neutralise the obvious confound.
 
 ## 2. Design
 
 ### 2.1 The 2×2 role factorial
 
-HA and the EMA-cross are made directly comparable by choosing the HA primitive
-that is, like a cross, a **transition event** rather than a persistent state: the
-**colour reversal** (`ha_bullish_reversal` / `ha_bearish_reversal`). A green-flip
-is the HA analogue of price crossing above its EMA; both are one-shot,
-similar-frequency triggers, which keeps turnover comparable from the outset. The
-factorial swaps the signal independently at entry and exit:
+HA and the EMA-cross are made comparable by choosing the HA primitive that is, like
+a cross, a **transition event** rather than a persistent state: the **colour
+reversal** (`ha_bullish_reversal` / `ha_bearish_reversal`). A green-flip is the HA
+analogue of price crossing above its EMA. The factorial swaps the signal
+independently at entry and exit:
 
 | Family | Entry trigger | Exit trigger |
 |---|---|---|
@@ -78,12 +68,10 @@ factorial swaps the signal independently at entry and exit:
 | `d-haexit` | EMA-cross up | **HA bearish reversal** |
 | `d-rev` | **HA bullish reversal** | **HA bearish reversal** |
 
-All four are long-only on the **real OHLC** (HA is signal-only, never a synthetic
-fill price — §3.2 of the first study), sized at 100% of equity, with the same
-fixed `stop_loss`/`take_profit` structure and the gap-aware protective fills
-introduced in `wichtelm` PR #64. The article-1 strong-candle family
-(`strong-lo`, HA strong + EMA filter on both sides) is carried along as a
-reference point. The entry family, in the `wichtelm` DSL:
+All are long-only on the **real OHLC** (HA is signal-only, never a synthetic fill
+price), 100%-of-equity sized, with the same fixed `stop_loss`/`take_profit` and the
+gap-aware protective fills from `wichtelm` PR #64. The article-1 strong-candle
+family (`strong-lo`) is carried along as a reference. The entry family, in DSL:
 
 ```gherkin
 Feature: Discovery — HA entry only (HA reversal in, EMA cross out)
@@ -105,44 +93,31 @@ Feature: Discovery — HA entry only (HA reversal in, EMA cross out)
     Then long_exit
 ```
 
-### 2.2 Walk-forward validation
+### 2.2 Walk-forward, baseline, and the incremental-value test
 
-The universe is 22 large-cap daily equities with continuous 2006–2026 history
-(the same long-history set as the first study). Validation is a **3-fold
-expanding-window walk-forward** with disjoint out-of-sample (OOS) windows:
+The core universe is 22 large-cap daily equities, 2006–2026, validated by a
+**3-fold expanding-window walk-forward** with disjoint out-of-sample (OOS) windows
+(IS 2006→2012/2016/2021; OOS 2012–16 / 2016–21 / 2021–26). Within each fold a
+family is swept (streak ∈ {1,2,3}, EMA ∈ {20,50,100}, stop/take ∈ {8/25, 15/100})
+**on the in-sample window only**; the **cross-instrument-robust** combination — best
+median in-sample Sharpe across the 22 names — is **locked** and run once on the
+untouched OOS window. Metrics are recomputed from `wichtelm`'s per-bar equity curve
+(validated to match the HTML report to 3 dp), **net of a 2 bp-per-side fee** on the
+realised round-trip count. The headline test is **paired per instrument**:
+*(HA-family OOS net) − (matched-baseline OOS net)*, pooled across folds into 66
+observations, summarised by the median paired delta and a sign test.
 
-| Fold | In-sample (parameters chosen here) | Out-of-sample (evaluated here) |
-|---|---|---|
-| F1 | 2006–2012 | 2012–2016 |
-| F2 | 2006–2016 | 2016–2021 |
-| F3 | 2006–2021 | 2021–2026 |
-
-Within each fold, every family is swept over its parameter grid (streak ∈ {1,2,3},
-EMA period ∈ {20,50,100}, stop/take ∈ {8%/25%, 15%/100%}) **on the in-sample
-window only**, and the **cross-instrument-robust** combination — the one with the
-best median in-sample Sharpe across the 22 names — is **locked**. That locked
-configuration is then run once on the untouched OOS window. Parameters are never
-chosen on data they are scored on.
-
-### 2.3 Metrics and the incremental-value test
-
-All metrics are recomputed from `wichtelm`'s per-bar equity curve (the
-`--dump-equity` export), validated to reproduce the HTML report's Sharpe / return
-/ drawdown to three decimals. Returns are taken **net of a 2 bp-per-side fee**
-applied to the realised round-trip count, so a higher-turnover family is charged
-for its turnover. The headline test is **paired and per-instrument**: for each
-stock-fold, *(HA-family OOS net) − (matched-baseline OOS net)*, pooled across the
-three folds into 66 paired observations, summarised by the median paired delta and
-a sign test on the win count.
+Three hardening steps follow: a **turnover-matched control** (the baseline rebuilt
+as a *fast* EMA that trades as often as the HA family, period chosen on the IS
+window), and two **transfer tests** — the same factorial on **8 crypto** daily
+(2021–2026, 2 folds) and on **25 intraday** 1-hour equities (2021–2025, 2 folds) —
+and finally the **short-side** mirror of the whole factorial.
 
 ## 3. Results
 
-### 3.1 The role factorial
+### 3.1 The first cut: HA helps at the entry, hurts at the exit
 
-![Heikin-Ashi value is role-specific: HA at the entry adds median +0.10 Sharpe vs a matched EMA baseline (44/66 OOS stock-folds), while HA at the exit subtracts; the edge holds against a turnover-matched fast EMA across all three folds](/assets/images/ha-entry-role-resolved.png)
-
-Pooled across the three OOS folds, each HA family measured against the matched
-`d-ema` baseline (paired per stock):
+Pooled across the three OOS folds, each HA family vs the matched `d-ema` baseline:
 
 | HA role | OOS wins | sign-test *p* | median Δ net | median Δ Sharpe |
 |---|--:|--:|--:|--:|
@@ -151,116 +126,129 @@ Pooled across the three OOS folds, each HA family measured against the matched
 | HA strong, both sides (`strong-lo`, article 1) | 25/66 | 0.98 | −9.9% | −0.11 |
 | HA at exit only (`d-haexit`) | 14/66 | 1.00 | −18.8% | −0.21 |
 
-The asymmetry is the whole story. Moving the HA signal to the **entry** is the
-only configuration that beats its non-HA twin; using it at the **exit** is
-significantly *worse* than an EMA-cross exit. The two symmetric families
-(`d-rev`, and article 1's `strong-lo`) sit in between — exactly what you would
-expect if a useful entry and a harmful exit partially cancel. That cancellation is
-the mechanical explanation for the first study's null result on equities: it only
-ever tested HA used on both sides at once.
+Read naively, this is "HA belongs at the entry." Moving the HA signal to the entry
+is the only configuration that beats its non-HA twin; at the exit it is
+significantly *worse*. The two symmetric families sit in between — consistent with a
+useful entry and a harmful exit cancelling, which is the mechanical explanation for
+the first study's null (it only ever tested HA on both sides at once).
 
-The per-fold family medians show the entry edge is not a single-window artefact:
+### 3.2 It is not a turnover artefact
 
-| Fold (OOS) | `d-ema` | `d-haentry` | `d-haexit` | `d-rev` | `strong-lo` |
-|---|--:|--:|--:|--:|--:|
-| F1 2012–16 | +24% / 0.46 | **+41% / 0.69** | +10% / 0.35 | +30% / 0.62 | +17% / 0.32 |
-| F2 2016–21 | +52% / 0.58 | **+68% / 0.65** | +26% / 0.44 | +34% / 0.49 | +43% / 0.53 |
-| F3 2021–26 | +53% / 0.51 | **+55% / 0.52** | +6% / 0.17 | +21% / 0.31 | +13% / 0.24 |
+The HA reversal entry fires about twice as often as the slow EMA-cross, so the
+obvious objection is that it simply *participates more* in a rising tape. Rebuilding
+the baseline as a **fast EMA** whose period is chosen on the in-sample window to
+**match `d-haentry`'s turnover**, then evaluating OOS, the HA entry **still wins**:
+**46/66** (*p* ≈ 0.001), median Δ net +17.3%, Δ Sharpe +0.11, with the fast EMA
+trading as often as — or more than — the HA entry on every fold. At equal trade
+frequency, *when* the HA reversal enters carries information a same-cost EMA-cross
+does not.
 
-*(median OOS net return / median OOS Sharpe across the 22 stocks)*
+### 3.3 Does it transfer? Intraday yes, crypto no
 
-### 3.2 The turnover-matched control
+The same factorial on **intraday (1-hour) equities** reproduces the entry result —
+`d-haentry` **34/50** (*p* ≈ 0.008), consistent in both folds (18/25, 16/25) — so
+it is an equity property, not a daily-bar accident. On **crypto**, it **collapses**:
+`d-haentry` is the *worst* HA role (**5/16**, *p* ≈ 0.96), and crypto returns are
+dominated by regime (every family makes triple-digit returns in the 2023–24 bull
+fold and loses in the 2024–26 fold) rather than by where HA sits. The entry edge is
+**asset-class-bound to equities** — echoing the first study's finding that HA's
+behaviour is asset-class dependent.
 
-The obvious objection — the one the first study taught us to pre-empt — is that
-the HA reversal entry simply *trades more* (it fires roughly twice as often as the
-slow EMA-cross), and more participation in a rising tape flatters return even net
-of a small fee. So the baseline is rebuilt to **match the turnover**: a *fast*
-EMA-cross (short period → more crosses), with its period chosen **on the
-in-sample window** to bring its trade count as close as possible to
-`d-haentry`'s, then locked and evaluated OOS.
+### 3.4 The short-side control reveals the real mechanism
 
-With turnover genuinely neutralised — the fast EMA trades as often as, or more
-than, the HA entry on every fold — the HA entry **still wins**:
+Running the **mirror factorial on the short side** (short on a bearish reversal /
+EMA-cross-down, cover on a bullish reversal / EMA-cross-up) flips the pattern
+**exactly**:
 
-| Fold | `d-haentry` median round-trips | fast-EMA median round-trips | HA entry wins |
-|---|--:|--:|--:|
-| F1 | 17 | 20 | 14/22 |
-| F2 | 30 | 29 | 17/22 |
-| F3 | 24 | 23 | 15/22 |
-| **Pooled** | — | — | **46/66** |
+![The 2x2 mechanism: HA's value tracks the bullish colour flip, not the entry/exit role — it wins at the long entry and the short cover (both use the green flip) and loses at the long exit and short entry (both use the red flip); the green flip travels across equity timeframes but fails on crypto](/assets/images/ha-green-flip-mechanism.png)
 
-Pooled sign-test *p* ≈ **0.001**, median Δ net **+17.3%**, median Δ Sharpe
-**+0.11**. The edge is therefore **not** a turnover artefact: at equal trade
-frequency, *when* the HA reversal chooses to enter carries information a same-cost
-EMA-cross does not. With four pre-specified roles tested, even a Bonferroni
-threshold (0.0125) leaves both the walk-forward (0.005) and the turnover-control
-(0.001) results standing.
+| | HA flip used | OOS wins vs matched baseline |
+|---|---|--:|
+| **Long entry** | 🟢 bullish reversal | **44/66** ✓ |
+| Long exit | 🔴 bearish reversal | 14/66 ✗ |
+| Short entry | 🔴 bearish reversal | 12/66 ✗ |
+| **Short cover** | 🟢 bullish reversal | **53/66** ✓ |
+
+The "entry vs exit" framing was the surface. Line up *which colour flip each cell
+uses* and the noise disappears: the **bullish reversal (green flip) carries the
+signal wherever it is used** — entering a long *or* covering a short — and the
+**bearish reversal (red flip) destroys value wherever it is used**. And the short
+cover survives the same hardening: against a **turnover-matched** fast-EMA cover it
+wins **58/66** (*p* ≈ 0.001, median Δ net +17.5%, Δ Sharpe +0.19). (On the short
+side every family loses money in absolute terms — the equity risk premium is a
+headwind both legs share — so only the *paired* delta is meaningful.)
 
 ## 4. Interpretation
 
-Heikin-Ashi smoothing makes a colour flip a slightly **earlier and cleaner**
-trend-onset trigger than a raw price/EMA cross — the two-bar averaging suppresses
-the single-bar noise that causes EMA crosses to fire a touch late or to whipsaw at
-the turn. That is a genuine, if small, **entry** advantage. The same smoothing is
-a **liability at the exit**: it makes the signal *lag*, so an HA-reversal exit
-gives back more of a move before it admits the trend is over, and it churns in
-choppy tape. A trader's folklore instinct — "HA keeps you in the trend" — is half
-right: it is a good way *in* and a poor way *out*.
+Heikin-Ashi's two-bar averaging makes a **bullish** colour flip an earlier, cleaner
+confirmation that a pullback has turned back up — and on equities that is a
+high-base-rate event, because the asset class drifts upward. So the green flip is a
+good *"the dominant uptrend has resumed"* trigger, and it pays whether you use it to
+open a long or to close a short. The **bearish** flip fights that drift: it flags
+tops that mostly resolve back up (bear-market rallies, V-recoveries), so acting on
+red flips — exiting longs early, or shorting — is systematically punished. The
+mechanism is **directional, not positional**, which is why the entry/exit reading
+inverts on the short side and the crypto test (no comparable structural drift)
+shows no green-flip edge at all.
 
-This also sharpens, rather than overturns, the first study's economics. The entry
-edge is real but **modest** (≈ +0.1 Sharpe, ≈ +15% net over a multi-year OOS
-window), and **every** family here still loses to buy-and-hold. HA at the entry
-makes a mechanical trend rule **better**; it does not make it a market-beating
-strategy. The contribution is a *cleaner signal*, not an *alpha*.
+This sharpens rather than overturns the first study's economics. The edge is real,
+survives turnover-matching on both sides, and holds intraday — but it is **modest**
+(≈ +0.1–0.2 Sharpe) and **every family here still loses to buy-and-hold**. The green
+flip makes a mechanical trend rule **better**; it does not make it market-beating.
+The contribution is a *cleaner signal aligned with the drift*, not an *alpha*.
 
 ## 5. Limitations
 
-- **Equities, daily, long-only.** The factorial has not yet been run on crypto,
-  on intraday bars, or with a short side. The first study found HA's behaviour is
-  asset-class dependent, so the entry edge should not be assumed to transfer.
-- **Correlated names, nested in-sample windows.** The 66 "observations" are 22
-  cross-correlated stocks × 3 expanding (hence overlapping) in-sample folds, so
-  the effective sample is smaller than 66 and the sign-test *p*-values overstate
-  significance. The defence is **consistency** — the entry family wins in all
-  three disjoint OOS windows and survives the turnover control — not any single
-  *p*-value.
-- **Still in-sample at the universe level.** Walk-forward isolates parameter
-  overfit within these 22 names; it does not prove the *family choice* (colour
-  reversal at entry) would have been selected ex-ante on a different universe.
-- **One HA feature, one matched baseline.** This tests the colour-reversal event
-  against an EMA-cross event. Other HA families the first study listed as
-  untested — body-size/ATR geometry, wick ratios, HA/raw divergence, multi-
-  timeframe HA — require new primitives in the backtester and remain open.
-- **Modest effect, no risk-scaling.** Fixed 100%-equity sizing; the comparison
-  is rule-vs-rule, not a deployable portfolio.
+- **Equities only for the edge; crypto explicitly excluded.** The green-flip edge
+  is demonstrated on equities (daily + intraday, long + short). The crypto test is
+  a small, highly-correlated probe (8 coins × 2 folds) and is reported as a
+  *negative*, not a measurement.
+- **Correlated names, nested in-sample windows.** The 66 daily "observations" are
+  22 cross-correlated stocks × 3 expanding (overlapping) IS folds, so the effective
+  sample is smaller than 66 and sign-test *p*-values overstate significance. The
+  defence is **consistency** — the green flip wins in every disjoint OOS fold, on
+  both timeframes, on both trade directions, and survives turnover-matching — not
+  any single *p*-value.
+- **Drift-conditional, not a market timer.** The interpretation ties the edge to the
+  equity upward drift; it has not been tested in a structurally downward-drifting
+  asset, and the short side loses money in absolute terms.
+- **One HA feature.** This isolates the colour reversal against an EMA-cross. Other
+  HA families the first study listed as untested — body/ATR geometry, wick ratios,
+  HA/raw divergence, multi-timeframe HA — need new backtester primitives and remain
+  open.
+- **Modest effect, no risk-scaling.** Fixed 100%-equity sizing; rule-vs-rule, not a
+  deployable portfolio. Still trails buy-and-hold.
 
 ## 6. Conclusion
 
-Asked the discovery question it was designed for, Heikin-Ashi is **not** valueless
-on equities — but its value is **role-specific and easily hidden**. As a
-colour-reversal **entry** trigger it beats a behaviour- and turnover-matched
-non-HA baseline out-of-sample across three independent folds (*p* ≈ 0.001); as an
-**exit** trigger it is measurably worse than the same non-HA rule. A strategy that
-uses HA symmetrically — like the family the first study falsified — nets the two
-out and looks dead. The broader methodological point is the reusable one: a
-**role-resolved ablation** recovered a real, directional signal that the earlier
-**symmetric** test had averaged into nothing. The signal is modest and still
-trails buy-and-hold, so the honest framing is a sharper hypothesis, not a
-deployable edge: *HA earns its keep on the way in, not on the way out.*
+Asked the discovery question it was designed for, Heikin-Ashi is **not** valueless on
+equities — but its value is narrower and stranger than "it works." It lives almost
+entirely in the **bullish colour reversal**: a green flip is a cleaner trend-resumption
+trigger than an EMA-cross at the same trade frequency, and it pays *wherever* it is
+used — opening longs (44→46/66) and covering shorts (53→58/66) alike — because it
+runs with the equity drift. The **bearish** flip, fighting that drift, loses
+everywhere. A strategy that uses HA symmetrically nets the two out and looks dead —
+which is exactly the family the first study falsified. The reusable methodological
+point: a **role- and direction-resolved** ablation recovered a real, mechanistic
+signal that the earlier **symmetric** test had averaged into nothing. The signal is
+modest, equity-specific, and still trails buy-and-hold, so the honest framing is a
+sharper hypothesis, not a deployable edge: *Heikin-Ashi's information is in the green
+flip, aligned with the drift — not in the candles' reputation for keeping you in a
+trade.*
 
 ---
 
 ### Reproducibility & disclaimer
 
 All backtests use [`wichtelm-app`](https://github.com/jbiscella/wichtelm-app) at
-commit `6ee5a1c` (the gap-aware protective-fill build), the same build pinned by
-the [first study](/software-engineering/heikin-ashi-empirical-study/).
-The four strategy families are plain-text `.strat` files (the entry family is
-reproduced in full in §2.1); the walk-forward harness, parameter grids and the
+commit `6ee5a1c` (the gap-aware protective-fill build), the same build pinned by the
+[first study](/software-engineering/heikin-ashi-empirical-study/). The strategy
+families are plain-text `.strat` files (the entry family is reproduced in full in
+§2.1); the walk-forward harness, turnover-matched controls, transfer tests and
 metric recomputation are external scripts. Price data was snapshotted from a
 commercial provider and split-adjusted; the licensed series is not redistributed,
-and the figure shows only **derived paired deltas**, never prices. Returns are net
-of a 2 bp-per-side fee applied post-hoc to each run's round-trip count.
+and the figure shows only **derived paired win-rates**, never prices. Returns are
+net of a 2 bp-per-side fee applied post-hoc to each run's round-trip count.
 
 *This article is for research and educational purposes only. It is not financial
 advice. Past performance is not indicative of future results, and hypothetical
