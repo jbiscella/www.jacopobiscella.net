@@ -55,9 +55,10 @@ stops cannot answer that question on its own: any edge might come from the
 filters or the stops rather than from HA. This study is built around isolating
 that contribution.
 
-We measure against **buy-and-hold**, report the cross-sectional **median** (with
-the mean alongside, since a single outlier distorts it), and treat transaction
-costs and regime behaviour as first-class results rather than footnotes.
+We measure against **buy-and-hold** and report the cross-sectional **median**
+(robust to the single-outlier distortion that affects the mean), and treat
+transaction costs and regime behaviour as first-class results rather than
+footnotes.
 
 ---
 
@@ -84,6 +85,16 @@ A limitation to state up front: the intraday buy-and-hold benchmark uses raw
 (price-return) close, while the daily benchmark uses adjusted (≈ total-return)
 close. Dividends are not credited to the strategy during long periods, nor
 charged on shorts.
+
+**Inclusion criteria.** The intraday equity and crypto sets are *fixed selections*
+of large, liquid, currently-traded names with full 2021-onward intraday history on
+the provider — chosen before any results were seen, but currently-listed and hence
+survivorship-biased (Limitations). The FX set is the seven majors plus the five
+highest-turnover crosses (§2 table). The 20-year daily set (§4.2) is 22
+currently-listed large caps with continuous 2006-onward adjusted history; only the
+point-in-time membership set (§4.2.1) applies a *programmatic, pre-registered*
+inclusion rule — a deterministic 150-name draw from S&P 500 point-in-time
+membership, with the data-quality and minimum-history exclusions enumerated there.
 
 ---
 
@@ -134,6 +145,16 @@ The "No-HA" variant replaces the HA entry/exit with a price-vs-EMA cross,
 holding the filters and stops constant — the direct test of whether HA adds
 anything. A **long/short** variant (regime-switched: short only when the weekly
 trend confirms a downtrend) is tested on crypto, with its own No-HA counterpart.
+
+A precision note on terminology: this design mixes a true *ablation* with a
+*replacement benchmark*. Dropping the weekly filter (No-1w) and stripping the
+scaffolding (HA-only) are direct ablations — the same signal with a component
+removed. No-HA is a **replacement benchmark**: swapping HA entry/exit for an
+EMA-cross changes the signal's frequency, latency and holding distribution, so it
+tests whether HA *outperforms a conventional trend signal* rather than isolating a
+single identical signal transformation. That is the right test for the question
+asked ("does HA beat an equivalent trend rule?"), but it is not a one-variable
+ablation, and the No-HA comparisons should be read in that light.
 
 ### 3.2 Execution model
 
@@ -212,10 +233,12 @@ All figures are gross of costs unless stated.
 Two results stand out. First, **Full ≈ No-HA** (Sharpe 0.24 vs 0.21, drawdown
 −24% vs −26%): replacing the HA signal with a plain EMA-cross leaves performance
 essentially unchanged, so on equities **HA adds no measurable edge over an
-equivalent trend rule**. Second, **the weekly filter is a drag, not a shield**:
-removing it (No-1w) raises median Sharpe from 0.24 to 0.70 and return from +3% to
-+18%, for a near-identical drawdown — the filter was sacrificing return for a
-marginal drawdown change.
+equivalent trend rule**. Second, **in this equity sample the weekly filter behaved
+as a drag rather than a shield**: removing it (No-1w) raises median Sharpe from
+0.24 to 0.70 and return from +3% to +18%, for a near-identical drawdown — the
+filter was sacrificing return for a marginal drawdown change. (Without paired
+tests or confidence intervals this is a description of the sample, not a
+generalisation beyond it.)
 
 **Crypto (8, long/short, 1h + 1w):**
 
@@ -255,7 +278,8 @@ independent regimes.
 
 The §4.2 cross-section uses 22 *fixed, currently-listed* names, which is
 survivorship-biased (it cannot see companies that left the index or went to
-zero). The next subsection removes that bias.
+zero). The next subsection materially mitigates that bias by including
+point-in-time membership and delisted constituents.
 
 ### 4.2.1 Point-in-time membership aggregate (survivorship-bias-mitigated, daily, 2006–2026)
 
@@ -289,10 +313,11 @@ roughly **eleven times** as much (+582% vs +53% gross), and the strategy's only
 durable advantage is **drawdown** — it more than halves the worst peak-to-trough
 decline (−19% vs −51%), visible in the underwater panel during 2008, 2020 and
 2022. On a risk-adjusted basis buy-and-hold still wins (Sharpe 0.62 vs 0.39).
-Because the rule is low-turnover at the daily frequency, realistic costs move the
-result only modestly (+53% → +45%). The economic reading is unchanged across the
-biased and unbiased cross-sections: this is a defensive overlay that trades the
-large majority of compounding for a smoother ride.
+Because the rule is low-turnover at the daily frequency, the tested explicit fees
+move the result only modestly (+53% → +45%). The economic reading is unchanged
+across the survivorship-biased and survivorship-bias-mitigated cross-sections:
+this is a defensive overlay that trades the large majority of compounding for a
+smoother ride.
 
 **A data-quality caveat that also bears on methodology.** The price series were
 pulled by bare ticker from a single price-only provider, which reuses delisted
@@ -327,16 +352,24 @@ index's). Two exposure-neutral benchmarks on the point-in-time membership portfo
 | Exposure-matched B&H (static 27% index / 73% cash) | +79% | **−16%** | 0.62 | 0.18 |
 | Volatility-matched B&H (index scaled ×0.32) | +100% | −19% | 0.62 | 0.19 |
 
-Both passive benchmarks **dominate the strategy**. A static "27% index, 73% cash"
-mix — the strategy's own average exposure, with *no timing whatsoever* — earns
-**more** (+79% vs +53%) at a **smaller** drawdown (−16% vs −19%) and higher
-risk-adjusted return (Sharpe 0.62 vs 0.39, Calmar 0.18 vs 0.11). Scaling the index
-to the strategy's volatility tells the same story (+100% vs +53% at identical
-drawdown). In other words, on this 20-year cross-section the strategy's
-market-timing **subtracts** value relative to naively holding less of the index:
-the drawdown reduction is an exposure effect, not evidence of skillful protection.
-(Cash is credited a 0% return here, matching the strategy's own convention — a
-positive cash rate over 2006–2026 would widen the passive benchmarks' lead.)
+Both passive benchmarks are built from the **same equal-weight point-in-time
+membership portfolio** used in §4.2.1. Their daily portfolio returns are
+multiplied either by the strategy's time-weighted average gross exposure (0.27)
+or by the ratio of strategy-to-benchmark realised volatility (0.32, on coincident
+daily returns), with the residual allocation earning a flat 0% and with no
+leverage or rebalancing costs; Sharpe and Calmar are computed by the same method
+as for the strategy. Both passive benchmarks **dominate the strategy**. A static
+"27% index, 73% cash" mix — the strategy's own average exposure, with *no timing
+whatsoever* — earns **more** (+79% vs +53%) at a **smaller** drawdown (−16% vs
+−19%) and higher risk-adjusted return (Sharpe 0.62 vs 0.39, Calmar 0.18 vs 0.11).
+Scaling the index to the strategy's volatility tells the same story (+100% vs +53%
+at identical drawdown). In other words, on this 20-year cross-section the
+strategy's market-timing **subtracts** value relative to naively holding less of
+the index: the drawdown reduction is an exposure effect, not evidence of skillful
+protection. (Cash is credited a 0% return here, matching the strategy's own
+convention. Crediting a positive cash rate would improve both the strategy and the
+de-risked passive benchmarks — both sit ≈73% in cash on average — and its effect
+on their relative ranking has not been modelled.)
 
 ### 4.3 Regime sub-periods (intraday, 2021–2026)
 
@@ -387,16 +420,20 @@ ex-post subgroup selection manufactures apparent edge.
 ### 4.6 Transaction-cost break-even
 
 An hourly rule executes 300–900 round trips over the window. Under a
-multiplicative cost model (`net = gross × (1 − 2f)^N`), net return is highly
+multiplicative cost model (`net ≈ gross × (1 − 2f)^N`), net return is highly
 fee-sensitive. **Among the equities with positive gross return**, the median
 break-even cost was **≈ 0.035% per side** — i.e. half of *that positive-gross
 subset* (not half of all 25) lose their edge at any realistic retail commission.
-This post-hoc model charges a flat fee per round trip rather than per traded
-notional; it is exact here only because every run is sized at **100% of equity**
-(notional ≈ equity each fill), and would need to be applied to each fill's actual
-notional under fractional or volatility-scaled sizing. It also omits bid-ask
-spread, slippage, market impact, borrow/funding costs on shorts, and dividend
-obligations; the real cost hurdle is therefore higher than the headline figure.
+The `(1 − 2f)^N` factor is a deliberately pessimistic *approximation* of the exact
+proportional-fee adjustment `(1 − f)^(2N)` (two executions per round trip): it
+drops the `+f²` per round trip, so it slightly overstates the cost at the fee
+levels tested. The model also charges a flat fee per round trip rather than per
+traded notional; this matches notional to equity only because every run is sized
+at **100% of equity** (notional ≈ equity each fill), and would need to be applied
+to each fill's actual notional under fractional or volatility-scaled sizing. It
+also omits bid-ask spread, slippage, market impact, borrow/funding costs on
+shorts, and dividend obligations; the real cost hurdle is therefore higher than
+the headline figure.
 
 ### 4.7 The short side is asset-class dependent
 
@@ -470,8 +507,10 @@ The most defensible one-line summary is therefore:
 > only in a small liquid-crypto sample — not on equities.
 
 This is consistent across a 20-year daily sample and three intraday regimes, so
-it is not a single-regime artefact — but it is specific to this rule set,
-parameters, cost environment and instrument universe.
+the observed profile is not confined to a single selected market episode within
+this dataset — but, with selected windows, in-sample tests and no out-of-sample
+validation, it is specific to this rule set, parameters, cost environment and
+instrument universe.
 
 ---
 
@@ -542,9 +581,13 @@ licensed price series is not redistributed. The S&P 500 point-in-time membership
 [`fja05680/sp500`](https://github.com/fja05680/sp500) dataset; the equity curves
 shown are **derived performance indices** (growth of $1), not raw prices, so they
 contain no redistributable licensed data. Transaction costs were applied post-hoc
-from each run's round-trip count. Every result here was re-run end-to-end on the
-current `wichtelm-app` release and reproduced to the reported precision; the FX
-cross-section was additionally broadened from eight to twelve pairs (§4.7).
+from each run's round-trip count. For reproducibility the runs are pinned to a
+fixed build: every result here was re-run end-to-end on `wichtelm-app` commit
+`a3b1cbf` (the gap-aware protective-fill build, PR #64) and reproduced to the
+reported precision; the FX cross-section was additionally broadened from eight to
+twelve pairs (§4.7). The strategy `.strat` files are reproduced verbatim in §3.1
+and §3.4 fixes the one parameter set used throughout; the per-run TOML configs and
+the licensed price snapshots are not redistributed.
 
 *This article is for research and educational purposes only. It is not financial
 advice. Past performance is not indicative of future results, and hypothetical
