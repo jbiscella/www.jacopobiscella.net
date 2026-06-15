@@ -32,8 +32,11 @@ flip beats a **turnover-matched** EMA whether it enters a long (**46/66, *p* ≈
 flip") loses in both roles (12–14/66). The edge **holds intraday** (34/50, *p* ≈
 0.008) but does **not transfer to crypto** (5/16). It aligns with the equity
 upward drift, is **modest, and still loses to buy-and-hold** — a better *rule*,
-not an *alpha*. As before, everything runs on the open-source
-[`wichtelm`](https://github.com/jbiscella/wichtelm-app) backtester.
+not an *alpha*. A closing hunt (§5) confirms the ceiling is structural: adding
+catalog filters, switching to forex, and even pooling 22 names into a diversified
+portfolio never beats buy-and-hold — the portfolio only *matches* its Sharpe at
+lower drawdown, which is an exposure effect. As before, everything runs on the
+open-source [`wichtelm`](https://github.com/jbiscella/wichtelm-app) backtester.
 
 ---
 
@@ -197,7 +200,66 @@ survives turnover-matching on both sides, and holds intraday — but it is **mod
 flip makes a mechanical trend rule **better**; it does not make it market-beating.
 The contribution is a *cleaner signal aligned with the drift*, not an *alpha*.
 
-## 5. Limitations
+## 5. Epilogue: can the green flip beat buy-and-hold?
+
+A "better entry than an EMA-cross" is not the same as "beats holding the asset."
+Three attempts to compose the green flip into a buy-and-hold-beating strategy — all
+walk-forward, all net of cost — close the loop.
+
+**Adding catalog filters makes it worse.** Bolting the obvious confirmations onto
+the green-flip entry — an EMA trend filter, a weekly higher-timeframe filter, an RSI
+ceiling, a MACD-momentum gate, a trailing stop — uniformly *reduces* both return and
+Sharpe. The plain, unfiltered green-flip entry is the best of the lot, and it still
+trails equal-name buy-and-hold:
+
+| Variant (OOS, 3-fold, net) | median net | median Sharpe | beats B&H Sharpe |
+|---|--:|--:|--:|
+| **Green flip, no filter** | **+55%** | **0.59** | 19/66 |
+| + MACD momentum | +25% | 0.42 | 14/66 |
+| + EMA trend filter | +26% | 0.42 | 12/66 |
+| + RSI ceiling | +26% | 0.41 | 11/66 |
+| + trailing stop | +26% | 0.41 | 11/66 |
+| + weekly filter | +17% | 0.32 | 6/66 |
+| buy & hold | +92% | 0.77 | — |
+
+Every filter makes the rule more selective → more time in cash → more of the drift
+given up. The plain green flip beats B&H's Sharpe on only 19 of 66 stock-folds.
+
+**Forex doesn't rescue it.** The natural home for a timing rule is a market with no
+upward drift, where sitting in cash costs nothing — so the factorial was re-run
+long/short on 12 FX pairs. It fails there too: no variant beats a (flat-ish)
+buy-and-hold, and HA specifically *hurts* — a plain EMA-cross long/short (Sharpe
+0.17) beats both the HA-entry (0.09) and HA-reversal (−0.09) variants. The green
+flip is an **equity-drift phenomenon, not a general timing signal**; strip the drift
+and its edge evaporates. (Caveat: these FX OOS windows happened to trend, which a
+long benchmark captured, and 12 USD-sharing pairs over two folds is a weak probe.)
+
+**Diversification gets tantalisingly close — and still doesn't beat it.** The
+strongest version pools all 22 green-flip sleeves into one equal-weight,
+daily-rebalanced portfolio (each name invested only while its rule is long, cash
+otherwise). Diversification lifts the strategy's Sharpe dramatically — from ≈ 0.6
+per name to **1.27** — but it lifts buy-and-hold just as much, to **1.32**:
+
+| Portfolio (OOS, pooled) | total return | Sharpe | max drawdown | avg exposure |
+|---|--:|--:|--:|--:|
+| Green-flip portfolio | +417% | 1.27 | **−14%** | 54% |
+| Equal-weight buy & hold | +1303% | **1.32** | −33% | 100% |
+
+The green-flip portfolio **nearly matches** buy-and-hold's risk-adjusted quality
+(Sharpe 1.27 vs 1.32) while invested only ~54% of the time and with **less than half
+the worst drawdown**, and it even wins one of the three folds outright (2016–21:
+Sharpe 1.63 vs 1.44 at a third of the drawdown). But it does not *beat* B&H — and,
+exactly as the first study's §4.2.2 showed, the lower drawdown is the **exposure
+effect**, not skill: a passive buy-and-hold de-risked to the same ~54% exposure
+carries the *same* Sharpe (scaling is Sharpe-invariant) and a similarly shallow
+drawdown. The diversified green-flip portfolio is, at best, an expensive way to
+reproduce "hold a bit less of the index."
+
+The verdict is consistent and structural: a rule that steps out of a drifting asset
+forfeits compounding that a better entry signal cannot recover. **The green flip is a
+genuinely better entry — and still not an alpha.**
+
+## 6. Limitations
 
 - **Equities only for the edge; crypto explicitly excluded.** The green-flip edge
   is demonstrated on equities (daily + intraday, long + short). The crypto test is
@@ -216,10 +278,12 @@ The contribution is a *cleaner signal aligned with the drift*, not an *alpha*.
   HA families the first study listed as untested — body/ATR geometry, wick ratios,
   HA/raw divergence, multi-timeframe HA — need new backtester primitives and remain
   open.
-- **Modest effect, no risk-scaling.** Fixed 100%-equity sizing; rule-vs-rule, not a
-  deployable portfolio. Still trails buy-and-hold.
+- **Modest effect; not buy-and-hold-beating.** Fixed 100%-equity sizing. The §5
+  epilogue tests the portfolio case directly: even diversified, the green flip only
+  *matches* B&H's Sharpe (at lower drawdown, which is an exposure effect), and the
+  filter and forex hunts fail outright. A better rule, not an alpha.
 
-## 6. Conclusion
+## 7. Conclusion
 
 Asked the discovery question it was designed for, Heikin-Ashi is **not** valueless on
 equities — but its value is narrower and stranger than "it works." It lives almost
@@ -234,7 +298,9 @@ signal that the earlier **symmetric** test had averaged into nothing. The signal
 modest, equity-specific, and still trails buy-and-hold, so the honest framing is a
 sharper hypothesis, not a deployable edge: *Heikin-Ashi's information is in the green
 flip, aligned with the drift — not in the candles' reputation for keeping you in a
-trade.*
+trade.* And as the §5 hunt shows, even composed at its best — diversified across 22
+names — it only draws level with buy-and-hold, never ahead: the ceiling is
+structural, not a matter of finding richer HA features.
 
 ---
 
