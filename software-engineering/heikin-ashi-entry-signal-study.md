@@ -6,7 +6,7 @@ grand_parent: Blog
 nav_order: -20260615
 date: 2026-06-15
 tags: [heikin-ashi, backtesting, technical-analysis, quantitative-finance, ablation, walk-forward, overfitting, wichtelm]
-post_excerpt: A discovery follow-up that surfaces a clean, mechanistic-looking Heikin-Ashi signal — the bullish colour reversal — and then watches it dissolve under the right controls: a raw (non-HA) reversal does as well or better, the edge is concentrated in survivors and vanishes on delisted names, and it never beats buy-and-hold. A case study in how a carefully-validated signal can still evaporate.
+post_excerpt: "A discovery follow-up that surfaces a clean, mechanistic-looking Heikin-Ashi signal — the bullish colour reversal — and then watches it dissolve under the right controls: a raw (non-HA) reversal does as well or better, the edge is concentrated in survivors and vanishes on delisted names, and it never beats buy-and-hold. A case study in how a carefully-validated signal can still evaporate."
 description: "A role- and direction-resolved walk-forward Heikin-Ashi study where an apparent bullish-reversal edge survives turnover-matching, intraday and short-side controls — then dissolves under a raw-signal control (it isn't HA) and a survivorship correction (it vanishes on delisted names), and never beats buy-and-hold. A methodological case study in deflating an apparent edge."
 ---
 
