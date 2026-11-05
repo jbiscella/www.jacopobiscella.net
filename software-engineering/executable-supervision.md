@@ -3,8 +3,8 @@ layout: default
 title: "Executable Supervision: How BDD and TDD Keep an Agent Honest"
 parent: Software Engineering Notes
 grand_parent: Blog
-nav_order: -20261106
-date: 2026-11-06
+nav_order: -20261115
+date: 2026-11-15
 tags: [claude-code, ai-assisted-development, bdd, tdd, gherkin, agent-skills, mutation-testing, code-review, workflow]
 post_excerpt: "A green build is the output of automated supervision. How executable specifications, increments, stop rules, and independent checks work together with a coding agent, and what each one can and cannot guarantee."
 description: "How executable specifications, incremental implementation, automated supervision, stopping conditions, oracle independence, and review mechanisms work together with a coding agent, with published skills and real test failures from my own projects."
