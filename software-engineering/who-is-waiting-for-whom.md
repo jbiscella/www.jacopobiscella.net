@@ -3,8 +3,8 @@ layout: default
 title: "Who Is Waiting for Whom: The Economics of Working with a Coding Agent"
 parent: Software Engineering Notes
 grand_parent: Blog
-nav_order: -20261105
-date: 2026-11-05
+nav_order: -20261108
+date: 2026-11-08
 tags: [claude-code, ai-assisted-development, bdd, tdd, qa, business-analysis, regtech, productivity]
 post_excerpt: "An agent that never asks a question can still block you. Why the quantity to optimize with coding agents is accepted, correct increments rather than generated code, and what that means for developers, QA, and business analysis."
 description: "Why BDD and TDD become valuable interfaces to coding agents: the costs of waiting and rework, generation throughput versus accepted increments, the case for preserving verification and requirements expertise, and a proposed way to test the claim."
