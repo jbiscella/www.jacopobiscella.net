@@ -20,7 +20,11 @@ The old objection was about people. To use these practices well, you first had t
 
 That last sentence is the thesis, and it needs precision. Automated guardrails are supervision, not the absence of it. The goal is to replace continuous human intervention with automated supervision and exception-driven human involvement. The agent gets operational autonomy: it can implement and verify changes within defined constraints. It does not get decision-making authority: it cannot invent business requirements or make unauthorized architectural decisions. Human judgment comes in when the specification, its authoritative references, and the available checks cannot settle a question.
 
+<<<<<<< HEAD
 This is a prediction, and the evidence for it is mixed. This article covers the economics and what they mean for developers, QA, and business analysis. Its companion, [Executable Supervision](/software-engineering/executable-supervision/), covers how the mechanism works and where it fails, including agents that cheat on tests.
+=======
+This is a prediction, and the evidence for it is mixed. It comes from using this approach on several of my own projects, including [H-tchen Mail](https://github.com/jbiscella/H-tchen-Mail), [ha-track](https://github.com/jbiscella/ha-track), [wichtelm-app](https://github.com/jbiscella/wichtelm-app), and [Ferrifuge](https://github.com/jbiscella/ferrifuge), not from a controlled comparison. This article covers the economics and what they mean for developers, QA, and business analysis. Its companion, which follows this one, covers how the mechanism works and where it fails, including agents that cheat on tests.
+>>>>>>> post/who-is-waiting-for-whom
 
 ---
 
