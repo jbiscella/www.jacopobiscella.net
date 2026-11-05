@@ -20,7 +20,7 @@ The old objection was about people. To use these practices well, you first had t
 
 That last sentence is the thesis, and it needs precision. Automated guardrails are supervision, not the absence of it. The goal is to replace continuous human intervention with automated supervision and exception-driven human involvement. The agent gets operational autonomy: it can implement and verify changes within defined constraints. It does not get decision-making authority: it cannot invent business requirements or make unauthorized architectural decisions. Human judgment comes in when the specification, its authoritative references, and the available checks cannot settle a question.
 
-This is a prediction, and the evidence for it is mixed. This article covers the economics and what they mean for developers, QA, and business analysis. Its companion, which follows this one, covers how the mechanism works and where it fails, including agents that cheat on tests.
+This is a prediction, and the evidence for it is mixed. This article covers the economics and what they mean for developers, QA, and business analysis. Its companion, [Executable Supervision](/software-engineering/executable-supervision/), covers how the mechanism works and where it fails, including agents that cheat on tests.
 
 ---
 
@@ -68,7 +68,7 @@ Add to that the cost the study does not capture: a team has to learn to write a 
 
 With an agent in the loop, three things change:
 
-1. **The workflow transfers in seconds.** The one I use is a [317-line file](https://github.com/jbiscella/skills-dungeon/blob/main/skills/code/incremental-implementation-workflow/SKILL.md). Every session that loads it starts with the same rules. No onboarding, no months of pairing. Loading the rules does not guarantee applying them well, because judgment does not transfer with the file, which is why the checks have to be independent.
+1. **The workflow transfers in seconds.** The one I use is a [317-line file](https://github.com/jbiscella/skills-dungeon/blob/main/skills/code/incremental-implementation-workflow/SKILL.md). Every session that loads it starts with the same rules. No onboarding, no months of pairing. Loading the rules does not guarantee applying them well, because judgment does not transfer with the file, which is why the checks [have to be independent](/software-engineering/executable-supervision/#what-each-check-can-and-cannot-guarantee).
 2. **The typing moved.** The agent writes the test and the implementation, so the initial-time penalty no longer falls on the developer in the same way. This is my inference. I know of no study that replicates those numbers with agents.
 3. **The test gained a second reader.** A test used to be mostly a safety net for humans. For an agent, it is also the most precise definition of "finished" it can check on its own.
 
@@ -78,7 +78,7 @@ With an agent in the loop, three things change:
 
 A scenario states a requirement and, once its steps are wired to meaningful assertions, becomes the check for it. The agent writes a failing test, implements until it goes green, and stops with a written brief when requirements are ambiguous, contradictory, or insufficient and no authoritative source settles them.
 
-A check like the retry scenario above is what I mean by an oracle: the thing that decides whether a result is right. A green result is evidence of compliance with those checks, not proof of business correctness. The agent will iterate as hard against a bad oracle as against a good one, so everything below depends on who can write a good one. The companion article, which follows this one, has the scenarios, the skills, and the failure modes.
+A check like the retry scenario above is what I mean by an oracle: the thing that decides whether a result is right. A green result is evidence of compliance with those checks, not proof of business correctness. The agent will iterate as hard against a bad oracle as against a good one, so everything below depends on who can write a good one. The [companion article](/software-engineering/executable-supervision/) has the scenarios, the skills, and the failure modes.
 
 ---
 
@@ -98,7 +98,7 @@ It also cuts against any simple defense of job titles. Those developers show tha
 
 ## Where the argument breaks
 
-The technical objections, such as tests that can be gamed and scenarios that stop at the application boundary, are for the companion article. These are the economic ones.
+The technical objections, such as tests that can be gamed and scenarios that stop at the application boundary, are in the [companion article](/software-engineering/executable-supervision/#where-the-mechanism-breaks). These are the economic ones.
 
 **The cost moved.** The learning curve did not vanish. Writing a scenario with a real oracle, or a value clause that can be falsified, is still the hard part, and now it sits with whoever writes the spec. Worse, the persona pass can make a weak spec feel reviewed. The [`three-amigos` README](https://github.com/jbiscella/skills-dungeon/blob/main/skills/chat/three-amigos/README.md) says so directly: it does not replace stakeholder validation. Three personas played by one model do not know what your users need. BDD's original value was the conversation between real people, and a simulation does not reproduce it.
 
@@ -146,7 +146,7 @@ If the argument holds, the skills that gain value are the ones at the two ends o
 Concretely, I think that means getting better at a few things, even as agents write more of the code and the tests:
 
 - **Defining verifiable behavior.** Recognizing a weak oracle, by reading a step definition and asking what would still pass, and writing falsifiable requirements. "So that the system is more robust" cannot fail, and so it cannot guide anything.
-- **Managing decision boundaries.** Finding implicit assumptions: whether a retry is safe for a non-idempotent operation stays invisible until somebody asks. Deciding what can be delegated, where the classification I describe in the companion article is my current attempt.
+- **Managing decision boundaries.** Finding implicit assumptions: whether a retry is safe for a non-idempotent operation stays invisible until somebody asks. Deciding what can be delegated, where the [classification I describe in the companion article](/software-engineering/executable-supervision/#stopping-is-what-makes-autonomy-safe) is my current attempt.
 - **Evaluating correctness.** Separating implementation correctness from business correctness, since the code can do exactly what the scenario says while the scenario is wrong. Understanding the architectural invariants that must hold across every change, because no single scenario will show them breaking.
 - **Maintaining technical judgment.** Keeping enough implementation depth to judge the result. Nobody can evaluate a review finding, or an agent's claim about a stalled websocket, without understanding the machinery.
 
@@ -154,4 +154,4 @@ The last item has a real counterargument. Excessive delegation may gradually wea
 
 None of that right-hand column is new. It is what a good Three Amigos session and a disciplined TDD practice always demanded. The practices were rarely wrong. They were expensive to teach to people, and the workflow is cheap to hand to an agent. What remains expensive is the judgment about what the scenarios should say. That is where I would now spend my own learning time, and it is a strange moment to let that expertise walk out of the door before anyone else has learned it.
 
-How that supervision works, and how much a green build is really worth, is the subject of the companion article.
+How that supervision works, and how much a green build is really worth, is the subject of [Executable Supervision](/software-engineering/executable-supervision/).
