@@ -6,15 +6,15 @@ grand_parent: Blog
 nav_order: -20261115
 date: 2026-11-15
 tags: [claude-code, ai-assisted-development, bdd, tdd, gherkin, agent-skills, mutation-testing, code-review, workflow]
-post_excerpt: "A green build is the output of automated supervision. How executable specifications, increments, stop rules, and independent checks work together with a coding agent, and what each one can and cannot guarantee."
-description: "How executable specifications, incremental implementation, automated supervision, stopping conditions, oracle independence, and review mechanisms work together with a coding agent, with published skills and real test failures from my own projects."
+post_excerpt: "What supervises a coding agent when nobody is watching, and how much a green build is really worth. How executable specifications, increments, stop rules, and independent checks work together on my own projects, and what each of them can and can't guarantee."
+description: "How executable specifications, incremental implementation, automated supervision, stopping conditions, oracle independence, and review fit together when working with a coding agent, with published skills and real test failures from my own projects."
 ---
 
 # Executable Supervision: How BDD and TDD Keep an Agent Honest
 
-A green build is the output of automated supervision. This article is about how much that output is worth.
+This post is about what supervises a coding agent when nobody is watching, and how much a green build is really worth when the agent did the work on its own.
 
-In [Who Is Waiting for Whom](/software-engineering/who-is-waiting-for-whom/) I argued that a developer and a coding agent can each be the other's bottleneck, and that BDD and TDD address both:
+In [Who Is Waiting for Whom](/software-engineering/who-is-waiting-for-whom/) I wrote about how a developer and a coding agent can each end up being the other's bottleneck, and why BDD and TDD seem to help with both:
 
 | | The human blocks the agent | The agent blocks the human |
 |---|---|---|
@@ -22,17 +22,17 @@ In [Who Is Waiting for Whom](/software-engineering/who-is-waiting-for-whom/) I a
 | **Cause** | No check the agent can run itself | Ambiguity the agent resolved silently |
 | **Remedy** | A pass/fail signal the agent can read | A spec precise enough to expose the ambiguity, and a rule to stop on it |
 
-The goal is to replace continuous human intervention with automated supervision and exception-driven human involvement. The agent gets operational autonomy: it can implement and verify changes within defined constraints. It does not get decision-making authority: it cannot invent business requirements or make unauthorized architectural decisions. Human judgment comes in when the specification, its authoritative references, and the available checks cannot settle a question.
+The idea isn't to remove supervision but to change who does it. Instead of me watching continuously, automated checks do the supervising, and I come in when something is exceptional. The agent gets operational autonomy: it can implement and verify changes within the constraints it's been given. It doesn't get decision-making authority: it can't invent business requirements or make architectural decisions nobody approved. When the specification, its authoritative references, and the available checks can't settle a question, the question comes back to me.
 
-That article covers why this matters economically. This one covers how it works, using two published skills and my own projects, and what each mechanism can and cannot guarantee.
+That post was about why this matters economically. This one is about how it works in practice, using two published skills and my own projects, and about what each mechanism can and can't guarantee.
 
 ---
 
 ## What a scenario is when an agent reads it
 
-A Gherkin scenario gives an agent a structured description of expected behavior and, once its steps are wired to meaningful assertions, an executable check for that behavior. The structure encourages explicit preconditions, actions, and outcomes, but it does not guarantee precision or a strong oracle. My hypothesis is that it also helps the agent write better tests, partly because one scenario maps to one test. I know of no study that isolates this effect, and it does nothing to stop a weak step definition.
+A Gherkin scenario gives an agent a structured description of the expected behavior and, once its steps are wired to meaningful assertions, an executable check for it. The structure encourages explicit preconditions, actions, and outcomes, but it doesn't guarantee precision or a strong oracle. My hunch is that it also helps the agent write better tests, partly because one scenario maps to one test. I don't know of any study that isolates that effect, though, and it does nothing to prevent a weak step definition.
 
-The quality of the oracle is what makes this work. Take a retry on an upstream call, as an illustration, with a weak ending:
+What makes the difference is the quality of the oracle. Take a retry on an upstream call, as an illustration, with a weak ending:
 
 ```gherkin
 Scenario: Upstream fails transiently, then recovers
@@ -41,7 +41,7 @@ Scenario: Upstream fails transiently, then recovers
   Then no error is raised
 ```
 
-If the step only checks that no exception escapes, an implementation that catches the error and returns nothing can pass. The agent goes green, and the loop closes on the wrong thing. The failure stays hidden until someone notices the empty result. A tighter version states decisions the agent would otherwise make alone:
+If the step only checks that no exception escapes, an implementation that swallows the error and returns nothing can pass. The agent goes green, and the loop closes on the wrong thing. Nobody notices until someone sees the empty result. A tighter version spells out the decisions the agent would otherwise make on its own:
 
 ```gherkin
   Then the quote from the second response is returned
@@ -54,15 +54,17 @@ Scenario: Retries are exhausted
   And the caller receives an "upstream unavailable" error
 ```
 
-This is why I treat scenario quality as the actual skill being exercised. The agent will iterate as hard against a bad oracle as against a good one.
+This is why, for me, writing good scenarios is the real skill in all of this. The agent will iterate just as hard against a bad oracle as against a good one.
 
 ---
 
 ## A worked example: two skills
 
-My public [skills-dungeon](https://github.com/jbiscella/skills-dungeon) archive contains the two skills I use for this. They grew out of building [H-tchen Mail](https://github.com/jbiscella/H-tchen-Mail), and [ha-track](https://github.com/jbiscella/ha-track), [wichtelm-app](https://github.com/jbiscella/wichtelm-app), and [Ferrifuge](https://github.com/jbiscella/ferrifuge) all carry the workflow skill in their repositories. [`three-amigos`](https://github.com/jbiscella/skills-dungeon/blob/main/skills/chat/three-amigos/SKILL.md) runs upstream, in chat, while a story is still being shaped. It interrogates the draft as a Business Analyst, a Tester, and a Technician, and emits a refined value clause, Gherkin scenarios, open questions, and out-of-scope decisions. That artifact is the input to [`incremental-implementation-workflow`](https://github.com/jbiscella/skills-dungeon/blob/main/skills/code/incremental-implementation-workflow/SKILL.md), which runs in Claude Code and implements an increment one phase at a time.
+I keep the two skills I use for this in my public [skills-dungeon](https://github.com/jbiscella/skills-dungeon) archive. They grew out of building [H-tchen Mail](https://github.com/jbiscella/H-tchen-Mail), and [ha-track](https://github.com/jbiscella/ha-track), [wichtelm-app](https://github.com/jbiscella/wichtelm-app), and [Ferrifuge](https://github.com/jbiscella/ferrifuge) all carry the workflow skill in their repositories.
 
-Each rule in them replaces a question a human would otherwise have to answer during implementation:
+[`three-amigos`](https://github.com/jbiscella/skills-dungeon/blob/main/skills/chat/three-amigos/SKILL.md) runs upstream, in chat, while a story is still taking shape. It questions the draft from three points of view, a Business Analyst, a Tester, and a Technician, and produces a refined value clause, Gherkin scenarios, open questions, and out-of-scope decisions. That becomes the input to [`incremental-implementation-workflow`](https://github.com/jbiscella/skills-dungeon/blob/main/skills/code/incremental-implementation-workflow/SKILL.md), which runs in Claude Code and implements an increment one phase at a time.
+
+The way I think about the rules in them is that each one answers a question I would otherwise have to answer myself during implementation:
 
 | The question | Who answers it now | Where |
 |---|---|---|
@@ -73,28 +75,28 @@ Each rule in them replaces a question a human would otherwise have to answer dur
 | Is it done? | Scenarios and unit tests pass, no regressions, invariants verified | §10 |
 | Can I trust an old ✅? | A scoped audit when you touch code in a "done" increment | §12 |
 
-The definition of done contains the sentence that most directly serves the thesis: "There is no manual sign-off step beyond green build."
+The definition of done has the sentence that matters most here: "There is no manual sign-off step beyond green build."
 
-So supervision has not disappeared. It has changed form: the tests supervise the loop continuously, and I am called in by exception. The agent decides how to satisfy the constraints, and can resolve ambiguities against an authoritative source the spec names. It cannot invent requirements where no such authority exists. I am at the start, deciding what the scenarios say. I am at the stop conditions, when requirements are ambiguous, contradictory, or insufficient and no such source settles them. I am not in the middle of a routine increment.
+So supervision hasn't gone away; it has changed shape. The tests supervise the loop continuously, and I get called in when something is exceptional. The agent decides how to satisfy the constraints, and it can resolve an ambiguity against an authoritative source the spec names. What it can't do is invent requirements where no such source exists. My part is at the start, deciding what the scenarios say, and at the stop conditions, when requirements are ambiguous, contradictory, or incomplete and nothing settles them. In the middle of a routine increment, I'm not needed.
 
 ---
 
 ## How big is an increment?
 
-Agent autonomy depends on where the boundaries of the work are drawn. No formula I know of answers this, and I would distrust a fixed number of scenarios, files, or commits. What I can describe is what pushes in each direction.
+How much autonomy an agent can have depends a lot on where the boundaries of the work are drawn. I don't have a formula for this, and I'd be suspicious of any fixed number of scenarios, files, or commits. What I can describe is what pulls in each direction.
 
-A large increment gives the agent more decisions to make alone, a larger surface to verify, and a harder diagnosis when something fails. It also makes rework more expensive, because more has been built on the wrong assumption by the time anyone finds out. A tiny increment has the opposite problem: more orchestration, more context handed from step to step, and fragments that verify nothing meaningful on their own.
+A large increment leaves the agent more decisions to make alone, more to verify, and a harder diagnosis when something breaks. It also makes rework more expensive, because more has been built on the wrong assumption by the time anyone notices. A very small one has the opposite problem: more orchestration, more context passed from step to step, and pieces that don't verify anything meaningful on their own.
 
-A well-defined increment has bounded behavior, a check that means something, manageable dependencies, and an explicit way to know it is finished. The skill encodes this mostly through its shape rather than a size:
+A good increment, as I see it, has bounded behavior, a check that means something, manageable dependencies, and a clear way to tell it's finished. The skill encodes this through the shape of the work more than through its size:
 
-- An increment needs an "As ..., I want ..., so that ..." clause and at least one scenario, and the work does not start without them (§1).
-- Scaffolding such as a client or a test double is a *prerequisite*, listed in a declared plan and committed separately (§3, §4), distinct from the behavior that makes the scenarios pass.
-- The agent greens one scenario at a time when it can, committing as it goes (§4). A failure then points at a small change.
-- An agent may propose a split when an increment is too dense, but every sub-increment must have its own clause and scenario, and it needs my approval (§2). The only size signal is a recommendation: an increment taking more than a few days should probably be split (§9).
+- An increment needs an "As ..., I want ..., so that ..." clause and at least one scenario, and work doesn't start without them (§1).
+- Scaffolding, like a client or a test double, is a *prerequisite*: it's listed in a declared plan and committed separately (§3, §4), apart from the behavior that makes the scenarios pass.
+- The agent turns scenarios green one at a time where it can, committing as it goes (§4), so a failure points at a small change.
+- The agent can propose a split when an increment is too dense, but every sub-increment needs its own clause and scenario, and the split needs my approval (§2). The only size guidance is a recommendation: an increment taking more than a few days should probably be split (§9).
 
-The last point is a real human stop inside the workflow, as is the optional plan confirmation when prerequisites touch cross-cutting concerns (§3). Neither is an approval between increments. Both fire only when the agent wants to change the shape of the work.
+That last point is a genuine human stop inside the workflow, and so is the optional plan confirmation when prerequisites touch cross-cutting concerns (§3). Neither is an approval between increments, though. Both only come up when the agent wants to change the shape of the work.
 
-Take a feature, as a hypothetical, that fetches an external quote, retries transient failures, and exposes the result to a consumer:
+Here's a hypothetical feature that fetches an external quote, retries transient failures, and exposes the result to a consumer:
 
 | Criterion (my judgment, and context matters) | One increment | Split by layer | Split by observable outcome |
 |---|---|---|---|
@@ -104,21 +106,21 @@ Take a feature, as a hypothetical, that fetches an external quote, retries trans
 | Decisions stay few per run | Less so | Often | Often |
 | Avoids extra orchestration | Yes | No | Partly |
 
-Splitting by layer looks tidy, but here "an HTTP client" has no user-visible outcome, and the skill would treat it as a prerequisite. That is not a rule against layers: a component with its own externally verifiable contract, such as a client library with consumers, can be a perfectly good increment. Splitting by outcome makes independent verification easier without guaranteeing it. Here it gives three candidates: a consumer gets a quote from a healthy upstream, a consumer still gets it after a transient failure, and a consumer gets a clear error when retries run out. The first carries the fetching and the exposure. Each later one depends on the earlier and adds one decision.
+Splitting by layer looks tidy, but here "an HTTP client" has no user-visible outcome, so the skill would treat it as a prerequisite. That's not an argument against layers in general: a component with its own externally verifiable contract, like a client library with real consumers, can be a perfectly good increment. Splitting by outcome makes independent verification easier, though it doesn't guarantee it. In this case it gives three candidates: a consumer gets a quote from a healthy upstream, a consumer still gets one after a transient failure, and a consumer gets a clear error when retries run out. The first carries the fetching and the exposure; each of the others builds on the previous one and adds a single decision.
 
-That is one reasonable split, not the correct one. If the retry policy were a single scenario with a shared decision table, one increment might be better, and the extra orchestration of three runs would buy little. A useful test is whether each piece can go red and then green for a reason someone cares about. The [spec](https://github.com/jbiscella/ferrifuge/blob/main/CLAUDE.md) of [Ferrifuge](https://github.com/jbiscella/ferrifuge), my Rust Centrifugo client, does this at block level, with sub-increments that each carry their own value clause, one branch, and one pull request.
+That's one reasonable split, not the right one. If the retry policy fit in a single scenario with a shared decision table, one increment might well be better, and three separate runs wouldn't buy much. A useful test, I think, is whether each piece can go red and then green for a reason someone actually cares about. The [spec](https://github.com/jbiscella/ferrifuge/blob/main/CLAUDE.md) of Ferrifuge, my Rust Centrifugo client, works this way at block level, with sub-increments that each have their own value clause, branch, and pull request.
 
-Boundaries also shape stopping. A bounded increment surfaces an ambiguity early and states it narrowly, and the question reaching me concerns one behavior. A sprawling one tends to surface it late, with commits already resting on a guess.
+Boundaries also affect stopping. A bounded increment tends to surface an ambiguity early and narrowly, so the question that reaches me is about one behavior. A sprawling one tends to surface it late, when several commits are already resting on a guess.
 
 ---
 
 ## Stopping is what makes autonomy safe
 
-A loop with no human watching needs a legitimate way out. Without one, an agent facing a contradictory spec has two options: give up or make the check pass somehow.
+If nobody is watching the loop, the agent needs a legitimate way out. Otherwise, faced with a contradictory spec, it has two options: give up, or make the check pass somehow.
 
-The skill's answer is the clarification brief in §6. On a missing scenario, a contradiction, an architectural decision that would need changing, or drift between code and spec, the agent stops and writes a self-contained, 8-section brief ending in a question with an explicit answer criterion. The anti-pattern list states the reason: adjusting code or tests to make an ambiguous spec work "loses the most valuable signal you have."
+The skill's answer is the clarification brief in §6. When a scenario is missing, the spec contradicts itself, an architectural decision would have to change, or code and spec have drifted apart, the agent stops and writes a self-contained, 8-section brief ending in a question with an explicit criterion for the answer. The anti-pattern list explains why: bending code or tests to make an ambiguous spec work "loses the most valuable signal you have."
 
-A decision table shows what such a stop looks like. Back to the retry feature, as an illustration, limited to successful responses and transient failures, with one more condition:
+A decision table shows what one of these stops looks like. Back to the retry feature, as an illustration, limited to successful responses and transient failures, with one extra condition:
 
 | | Rule 1 | Rule 2 | Rule 3 | Rule 4 |
 |---|---|---|---|---|
@@ -127,44 +129,44 @@ A decision table shows what such a stop looks like. Back to the retry feature, a
 | Retries left | – | Yes | No | – |
 | **Action** | Return the response | Retry | Raise an error | **Not specified** |
 
-Rule 4 is the interesting column. Suppose the spec requires retries for transient failures and says nothing about non-idempotent operations. An agent that picks a policy silently may charge a customer twice, or reserve a quote twice. An agent following the skill produces a brief instead: here is the gap, here are the options, which one?
+Rule 4 is the interesting column. Say the spec asks for retries on transient failures and says nothing about non-idempotent operations. An agent that quietly picks a policy might charge a customer twice, or reserve the same quote twice. An agent following the skill writes a brief instead: here's the gap, here are the options, which one do you want?
 
-Not every gap has to reach me. [HTTP semantics](https://httpwg.org/specs/rfc9110.html) (RFC 9110, §9.2) define `GET` as safe and idempotent, and [RFC 9112](https://www.rfc-editor.org/rfc/rfc9112.html) points to those rules for when a client may automatically retry after a connection failure. Retrying an HTTP 503 response is a separate application-policy decision. If the spec names HTTP semantics as an authority and the call is a `GET`, the idempotency question in Rule 4 is settled, and stopping on it would only be an interruption.
+Not every gap needs to reach me, though. [HTTP semantics](https://httpwg.org/specs/rfc9110.html) (RFC 9110, §9.2) define `GET` as safe and idempotent, and [RFC 9112](https://www.rfc-editor.org/rfc/rfc9112.html) refers to those rules for when a client may automatically retry after a connection failure. Retrying after an HTTP 503 response is a separate decision, part of the application's own policy. If the spec names HTTP semantics as an authority and the call is a `GET`, the idempotency question in Rule 4 is already answered, and stopping on it would just be an interruption.
 
-That settles less than it seems. HTTP defines what a `GET` means, not whether this particular service honors it. And it is not a retry policy: the number of attempts, the backoff, and what happens on exhaustion still have to come from somewhere, which is why the scenario states three calls and an error. If the operation is "reserve this quote," HTTP gives the agent no basis to assume a retry is safe, and it says nothing about what the business wants instead. That one comes to me.
+It answers less than it might seem, though. HTTP defines what a `GET` means, not whether this particular service respects it. And it isn't a retry policy: the number of attempts, the backoff, and what happens when retries run out still have to come from somewhere, which is why the scenario spells out three calls and an error. If the operation is "reserve this quote," HTTP gives the agent no reason to assume a retry is safe, and nothing about what the business wants instead. That one comes to me.
 
-Ferrifuge's spec states this explicitly: "Precedence on conflict: spec > `client.proto` > centrifuge-js behaviour." The agent stops on an ambiguity, as the published skill requires, but the stop does not necessarily reach me. A separate skill, `owner-question-review`, which I have not yet published, sends each question to a fresh reviewer agent. The reviewer verifies the claims against their sources and classifies the question. If the spec, a recorded decision, or the precedence rule settles it, the agent applies the answer and logs it where I can audit it later. New behavior, new spec text, scope, and deliberate divergence from the reference all come to me, with an answer ready to approve. Whether Ferrifuge was meant for production was my decision. So was keeping a transport fallback that [differs from centrifuge-js](https://github.com/jbiscella/ferrifuge/blob/main/CLAUDE.md). An authority can be overruled, but only by the person who owns the decision.
+Ferrifuge's spec makes this explicit: "Precedence on conflict: spec > `client.proto` > centrifuge-js behaviour." The agent still stops on an ambiguity, as the published skill requires, but the stop doesn't necessarily reach me. A separate skill I haven't published yet, `owner-question-review`, sends each question to a fresh reviewer agent, which checks the claims against their sources and classifies the question. If the spec, a recorded decision, or the precedence rule already settles it, the agent applies the answer and logs it where I can review it later. New behavior, new spec text, scope changes, and deliberate divergence from the reference all come to me, with a proposed answer ready to approve. Whether Ferrifuge was meant for production was my call, and so was keeping a transport fallback that [differs from centrifuge-js](https://github.com/jbiscella/ferrifuge/blob/main/CLAUDE.md). An authority can be overruled, but only by whoever owns the decision.
 
-I wrote the stopping rule from experience. There is now some evidence around the idea. [ImpossibleBench](https://arxiv.org/pdf/2510.20270v1) (Zhong, Raghunathan, and Carlini) builds coding tasks whose specification directly conflicts with their tests, so any pass implies a shortcut. On the conflicting SWE-bench variant, giving the model an explicit abort option cut GPT-5's cheating rate from 54% to 9% and o3's from 49% to 12%.
+I wrote the stopping rule from experience, but there's now some evidence pointing the same way. [ImpossibleBench](https://arxiv.org/pdf/2510.20270v1) (Zhong, Raghunathan, and Carlini) builds coding tasks whose specification directly conflicts with their tests, so any pass means a shortcut was taken. On the conflicting SWE-bench variant, giving the model an explicit option to abort cut GPT-5's cheating rate from 54% to 9%, and o3's from 49% to 12%.
 
-Three caveats. The effect depended on the model, and the authors report it was much less pronounced for Claude Opus 4.1. An abort instruction in a benchmark is only an analogy for my brief, which has not been tested that way. And a brief can only fire if the agent recognizes that there is an ambiguity. An agent that does not see the gap in Rule 4 will fill it, and nothing in this section will catch it.
+I'd be careful with this, for three reasons. The effect depended on the model, and the authors report it was much weaker for Claude Opus 4.1. An abort option in a benchmark is only an analogy for my brief, which nobody has tested that way. And a brief can only be written if the agent notices the ambiguity in the first place. An agent that doesn't see the gap in Rule 4 will simply fill it, and nothing I've described here would catch that.
 
 ---
 
 ## What each check can and cannot guarantee
 
-"The tests pass" hides several different claims, and the workflow's weak points sit between them:
+"The tests pass" hides several different claims, and the weak points of the workflow sit in between them:
 
 - **Specification integrity:** the scenario still says what was approved.
 - **Test implementation integrity:** the executable step checks what the scenario's text says.
 - **Test sensitivity:** the test fails when the code breaks.
 - **Semantic correctness of the oracle:** what the test demands is what the business actually wants.
 - **Independent review:** someone other than the author has looked at the work.
-- **Independent verification:** the check's verdict does not depend on the author's understanding.
+- **Independent verification:** the check's verdict doesn't depend on the author's understanding.
 
-The second is the one most easily overlooked. Consider this scenario line:
+The second one is the easiest to overlook. Take this scenario line:
 
 ```gherkin
 Then the quote from the second response is returned
 ```
 
-If its step definition only checks that the returned object is non-null, the test passes when the wrong quote comes back. The scenario is meaningful, and the executable oracle is not. This is not hypothetical in shape. A review of Ferrifuge's tests found a step, "the client goes to state …", that accepted a disconnect carrying any code, so a table of specific close codes passed even with a wrong code. Another found that "not received" could not detect an unsubscribe that was never sent, because the client dropped those publications locally anyway. Both tests were green. Each scenario read perfectly.
+If its step definition only checks that the returned object isn't null, the test still passes when the wrong quote comes back. The scenario is meaningful; the executable oracle isn't. And this isn't only a hypothetical shape. A review of Ferrifuge's tests found a step, "the client goes to state …", that accepted a disconnect with any code, so a table of specific close codes passed even when the code was wrong. Another found that "not received" couldn't detect an unsubscribe that was never sent, because the client dropped those publications locally anyway. Both tests were green, and both scenarios read perfectly.
 
-The fixes were specified in a useful order: first show the current test passes against a deliberately broken implementation, then strengthen the step, then show it fails against the same broken code. That is the idea behind mutation testing, done by hand.
+The fixes were specified in a useful order: first show that the current test passes against a deliberately broken implementation, then strengthen the step, then show that it fails against the same broken code. That's the idea behind mutation testing, done by hand.
 
-Mutation testing proper matters most here, because it tests the tests. [PIT](https://pitest.org/) seeds faults into JVM code and runs the tests against them. A mutant that [survives](https://pitest.org/quickstart/basic_concepts/) is a change the tests did not notice, even on a covered line. PIT's [JUnit 5 plugin](https://github.com/pitest/pitest-junit5-plugin) lists Cucumber among its supported engines, so mutants can be run against scenarios through their step definitions. It is worth being precise about what that covers. A manually introduced fault can target the non-null step's exact weakness: return a different non-null quote and observe whether the test still passes. [Standard mutation operators](https://pitest.org/quickstart/mutators/) may not generate this particular semantic change, so a mutation score alone cannot establish that the step checks the intended value. Some survivors are also equivalent mutants. Still, the tool turns "would this test fail?" into a measurement. A high score shows the tests are sensitive to those code changes, not that they describe the required behavior. Meta uses mutants to [guide LLM test generation](https://www.arxiv.org/abs/2501.12862), and its engineers accepted 73% of the resulting tests in two test-a-thons. I have not wired a mutation tool into Ferrifuge's CI, so for me this remains a direction rather than a result.
+Mutation testing itself matters a lot here, because it tests the tests. [PIT](https://pitest.org/) seeds faults into JVM code and runs the tests against them. A mutant that [survives](https://pitest.org/quickstart/basic_concepts/) is a change the tests didn't notice, even on a covered line. PIT's [JUnit 5 plugin](https://github.com/pitest/pitest-junit5-plugin) lists Cucumber among its supported engines, so mutants can run against scenarios through their step definitions. It's worth being precise about what that gives you. A fault you introduce by hand can target the non-null step's exact weakness: return a different non-null quote and see whether the test still passes. [Standard mutation operators](https://pitest.org/quickstart/mutators/) may not produce that particular semantic change, so a mutation score alone can't tell you the step checks the intended value. Some survivors are also equivalent mutants. Still, the tool turns "would this test fail?" into something you can measure. A high score shows the tests are sensitive to those code changes, not that they describe the behavior you actually need. Meta uses mutants to [guide LLM test generation](https://www.arxiv.org/abs/2501.12862), and its engineers accepted 73% of the resulting tests in two test-a-thons. I haven't wired a mutation tool into Ferrifuge's CI yet, so for me this is still a direction rather than a result.
 
-Here is what each mechanism does, and what state it is in for me. "In the published skill" means an instruction the agent is asked to follow, not an enforced control.
+Here's what each mechanism does, and where it stands for me. "In the published skill" means an instruction the agent is asked to follow, not a control that's enforced.
 
 | Mechanism | Primary purpose | Limitation | Status |
 |---|---|---|---|
@@ -177,50 +179,50 @@ Here is what each mechanism does, and what state it is in for me. "In the publis
 | Fresh-context review | Reduce some implementation-review biases | Can share the same specification errors | Used on Ferrifuge, not in the published skills |
 | Cross-model review | Introduce different model behavior | Does not guarantee independent judgment | Used on Ferrifuge |
 
-The hashing row deserves a note, because this is my own open design. It is a gate between increments and `.feature` files: a per-scenario hash, with scenarios pointing to their increment through a tag, recomputed statelessly from the two documents on each run, and invoked from both a git hook and a Claude Code `PreToolUse` hook. It would be stricter than Ferrifuge's check about which change belongs to which increment. It does not exist yet, and even if it did, it would protect only the first of the six claims above.
+The hashing row needs a word of explanation, since it's my own open design. It's a gate between increments and `.feature` files: a per-scenario hash, with scenarios pointing to their increment through a tag, recomputed statelessly from the two documents on each run, and invoked from both a git hook and a Claude Code `PreToolUse` hook. It would be stricter than Ferrifuge's check about which change belongs to which increment. It doesn't exist yet, and even if it did, it would only protect the first of the six claims above.
 
-Nothing in the table establishes semantic correctness. Green is evidence of compliance with the executable checks, not proof of business correctness, and that part still rests on whoever wrote the scenario.
+None of this establishes semantic correctness. Green means the code complies with the executable checks, not that the business got what it needed, and that part still depends on whoever wrote the scenario.
 
 ---
 
 ## Reviewing at scale
 
-If this works, the developer's job shifts from writing each change to defining how changes get validated. That does not mean reading every diff. If a human stays the only reviewer while agents raise the volume of changes, the human becomes the bottleneck again, which is the risk [Faros's telemetry](https://www.faros.ai/blog/ai-productivity-paradox-report-2025) describes: 98% more merged pull requests and 91% longer review times with high AI adoption, a correlation reported by a vendor.
+If this works, the developer's job moves from writing each change to defining how changes get validated. That doesn't mean reading every diff. If a person stays the only reviewer while agents increase the volume of changes, that person becomes the bottleneck again, which is the risk [Faros's telemetry](https://www.faros.ai/blog/ai-productivity-paradox-report-2025) describes: 98% more merged pull requests and 91% longer review times with high AI adoption, in a correlation reported by a vendor.
 
-So the review layer should be automated too: agents in a fresh context, and ideally a different model on the pull request. [One preprint](https://arxiv.org/html/2610.01471v2), not peer reviewed and built on planted errors, suggests the gain is coverage rather than certainty. A same-model plus a cross-model review matched 56.7% of planted errors, against 42.7% for two same-model reviews, yet on code alone the same-model review did slightly better. Cross-model false positives were also labelled Major or Critical more often, so more findings also means more noise to triage.
+So it makes sense to automate the review layer too: agents in a fresh context, and ideally a different model on the pull request. [One preprint](https://arxiv.org/html/2610.01471v2), not peer reviewed and based on planted errors, suggests the gain is in coverage rather than certainty. A same-model review plus a cross-model review caught 56.7% of the planted errors, against 42.7% for two same-model reviews, yet on code alone the same-model review did slightly better. Cross-model false positives were also labelled Major or Critical more often, so more findings also means more noise to sort through.
 
-On Ferrifuge I use both. Fresh-context agents reviewed the code, and their findings were checked against the code before being acted on, which is how the test gaps above surfaced. Codex also reviews pull requests. On [pull request #64](https://github.com/jbiscella/ferrifuge/pull/64), after the green commits, its review led to four more fix commits. That is one pull request, not a measurement.
+On Ferrifuge I use both. Fresh-context agents reviewed the code, and their findings were checked against the code before anything was changed, which is how the test gaps above came to light. Codex also reviews pull requests: on [pull request #64](https://github.com/jbiscella/ferrifuge/pull/64), after the green commits, its review led to four more fix commits. That's one pull request, not a measurement.
 
-An independent review is also not independent verification. A fresh reviewer can find defects the tests miss, but it reads the same spec and will not necessarily notice what that spec left out. A second model's opinion is evidence with its own error rate, and treating agreement between models as proof would just move the blind spot.
+An independent review still isn't independent verification. A fresh reviewer can find defects the tests miss, but it reads the same spec, and it won't necessarily notice what the spec left out. A second model's opinion is evidence with its own error rate, and treating agreement between models as proof would just move the blind spot somewhere else.
 
-Human checkpoints then go where an error is costly or the decision is not the agent's: the spec, the stop conditions, and irreversible actions such as deploys. Routine merges with green checks can flow.
+So the human checkpoints go where a mistake is expensive or the decision isn't the agent's to make: the spec, the stop conditions, and irreversible actions like deploys. Routine merges with green checks can go through.
 
 ---
 
 ## Where the mechanism breaks
 
-**Tests can be gamed.** This is the strongest objection, because the whole approach relies on the test being honest. Kent Beck's experience, as [Gergely Orosz summarized it](https://newsletter.pragmaticengineer.com/p/tdd-ai-agents-and-coding-with-kent), is that TDD is a "superpower" with agents, and also that he struggles to stop them deleting tests to make them pass. In ImpossibleBench, GPT-5 cheated in [76% of the one-off SWE-bench tasks](https://arxiv.org/pdf/2510.20270v1). The same paper found that read-only tests block test modification but not special-casing. These are 2025 models on tasks built to be impossible, so the rates do not describe ordinary work, but the behavior is real. A green build is the output of automated supervision, and that supervision is only as strong as its independence from the agent it supervises. The sections above are a partial answer to that, not a closed one.
+**Tests can be gamed.** To me this is the strongest objection, since the whole approach relies on the tests being honest. Kent Beck's experience, as [Gergely Orosz summarized it](https://newsletter.pragmaticengineer.com/p/tdd-ai-agents-and-coding-with-kent), is that TDD is a "superpower" with agents, and also that he struggles to stop them deleting tests to make them pass. In ImpossibleBench, GPT-5 cheated in [76% of the one-off SWE-bench tasks](https://arxiv.org/pdf/2510.20270v1). The same paper found that read-only tests stop agents from modifying the tests, but not from special-casing them. These are 2025 models on tasks designed to be impossible, so the rates don't describe ordinary work, but the behavior is real. A green build is the output of automated supervision, and that supervision is only as good as its independence from the agent it's supervising. The sections above go part of the way toward that, not all of it.
 
-**A skill is advisory.** [The Claude Code documentation](https://code.claude.com/docs/en/best-practices) is explicit that CLAUDE.md instructions are advisory and hooks are deterministic. Nothing mechanically prevents an agent from ignoring my §4, and the same limit applies to the stop rules. Checks in CI bind; prose does not.
+**A skill is advisory.** [The Claude Code documentation](https://code.claude.com/docs/en/best-practices) is clear that CLAUDE.md instructions are advisory and hooks are deterministic. Nothing mechanically stops an agent from ignoring my §4, and the same goes for the stop rules. Checks in CI are binding; prose isn't.
 
-**Scenarios stop at the application boundary.** On my Heikin Ashi project, I spent eight hours on production-only failures on a system that took thirty to design and build. In [one of them](/software-engineering/from-spec-to-production/), the code was correct and the tests were irrelevant: the Lambda's role lacked the AWS Marketplace permissions that newer Anthropic models on Bedrock require. Every application scenario could pass while the deployed system could not reach the model. The skill treats operational invariants as a separate layer for this reason. BDD and TDD verify application behavior. They say nothing about production readiness on their own.
+**Scenarios stop at the application boundary.** On my Heikin Ashi project I spent eight hours on production-only failures, on a system that took roughly thirty hours to design and build. In [one of them](/software-engineering/from-spec-to-production/), the code was correct and the tests were beside the point: the Lambda's role was missing the AWS Marketplace permissions that newer Anthropic models on Bedrock require. Every application scenario could pass while the deployed system couldn't reach the model. That's why the skill treats operational invariants as a separate layer. BDD and TDD verify application behavior; on their own, they say nothing about whether you're ready for production.
 
-These are the technical limits. The economic ones, including whether this pays at all, are in [the companion article](/software-engineering/who-is-waiting-for-whom/#where-the-argument-breaks).
+These are the technical limits. The economic ones, including whether any of this pays off, are in [the companion article](/software-engineering/who-is-waiting-for-whom/#where-the-argument-breaks).
 
 ---
 
 ## Beyond examples
 
-Gherkin scenarios are examples. They say "in these cases, it works," not "it always works," and they only cover the cases someone thought of. Other techniques narrow that gap, and they sort into two groups: those that make the spec harder to misread, and those that make the check harder to fool.
+Gherkin scenarios are examples. They say "in these cases, it works," not "it always works," and they only cover the cases someone thought of. Other techniques help close that gap, and I tend to think of them in two groups: those that make the spec harder to misread, and those that make the check harder to fool.
 
-Before the code, the table in the stopping section is the technique I reach for first. [Each column is one combination of conditions](https://magdalenaolak.gitbook.io/istqb-foundation-level/4-test-techniques/4.2-black-box-test-techniques/4.2.3-decision-table-testing), which makes the combinations nobody decided visible, and each column can become a scenario. With *n* boolean conditions a full table has 2ⁿ columns, so a table that grows too large is also a signal to split the story. [Example Mapping](https://www.cucumber.io/docs/bdd/example-mapping) and [EARS](https://en.wikipedia.org/wiki/Easy_Approach_to_Requirements_Syntax) serve the same goal. The first records unanswered questions on cards. The second constrains requirements to fixed patterns, and came from regulatory analysis at Rolls-Royce. My own version is paper: the Story Mandala, an A3 worksheet with one page per story. It checks nothing mechanically, but it makes a story's dependencies visible.
+Before the code, the decision table from the stopping section is the technique I reach for first. [Each column is one combination of conditions](https://magdalenaolak.gitbook.io/istqb-foundation-level/4-test-techniques/4.2-black-box-test-techniques/4.2.3-decision-table-testing), which makes visible the combinations nobody has decided on, and each column can become a scenario. With *n* boolean conditions a full table has 2ⁿ columns, so a table that grows too big is also a hint that the story should be split. [Example Mapping](https://www.cucumber.io/docs/bdd/example-mapping) and [EARS](https://en.wikipedia.org/wiki/Easy_Approach_to_Requirements_Syntax) aim at the same thing: the first records the open questions on cards, and the second constrains requirements to fixed patterns, having come out of regulatory analysis at Rolls-Royce. My own version is on paper: the Story Mandala, an A3 worksheet with one page per story. It doesn't check anything mechanically, but it makes a story's dependencies visible.
 
-After the code, mutation testing is the one I would start with, for the reasons above. Other techniques extend the same idea: [properties that must hold across generated inputs](https://arxiv.org/html/2510.09907v1), [contracts at service boundaries](/contract-testing/main/), and formal proofs, where Martin Kleppmann [predicts](https://martin.kleppmann.com/2025/12/08/ai-formal-verification.html) that "the challenge will move to correctly defining the specification."
+After the code, mutation testing is where I'd start, for the reasons above. Other techniques push the same idea further: [properties that must hold across generated inputs](https://arxiv.org/html/2510.09907v1), [contracts at service boundaries](/contract-testing/main/), and formal proofs, where Martin Kleppmann [predicts](https://martin.kleppmann.com/2025/12/08/ai-formal-verification.html) that "the challenge will move to correctly defining the specification."
 
 ---
 
 ## What this leaves to the developer
 
-Nothing in this stack establishes that a scenario is the right scenario. What it does is move human attention to the places it is needed: writing oracles, answering the questions no source can settle, and deciding what may never run without a person. [The companion article](/software-engineering/who-is-waiting-for-whom/#what-this-asks-of-a-developer) looks at what that asks of a developer.
+None of this establishes that a scenario is the right scenario. What it does is move human attention to where it's actually needed: writing oracles, answering the questions no source can settle, and deciding what should never run without a person. [The companion article](/software-engineering/who-is-waiting-for-whom/#what-this-asks-of-a-developer) looks at what that asks of a developer.
 
 The goal was never for the agent to run unsupervised. It is for supervision to run without me, until the moment it actually needs me.
