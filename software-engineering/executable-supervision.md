@@ -207,6 +207,8 @@ The human checkpoints, then, belong where a mistake is expensive or the decision
 
 **Scenarios stop at the application boundary.** On my Heikin Ashi project I spent eight hours on production-only failures, on a system that took roughly thirty hours to design and build, and in [one of them](/software-engineering/from-spec-to-production/) the code was correct and the tests were beside the point, because the Lambda's role was missing the AWS Marketplace permissions that newer Anthropic models on Bedrock require. Every application scenario could pass while the deployed system couldn't reach the model, which is why the skill treats operational invariants as a separate layer. BDD and TDD verify application behavior, but on their own they say nothing about whether you're ready for production.
 
+**Behavior isn't everything.** Scenarios describe what the system should do, not every interleaving in which it might do it, so defects in concurrent code, such as races, leaks or deadlocks, can sit below every scenario, and there independent review and stress runs carry more of the weight.
+
 These are the technical limits, while the economic ones, including whether any of this pays off at all, are discussed in [the companion article](/software-engineering/who-is-waiting-for-whom/#where-the-argument-breaks).
 
 ---
