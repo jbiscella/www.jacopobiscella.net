@@ -244,3 +244,4 @@ The goal was never for the agent to run unsupervised. It is for supervision to r
 | | |
 |---|---|
 | ← Part 1 | [Agent Symbiosis – Part 1: Who Is Waiting for Whom](/software-engineering/who-is-waiting-for-whom/) |
+| → Part 3 | [Agent Symbiosis – Part 3: Reading the Fix Log](/software-engineering/reading-the-fix-log/) |
