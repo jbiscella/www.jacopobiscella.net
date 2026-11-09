@@ -79,6 +79,10 @@ The definition of done contains the sentence that matters most here: "There is n
 
 So supervision hasn't gone away, but it has changed shape: the tests supervise the loop continuously, and I get called in only when something is exceptional. The agent decides how to satisfy the constraints, and it can resolve an ambiguity against an authoritative source that the spec names, but it can't invent requirements where no such source exists. My part comes at the start, when I decide what the scenarios say, and at the stop conditions, when requirements are ambiguous, contradictory or incomplete and nothing settles them, while in the middle of a routine increment I'm simply not needed.
 
+Put together, the flow looks like this, with the steps where I'm involved in amber:
+
+![The workflow: intent and shared refinement produce an executable specification; the agent iterates test first until automated verification passes; doubts are settled by a reference or an independent agent, and only the open ones reach a human decision; a human checkpoint on accepted increments is optional or periodic](/assets/images/executable-supervision-workflow.svg)
+
 ---
 
 ## How big is an increment?
