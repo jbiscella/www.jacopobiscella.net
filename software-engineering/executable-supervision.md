@@ -1,16 +1,18 @@
 ---
 layout: default
-title: "Executable Supervision: How BDD and TDD Keep an Agent Honest"
+title: "Agent Symbiosis – Part 2: Executable Supervision"
 parent: Software Engineering Notes
 grand_parent: Blog
-nav_order: -20261115
-date: 2026-11-15
+nav_order: -20261110
+date: 2026-11-10
 tags: [claude-code, ai-assisted-development, bdd, tdd, gherkin, agent-skills, mutation-testing, code-review, workflow]
 post_excerpt: "What supervises a coding agent when nobody is watching, and how much a green build is really worth. How executable specifications, increments, stop rules, and independent checks work together on my own projects, and what each of them can and can't guarantee."
 description: "How executable specifications, incremental implementation, automated supervision, stopping conditions, oracle independence, and review fit together when working with a coding agent, with published skills and real test failures from my own projects."
 ---
 
 # Executable Supervision: How BDD and TDD Keep an Agent Honest
+
+*Part 2 of 3 in the [Agent Symbiosis series](#series-navigation).*
 
 This post is about what supervises a coding agent when nobody is watching, and about how much a green build is really worth when the agent did the work on its own.
 
@@ -234,3 +236,11 @@ None of this establishes that a scenario is the right scenario. What it does is 
 Seen this way, the symbiosis I described there is less a matter of trust than of a division of labor that both sides can check: the agent implements and verifies within constraints I can read, and I write the constraints and answer what they leave open, so that neither of us has to wait for the other for long.
 
 The goal was never for the agent to run unsupervised. It is for supervision to run without me, until the moment it actually needs me.
+
+---
+
+## Series navigation {#series-navigation}
+
+| | |
+|---|---|
+| ← Part 1 | [Agent Symbiosis – Part 1: Who Is Waiting for Whom](/software-engineering/who-is-waiting-for-whom/) |

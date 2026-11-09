@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "Who Is Waiting for Whom: The Economics of Working with a Coding Agent"
+title: "Agent Symbiosis – Part 1: Who Is Waiting for Whom"
 parent: Software Engineering Notes
 grand_parent: Blog
 nav_order: -20261108
@@ -11,6 +11,8 @@ description: "Why BDD and TDD may be worth more with coding agents than they wer
 ---
 
 # Who Is Waiting for Whom: The Economics of Working with a Coding Agent
+
+*Part 1 of 3 in the [Agent Symbiosis series](#series-navigation).*
 
 This year I've built several projects with a coding agent doing most of the implementation, from [H-tchen Mail](https://github.com/jbiscella/H-tchen-Mail), [ha-track](https://github.com/jbiscella/ha-track) and [wichtelm-app](https://github.com/jbiscella/wichtelm-app) to, more recently, [Ferrifuge](https://github.com/jbiscella/ferrifuge), a Rust client for Centrifugo. Working this way for a while, I noticed that the question I kept coming back to wasn't so much how fast the agent was, but who was waiting for whom, and why. My bet is that, in the near future, the developers who do best with these tools will be the ones who learn to work with an agent so that neither of them ends up waiting for the other, or cleaning up after the other.
 
@@ -161,3 +163,11 @@ That last point has a real counterargument, which is that delegating too much ma
 None of the right-hand column is new, since it's what a good Three Amigos session and a disciplined TDD practice have always asked for. I don't think the practices were ever wrong; they were simply expensive to teach to people, whereas the workflow is cheap to hand to an agent. What stays expensive is the judgment about what the scenarios should say, and that is where I'd spend my own learning time now, which is also why it seems a strange moment to let that expertise walk out of the door before anyone else has learned it.
 
 How that supervision works in practice, and how much a green build is really worth, is what the companion article, [Executable Supervision](/software-engineering/executable-supervision/), is about.
+
+---
+
+## Series navigation {#series-navigation}
+
+| | |
+|---|---|
+| → Part 2 | [Agent Symbiosis – Part 2: Executable Supervision](/software-engineering/executable-supervision/) |
