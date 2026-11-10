@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "Who Is Waiting for Whom: The Economics of Working with a Coding Agent"
+title: "Agent Symbiosis – Part 1: Who Is Waiting for Whom"
 parent: Software Engineering Notes
 grand_parent: Blog
 nav_order: -20261108
@@ -12,6 +12,8 @@ description: "Why BDD and TDD may be worth more with coding agents than they wer
 
 # Who Is Waiting for Whom: The Economics of Working with a Coding Agent
 
+*Part 1 of 3 in the [Agent Symbiosis series](#series-navigation).*
+
 This year I've built several projects with a coding agent doing most of the implementation, from [H-tchen Mail](https://github.com/jbiscella/H-tchen-Mail), [ha-track](https://github.com/jbiscella/ha-track) and [wichtelm-app](https://github.com/jbiscella/wichtelm-app) to, more recently, [Ferrifuge](https://github.com/jbiscella/ferrifuge), a Rust client for Centrifugo. Working this way for a while, I noticed that the question I kept coming back to wasn't so much how fast the agent was, but who was waiting for whom, and why. My bet is that, in the near future, the developers who do best with these tools will be the ones who learn to work with an agent so that neither of them ends up waiting for the other, or cleaning up after the other.
 
 Sometimes the bottleneck was me: the agent had finished its work, and that work sat there until I found the time to look at it properly. At other times it went the other way round, and that was much harder to spot, because from the outside it didn't look like waiting at all. The agent had quietly made a decision I had never asked it to make, and I only realized it later, when I had to go through a long diff to understand why it had done what it did.
@@ -22,7 +24,7 @@ What helped most, in my experience, were two practices that I've often seen team
 
 I'd like to be careful about what this means, because it's easy to say more than is true. The tests don't replace supervision; together with the other automated checks around them, they are the supervision: the agent decides how to satisfy the constraints but not what those constraints should be, and whenever the specification and the references it relies on can't answer a question, that question comes back to me.
 
-What follows is my reading of my own experience rather than the result of a controlled comparison, and the wider evidence is still mixed. In this post I look at the economics of working this way and at what they might mean for developers, QA and business analysts, while its companion, which follows this one, looks at how the mechanism works and where it breaks.
+What follows is my reading of my own experience rather than the result of a controlled comparison, and the wider evidence is still mixed. In this post I look at the economics of working this way and at what they might mean for developers, QA and business analysts, while its companion, [Executable Supervision](/software-engineering/executable-supervision/), looks at how the mechanism works and where it breaks.
 
 ---
 
@@ -74,7 +76,7 @@ On top of that there's a cost the study doesn't capture, which is that a team ha
 
 With an agent in the loop, though, three things look different to me:
 
-1. **The workflow transfers in seconds.** The one I use is a [317-line file](https://github.com/jbiscella/skills-dungeon/blob/main/skills/code/incremental-implementation-workflow/SKILL.md), and every session that loads it starts from the same rules, with no onboarding and no months of pairing. That doesn't mean the agent will apply them well, since judgment doesn't come with the file, and this is exactly why the checks need to be independent.
+1. **The workflow transfers in seconds.** The one I use is a [317-line file](https://github.com/jbiscella/skills-dungeon/blob/main/skills/code/incremental-implementation-workflow/SKILL.md), and every session that loads it starts from the same rules, with no onboarding and no months of pairing. That doesn't mean the agent will apply them well, since judgment doesn't come with the file, and this is exactly why the checks [need to be independent](/software-engineering/executable-supervision/#what-each-check-can-and-cannot-guarantee).
 2. **The typing has moved.** Since the agent writes both the test and the implementation, the initial-time penalty no longer falls on the developer in the same way. This is my own inference, as I don't know of any study that has repeated those measurements with agents.
 3. **The test has a second reader.** A test used to be mostly a safety net for people, whereas for an agent it is also the most precise definition of "finished" that it can check by itself.
 
@@ -84,7 +86,7 @@ With an agent in the loop, though, three things look different to me:
 
 In short, a scenario states a requirement and, once its steps are wired to meaningful assertions, becomes the check for it. The agent writes a failing test, implements until it goes green, and stops with a written brief whenever the requirements are ambiguous, contradictory or incomplete and nothing it's allowed to rely on settles the question.
 
-A check like the retry scenario above is what I mean by an oracle, that is, the thing that decides whether a result is right. A green result tells you that the code complies with those checks, but not that the business got what it needed, and since the agent will work just as hard against a weak oracle as against a strong one, a lot depends on who writes them. The companion article, which follows this one, goes through the scenarios, the skills and the ways in which all this can fail.
+A check like the retry scenario above is what I mean by an oracle, that is, the thing that decides whether a result is right. A green result tells you that the code complies with those checks, but not that the business got what it needed, and since the agent will work just as hard against a weak oracle as against a strong one, a lot depends on who writes them. The [companion article](/software-engineering/executable-supervision/) goes through the scenarios, the skills and the ways in which all this can fail.
 
 ---
 
@@ -104,7 +106,7 @@ It also cuts against a simple defense of job titles, because those developers sh
 
 ## Where the argument breaks
 
-The technical objections, such as tests that can be gamed and scenarios that stop at the application boundary, are discussed in the companion article, so here I'll stay with the economic ones.
+The technical objections, such as tests that can be gamed and scenarios that stop at the application boundary, are discussed in the [companion article](/software-engineering/executable-supervision/#where-the-mechanism-breaks), so here I'll stay with the economic ones.
 
 **The cost moved.** The learning curve hasn't disappeared, because writing a scenario with a real oracle, or a value clause that could actually turn out to be false, is still the hard part, and now it sits with whoever writes the spec. There's also a subtler risk, which is that the persona pass can make a weak spec feel reviewed, and the [`three-amigos` README](https://github.com/jbiscella/skills-dungeon/blob/main/skills/chat/three-amigos/README.md) says plainly that it doesn't replace stakeholder validation. Three personas played by one model don't know what your users need, and since much of BDD's original value came from conversations between real people, a simulation can't reproduce it. Oracles also need upkeep. A check that fails for reasons unrelated to the feature, such as a flaky timing or an unstable environment, or that no longer matches what the system should do, teaches the agent to work around it, and keeping the checks reliable is a running cost that never shows up in the initial preparation.
 
@@ -152,7 +154,7 @@ If this holds, the skills that gain value are the ones at the two ends of the lo
 In practice, I think this means getting better at a few things, even as agents write more of the code and the tests:
 
 - **Defining verifiable behavior.** This means spotting a weak oracle, by reading a step definition and asking what would still pass, and writing requirements that could actually fail, because "so that the system is more robust" can't fail, and so it can't guide anything.
-- **Managing decision boundaries.** This means finding the implicit assumptions, since whether a retry is safe for a non-idempotent operation stays invisible until someone asks, and deciding what can be delegated, where the classification I describe in the companion article is my current attempt.
+- **Managing decision boundaries.** This means finding the implicit assumptions, since whether a retry is safe for a non-idempotent operation stays invisible until someone asks, and deciding what can be delegated, where the [classification I describe in the companion article](/software-engineering/executable-supervision/#stopping-is-what-makes-autonomy-safe) is my current attempt.
 - **Evaluating correctness.** This means keeping implementation correctness apart from business correctness, because the code can do exactly what the scenario says while the scenario itself is wrong, and understanding the architectural invariants that have to hold across every change, since no single scenario will show them breaking.
 - **Keeping technical judgment.** This means staying deep enough in the implementation to judge the result, because you can't evaluate a review finding, or an agent's claim about a stalled websocket, without understanding the machinery.
 
@@ -160,4 +162,12 @@ That last point has a real counterargument, which is that delegating too much ma
 
 None of the right-hand column is new, since it's what a good Three Amigos session and a disciplined TDD practice have always asked for. I don't think the practices were ever wrong; they were simply expensive to teach to people, whereas the workflow is cheap to hand to an agent. What stays expensive is the judgment about what the scenarios should say, and that is where I'd spend my own learning time now, which is also why it seems a strange moment to let that expertise walk out of the door before anyone else has learned it.
 
-How that supervision works in practice, and how much a green build is really worth, is what the companion article is about.
+How that supervision works in practice, and how much a green build is really worth, is what the companion article, [Executable Supervision](/software-engineering/executable-supervision/), is about.
+
+---
+
+## Series navigation {#series-navigation}
+
+| | |
+|---|---|
+| → Part 2 | [Agent Symbiosis – Part 2: Executable Supervision](/software-engineering/executable-supervision/) |
